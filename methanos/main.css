@@ -2,7 +2,7 @@ body {
     margin: 0;
     background-color: #000;
     color: #fff;
-    font-family: Monospace;
+    font-family: Monospace, Times;
     font-size: 13px;
     line-height: 24px;
     overscroll-behavior: none;
@@ -15,12 +15,20 @@ a {
     text-decoration: none;
 }
 
-a:hover {
+b {
+    color: lightgreen;
+}
+
+a.link {
+    color: #f00;
+}
+
+a.link:hover {
     text-decoration: underline;
 }
 
-b {
-    color: lightgreen;
+a.thank {
+    color: #d0d;
 }
 
 #info {
@@ -35,6 +43,15 @@ b {
     -ms-user-select: none;
     user-select: none;
     pointer-events: none;
+    z-index: 1;
+}
+#info-link {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: left;
     z-index: 1;
 }
 
