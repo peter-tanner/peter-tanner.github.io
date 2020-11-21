@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>📝 De Moivre's theorem</title>
+	<meta name="description" content="De Moivre's theorem stuff - year 12 WACE specialist ATAR">
+    <meta name="viewport" content="width=device-width">
+    <title>MathJax example</title>
+    <script>
+        MathJax = {
+            tex: { macros: {cis: "\\mathop{\\rm{cis}}\\nolimits"} },
+            chtml: { displayAlign: 'center', scale: 1.1 }
+        }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+
+<body>
+    <center>
+        <h1>Polar form and De Moivre's identity</h1>
+        <h3>(WACE) Mathematics Specialist ATAR</h3>
+    </center>
+    
+    <a class="link" style="left:1%; top: 1%;" href="https://npc-strider.github.io/maths">🔗 Back to MATHS home page</a><br>
+    <a class="link" style="left:1%; top: 1%;" href="https://npc-strider.github.io">🔗 Back to home page</a><br>
+
+    Warning: This page requires javascript to render the math.
+
+    <hr><br>
+    <div class="card">
+        <div class="card-body">
+            <center>De Moivre's identity</center>
+            \[\boxed{\left[r\cdot \cis(\theta)\right]^n = r^n\cdot\cis(\theta\cdot n)}\]
+            where \(\cis(\theta) = \cos(\theta) + i\cdot\sin(\theta)\)<br>
+        </div>
+    </div>
+    <p>
+        The identity is more obvious when we use Euler's formula, \(\boxed{e^{i\theta} = \cos(\theta) + i\cdot\sin(\theta) = \cis(\theta)}\)<br>
+        This formula doesn't appear to be taught in the WA curriculum.
+        \begin{align}
+            \left[r\cdot e^{i\theta}\right]^n &= r^n\cdot\left[e^{i\theta}\right]^n\\
+            &= r^n\cdot e^{i(\theta n)} \\
+            &= r^n\cdot\cis(\theta\cdot n) \\
+        \end{align}
+    </p>
+    <div class="card">
+        <div class="card-body">
+            <center>Polar form rules: they're on the formula sheet so <b>don't put them on your notes!</b></center>
+            \begin{align}
+                z_1\cdot z_2 &= r_1\cdot r_2 \cdot \cis(\theta_1 + \theta_2)    \\
+                \frac{z_1}{z_2} &= \frac{r_1}{r_2} \cdot \cis(\theta_1 - \theta_2)\\
+                \cis(\theta_1 + \theta_2) &= \cis(\theta_1)\cdot\cis(\theta_2)  \\
+                \cis(-\theta) &= \frac{1}{\cis(\theta)} \\
+                \overline{\cis(\theta)} &= \cis(-\theta)
+            \end{align}
+        </div>
+    </div>
+    <hr>
+    <center><b>Question 1</b></center>
+    <hr>
+    The polar form of a complex number is useful because of its properties.
+    <center>
+        Simplify \(\boxed{\frac{(i+1)^{2020}}{(i-1)^{2020}}}\)
+    </center>
+    Some defining may be useful right now.
+    \begin{align}
+        z_0&=i+1 \\
+        z_1&=i-1 \\
+    \end{align}
+    First steps to convert to polar form is always to obtain the modulus and argument of the complex number
+    \begin{align}
+        \lvert z_0 \rvert &= \sqrt{1^2 + 1^2} = \sqrt{2} \\
+        \lvert z_1 \rvert &= \sqrt{1^2 + 1^2} = \sqrt{2} \\
+        \arg(z_0) &= \arctan\left(\frac{1}{1}\right) = \frac{\pi}{2} \\
+        \arg(z_1) &= \arctan\left(\frac{-1}{1}\right) = -\frac{\pi}{2} \\
+        \therefore z_0 &= \sqrt{2}\cdot\cis\left(\frac{\pi}{2}\right) \\
+                    z_1 &= \sqrt{2}\cdot\cis\left(-\frac{\pi}{2}\right) \\
+    \end{align}
+    So our original equation becomes:
+    \begin{align}
+        \frac{(i+1)^{2020}}{(i-1)^{2020}} = \frac{z_0^{\phantom{0}2020}}{z_1^{\phantom{0}2020}} &= \frac{\left[\sqrt{2}\cdot\cis(\frac{\pi}{2})\right]^{2020}}{\left[\sqrt{2}\cdot\cis(-\frac{\pi}{2})\right]^{2020}} \\
+        &= \frac{\sqrt{2}^{2020}}{\sqrt{2}^{2020}}\cdot\frac{\cis(\frac{\pi}{2})^{2020}}{\cis(-\frac{\pi}{2})^{2020}} \\
+        &= \frac{\cis(\frac{\pi}{2})^{2020}}{\cis(-\frac{\pi}{2})^{2020}} \\
+    \end{align}
+    Let's apply De Moivre's theorem.
+    \begin{align}
+        \frac{(i+1)^{2020}}{(i-1)^{2020}} = \frac{\cis(2020\cdot\frac{\pi}{2})}{\cis(-2020\cdot\frac{\pi}{2})} \\
+        &= \frac{\cis(1010\cdot\pi)}{\cis(-1010\cdot\pi)}
+    \end{align}
+
+    We have the useful formula, \(\boxed{\frac{\cis(\alpha)}{\cis(\beta)} = \cis(\alpha-\beta)}\). Let's apply it!
+    \begin{align}
+    \frac{(i+1)^{2020}}{(i-1)^{2020}} &= \cis\left[1010\cdot\pi-\left(-1010\cdot\pi\right)\right] \\
+        &= \cis\left[1010\cdot\pi+1010\cdot\pi\right] \\
+        &= \cis\left[2020\cdot\pi\right] \\
+        &= \cis\left[1010\cdot2\pi\right] \\
+        &= \cis\left[2\pi\right] \\
+        &= 1 \\
+    \end{align}
+    All <b>simp</b>lified.<br>
+    This question forces you to use \(\cis\) due to the large power. If we had, say, \(\frac{(i+1)}{(i-1)}\), we could simply multiply the top and bottom by \((i+1)\), expand and split the fraction.
+    <hr>
+    <center><b>Question 2</b></center>
+    <hr>
+    Let's try something harder.
+    <p>
+        <center>
+            Express \(\boxed{\prod_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right]}\) in the form \(\boxed{r\cdot\cis(\alpha)}\)  <br>
+        </center>
+        What can we do? Firstly, we can expand the capital pi \(\Pi\) to reveal the terms.
+        \[\prod_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] = \cis\left(\frac{\pi}{2}\right) \times 2\cis\left(\frac{\pi}{2}\right)^2 \times 3\cis\left(\frac{\pi}{2}\right)^3 \times [\dots] \times 2020\cis\left(\frac{\pi}{2}\right)^{2020}\]
+        Secondly, we can recognise that we can bring the coefficients together and use our identity to bring the power \(n\) into the angle
+        \[\prod_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] = \left(1\times 2\times 3\times [\dots]\times 2020 \right)\times \cis\left(\frac{\pi}{2}\right) \times \cis\left(2\cdot\frac{\pi}{2}\right) \times \cis\left(3\cdot\frac{\pi}{2}\right) \times [\dots] \times \cis\left(2020\cdot\frac{\pi}{2}\right)\]
+        The coefficients together form a factorial! We can express this as:
+        \[\prod_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] = 2020!\times \cis\left(\frac{\pi}{2}\right) \times \cis\left(2\cdot\frac{\pi}{2}\right) \times \cis\left(3\cdot\frac{\pi}{2}\right) \times [\dots] \times \cis\left(2020\cdot\frac{\pi}{2}\right)\]
+        OK, let's now bring the angles together. \(\cis(\alpha)\times\cis(\beta) = \cis(\alpha + \beta)\)
+        \begin{align}
+        \prod_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] &= 2020!\times \cis\left(\frac{\pi}{2} + 2\cdot\frac{\pi}{2} + 3\cdot\frac{\pi}{2} + [\dots] + 2020\cdot\frac{\pi}{2}\right) \\
+            &= 2020!\times \cis\left((1 + 2 + 3 + [\dots] + 2020)\cdot\frac{\pi}{2}\right)
+        \end{align}
+        Great! This is looking like the form we need. All that's left is to use our triangular number (sum) formula to calculate the sum of the coefficient of \(\frac{\pi}{2}\) <br>
+        The formula by the way is: \(\boxed{\sum_{k=1}^n k = \frac{n(n+1)}{2}}\)
+        \begin{align}
+            \prod_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] &= 2020!\times \cis\left(\frac{2020(2020+1)}{2}\cdot\frac{\pi}{2}\right) \\
+            &= 2020!\times \cis\left(1020605\pi\right)
+        \end{align}
+        By recognising that \(\cis\) is periodic, we can reduce the angle size to simplify further. Because \(1020605=2n+1\), where \(n\) is an integer, it is odd and we can reduce the angle to simply \(\pi\).
+        \[\prod_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] = 2020!\times \cis\left(\pi\right)\]
+        OK, we got it in the form \(r\cdot\cis(\alpha)\) as required. \(2020!\), by the way is a very large number. Vsauce already has a video on \(52!\) which is already very large.
+    </p>
+    <br>
+    <hr>
+    <center><b>Question 3</b></center>
+    <hr>
+    Another math puzzle.
+    <p>
+        <center>
+            Express \(\boxed{\sum_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right]}\) in the form \(\boxed{\alpha + \beta i}\)
+        </center><br>
+        Hold up, haven't we done this already? No. This uses the summation formula. Also we want it in rectangular form - not polar form!<br>
+        Instantly, let's unpack the summation then, apply De Moivre's theorem.
+        \begin{align}
+            \sum_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] &= \cis\left(\frac{\pi}{2}\right) + 2\cis\left(\frac{\pi}{2}\right)^2 + 3\cis\left(\frac{\pi}{2}\right)^3 + 4\cis\left(\frac{\pi}{2}\right)^4 + 5\cis\left(\frac{\pi}{2}\right)^5 + 6\cis\left(\frac{\pi}{2}\right)^6 + [\dots] + 2020\cis\left(\frac{\pi}{2}\right)^{2020} \\
+            &= \cis\left(\frac{\pi}{2}\right) + 2\cis\left(\frac{\pi}{2}\cdot 2\right) + 3\cis\left(\frac{\pi}{2}\cdot 3\right) + 4\cis\left(\frac{\pi}{2}\cdot 4\right) + 5\cis\left(\frac{\pi}{2}\cdot 5\right) + 6\cis\left(\frac{\pi}{2}\cdot 6\right) + [\dots] + 2020\cis\left(\frac{\pi}{2}\cdot 2020\right)
+        \end{align}
+        What we have here is essentially a series of rotating vectors. So that means we can expect to simplify quite a few of the cis terms, as they repeat periodically.<br>
+        For example, \(\cis\left(\frac{\pi}{2}\right)=\cis\left(\frac{5\pi}{2}\right)=\cis\left(\frac{9\pi}{2}\right)=[...]=\cis\left(\frac{\pi}{2}+k\cdot 2\pi\right)\) for integer \(k\)
+        \[\sum_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] = \cis\left(\frac{\pi}{2}\right) + 2\cis\left(\pi\right) + 3\cis\left(\frac{3\pi}{2}\right) + 4\cis\left(2\pi\right) + 5\cis\left(\frac{\pi}{2}\right) + 6\cis\left(\pi\right) + [\dots] + 2020\cis\left(2\pi\right)\]
+        Alright, let's collect the cis terms according to their (simplified) angle.
+        \[\sum_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] = (1+5+9+13+[...])\times\cis\left(\frac{\pi}{2}\right) + (2+6+10+14+[...])\times\cis\left(\pi\right) + (3+7+11+15+[...])\times\cis\left(\frac{3\pi}{2}\right) + (4+8+16+20+[...])\times\cis\left(2\pi\right)\]
+        We need to use the arithmetic progression sum formula, because we have a common difference \(d\) of 4 between each number, not 1 like last time. Also for our terms, we have different starting values, \(a_0\)
+        \[\boxed{\sum_{k=1}^{n-1}\left[a_0+k\cdot d\right] = \frac{n}{2}\left[(n-1)\cdot d+2a_0\right]}\]
+        Now, we have \(\frac{2020}{4}\) terms for each unique angle for \(\cis\) because 2020 is divisible by 4 (The number of \(\cis\) with unique angles) evenly. In other scenarios this may not be the case and \(n\) may vary for each sum.<br>
+        Let's apply the series formula to bring these terms together.
+        \begin{align}
+            \sum_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] &= \frac{505}{2}\left[(505-1)\cdot 4+2\cdot1\right]\times\cis\left(\frac{\pi}{2}\right) + \frac{505}{2}\left[(505-1)\cdot 4+2\cdot 2\right]\times\cis\left(\pi\right) + \frac{505}{2}\left[(505-1)\cdot 4+2\cdot 3\right]\times\cis\left(\frac{3\pi}{2}\right) + \frac{505}{2}\left[(505-1)\cdot 4+2\cdot 4\right]\times\cis\left(2\pi\right)  \\
+            &= 509545\times\cis\left(\frac{\pi}{2}\right) + 510050\times\cis\left(\pi\right) + 510555\times\cis\left(\frac{3\pi}{2}\right) + 511060\times\cis\left(2\pi\right)  \\
+            &= 509545\times[0+i] + 510050\times[-1+0i] + 510555\times[0-i] + 511060\times[1+0i] \\
+            &= 511060 - 510050 + (509545 - 510555)i\\
+            \sum_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] &= 1010 - 1010i
+        \end{align}
+        And there we have it!
+    </p>
+
+    <a class="link" style="left:1%; bottom: 1%;" href="https://npc-strider.github.io/maths">🔗 Back to MATHS home page</a><br>
+    <a class="link" style="left:1%; bottom: 1%;" href="https://npc-strider.github.io">🔗 Back to home page</a><br>
+</body>
+</html>
