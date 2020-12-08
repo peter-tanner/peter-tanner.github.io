@@ -21855,7 +21855,7 @@ if (document.currentScript === undefined) {
 var url = new URL(document.currentScript.src); // host includes the port
 
 var host = url.host;
-var urlRoot = url.protocol + '//' + host;
+var urlRoot = url.protocol + '//' + host + '/js/tikzjax';
 let pages = 1000;
 var coredump;
 var code;
