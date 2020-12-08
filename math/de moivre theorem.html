@@ -66,7 +66,7 @@
     <hr>
     The polar form of a complex number is useful because of its properties.
     <center>
-        Simplify \(\boxed{\frac{(i+1)^{2020}}{(i-1)^{2020}}}\)
+        Simplify \(\boxed{\frac{(i+1)^{2020}}{(i-1)^{2020}}}\)&nbsp;&nbsp;&nbsp;(no calculator)
     </center>
     Some defining may be useful right now.
     \begin{align}
@@ -111,7 +111,7 @@
     Let's try something harder.
     <p>
         <center>
-            Express \(\boxed{\prod_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right]}\) in the form \(\boxed{r\cdot\cis(\alpha)}\)  <br>
+            Express \(\boxed{\prod_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right]}\) in the form \(\boxed{r\cdot\cis(\alpha)}\)&nbsp;&nbsp;&nbsp;(no calculator)
         </center>
         What can we do? Firstly, we can expand the capital pi \(\Pi\) to reveal the terms.
         \[\prod_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] = \cis\left(\frac{\pi}{2}\right) \times 2\cis\left(\frac{\pi}{2}\right)^2 \times 3\cis\left(\frac{\pi}{2}\right)^3 \times [\dots] \times 2020\cis\left(\frac{\pi}{2}\right)^{2020}\]
@@ -141,19 +141,80 @@
     Another math puzzle.
     <p>
         <center>
-            Express \(\boxed{\sum_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right]}\) in the form \(\boxed{\alpha + \beta i}\)
+            Express \(\boxed{\sum_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right]}\) in the form \(\boxed{\alpha + \beta i}\)&nbsp;&nbsp;&nbsp;&nbsp;(3 marks, no calculator)
         </center><br>
         Hold up, haven't we done this already? No. This uses the summation formula. Also we want it in rectangular form - not polar form!<br>
+        There are two mindsets to evaluate this expression: one which is 'local' and the other 'global'<br>
+        To be honest, I just skipped this question entirely. It was 3 marks and I was unprepared for this sort of question (I was close to a pattern, but the coefficients were not periodic and threw me off.)<br>
+        <b>Method one: Local</b><br>
+        A 'local' approach aims to identify how the function or expression behaves at a small or local level.<br>
+        Let's define the part within the summation as \(f(x)\)
+            \[\text{Define: } f(x) = n\cdot\cis\left(\frac{\pi}{2}\right)^n\]
+        Let's see how the function behaves for a *few* values of \(x\).<br>
+        We're trying to see how the function within the summation of the original expression behaves at a local level, so we don't test all 2020 terms. The goal is to find a pattern that applies for the remaining terms.
+
+        \begin{align}
+            f(1) &= 1\cdot\cis\left(\frac{\pi}{2}\right)^1 \\
+            f(2) &= 2\cdot\cis\left(\frac{\pi}{2}\right)^2 \\
+            f(3) &= 3\cdot\cis\left(\frac{\pi}{2}\right)^3 \\
+            f(4) &= 4\cdot\cis\left(\frac{\pi}{2}\right)^4 \\
+            f(5) &= 5\cdot\cis\left(\frac{\pi}{2}\right)^5 \\
+            f(6) &= 6\cdot\cis\left(\frac{\pi}{2}\right)^6 \\
+            f(7) &= 7\cdot\cis\left(\frac{\pi}{2}\right)^7 \\
+            f(8) &= 8\cdot\cis\left(\frac{\pi}{2}\right)^8 \\
+        \end{align}
+
+        Let's apply De Moivre's theorem.
+
+        \begin{alignat}{2}
+            f(1) &= 1\cdot\cis\left(\frac{\pi}{2}\right) &&= \cis\left(\frac{\pi}{2}\right) \\
+            f(2) &= 2\cdot\cis\left(\frac{2\pi}{2}\right) &&= 2\cdot\cis\left(\pi\right) \\
+            f(3) &= 3\cdot\cis\left(\frac{3\pi}{2}\right) &&= 3\cdot\cis\left(\frac{3\pi}{2}\right)\\
+            f(4) &= 4\cdot\cis\left(\frac{4\pi}{2}\right) &&= 4\cdot\cis\left(2\pi\right) \\
+            f(5) &= 5\cdot\cis\left(\frac{5\pi}{2}\right) &&= 5\cdot\cis\left(\frac{\pi}{2}\right) \\
+            f(6) &= 6\cdot\cis\left(\frac{6\pi}{2}\right) &&= 6\cdot\cis\left(\pi\right) \\
+            f(7) &= 7\cdot\cis\left(\frac{7\pi}{2}\right) &&= 7\cdot\cis\left(\frac{3\pi}{2}\right) \\
+            f(8) &= 8\cdot\cis\left(\frac{8\pi}{2}\right) &&= 8\cdot\cis\left(2\pi\right) \\
+        \end{alignat}
+        
+        At this point we seem to be close to a pattern (periodic nature of \(\cis\)), but it doesn't quite seem like one due to the coefficients which are not repeating.<br>
+        If we try summing by the pattern that exists (the \(\cis\)), we may see a pattern emerge
+
+        \begin{align}
+            \sum_{n=1}^{4}\left[f(n)\right] &= f(1)+f(2)+f(3)+f(4) \\
+                &= i -2 -3i +4 \\
+                &= 2 - 2i \\
+            \sum_{n=5}^{8}\left[f(n)\right] &= f(5)+f(6)+f(7)+f(8) \\
+                &= 5i -6 -7i +8 \\
+                &= 2 - 2i
+        \end{align}
+            
+        In fact we do see a pattern - this sort of local behavior applies for the whole 2020 terms.<br>
+
+        \begin{align}
+            \sum_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] &= \sum_{n=1}^{4}\left[f(n)\right] + \sum_{n=5}^{8}\left[f(n)\right] + [\dots] + \sum_{n=2015}^{2020}\left[f(n)\right] \\
+                &= (2-2i) + (2-2i) + [\dots] + (2-2i) \\
+                &= \frac{2020}{4}\cdot(2-2i) \\
+                &= 1010 - 1010i
+        \end{align}
+
+        Hopefully this explains what I mean by 'local' : a bit of an odd term but it differentiates this line of thinking from the next one I will show.<br><br>
+        The main downside to this mindset is that you may end up wasting time by testing to find a pattern. For a 3 mark question, I didn't even consider using this method (although this was the intended method, from what I can see)<br>
+        Compared to the global method it has some benefits. In this case it avoids the use of a complicated summation formula. More generally, it also requires smaller calculations as we're not looking at the large behavior - this can minimize mistakes.
+
+        <br>
+        <b>Method two: Global</b><br>
+        The 'global' approach observes how the function or expression behaves as a whole.<br>
         Instantly, let's unpack the summation then, apply De Moivre's theorem.
         \begin{align}
             \sum_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] &= \cis\left(\frac{\pi}{2}\right) + 2\cis\left(\frac{\pi}{2}\right)^2 + 3\cis\left(\frac{\pi}{2}\right)^3 + 4\cis\left(\frac{\pi}{2}\right)^4 + 5\cis\left(\frac{\pi}{2}\right)^5 + 6\cis\left(\frac{\pi}{2}\right)^6 + [\dots] + 2020\cis\left(\frac{\pi}{2}\right)^{2020} \\
             &= \cis\left(\frac{\pi}{2}\right) + 2\cis\left(\frac{\pi}{2}\cdot 2\right) + 3\cis\left(\frac{\pi}{2}\cdot 3\right) + 4\cis\left(\frac{\pi}{2}\cdot 4\right) + 5\cis\left(\frac{\pi}{2}\cdot 5\right) + 6\cis\left(\frac{\pi}{2}\cdot 6\right) + [\dots] + 2020\cis\left(\frac{\pi}{2}\cdot 2020\right)
         \end{align}
         What we have here is essentially a series of rotating vectors. So that means we can expect to simplify quite a few of the cis terms, as they repeat periodically.<br>
-        For example, \(\cis\left(\frac{\pi}{2}\right)=\cis\left(\frac{5\pi}{2}\right)=\cis\left(\frac{9\pi}{2}\right)=[...]=\cis\left(\frac{\pi}{2}+k\cdot 2\pi\right)\) for integer \(k\)
+        For example, \(\cis\left(\frac{\pi}{2}\right)=\cis\left(\frac{5\pi}{2}\right)=\cis\left(\frac{9\pi}{2}\right)=[\dots]=\cis\left(\frac{\pi}{2}+k\cdot 2\pi\right)\) for integer \(k\)
         \[\sum_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] = \cis\left(\frac{\pi}{2}\right) + 2\cis\left(\pi\right) + 3\cis\left(\frac{3\pi}{2}\right) + 4\cis\left(2\pi\right) + 5\cis\left(\frac{\pi}{2}\right) + 6\cis\left(\pi\right) + [\dots] + 2020\cis\left(2\pi\right)\]
         Alright, let's collect the cis terms according to their (simplified) angle.
-        \[\sum_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] = (1+5+9+13+[...])\times\cis\left(\frac{\pi}{2}\right) + (2+6+10+14+[...])\times\cis\left(\pi\right) + (3+7+11+15+[...])\times\cis\left(\frac{3\pi}{2}\right) + (4+8+16+20+[...])\times\cis\left(2\pi\right)\]
+        \[\sum_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] = (1+5+9+13+[\dots])\times\cis\left(\frac{\pi}{2}\right) + (2+6+10+14+[\dots])\times\cis\left(\pi\right) + (3+7+11+15+[\dots])\times\cis\left(\frac{3\pi}{2}\right) + (4+8+16+20+[\dots])\times\cis\left(2\pi\right)\]
         We need to use the arithmetic progression sum formula, because we have a common difference \(d\) of 4 between each number, not 1 like last time. Also for our terms, we have different starting values, \(a_0\)
         \[\boxed{\sum_{k=1}^{n-1}\left[a_0+k\cdot d\right] = \frac{n}{2}\left[(n-1)\cdot d+2a_0\right]}\]
         Now, we have \(\frac{2020}{4}\) terms for each unique angle for \(\cis\) because 2020 is divisible by 4 (The number of \(\cis\) with unique angles) evenly. In other scenarios this may not be the case and \(n\) may vary for each sum.<br>
@@ -165,7 +226,12 @@
             &= 511060 - 510050 + (509545 - 510555)i\\
             \sum_{n=1}^{2020}\left[n\cdot\cis\left(\frac{\pi}{2}\right)^n\right] &= 1010 - 1010i
         \end{align}
-        And there we have it!
+        And there we have it!<br><br>
+        The downside to this method is that you end up needing to handle large numbers - which also wastes time and increases chances of making a mistake.<br>
+        For this particular question, there is also the downside of requiring previous year content (the AP formula), which I certainly did not remember.<br>
+
+        <br>
+        To be completely honest, this question should be worth more than just three marks. In the exam, I decided that this was not worth my time.
     </p>
 
     <a class="link" style="left:1%; bottom: 1%;" href="https://npc-strider.github.io/maths">🔗 Back to MATHS home page</a><br>
