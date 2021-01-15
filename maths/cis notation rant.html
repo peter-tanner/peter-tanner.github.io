@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>📝 Maths!</title>
+	<meta name="description" content="year 12 WACE specialist ATAR stuff">
+    <meta name="viewport" content="width=device-width">
+    <title>MathJax example</title>
+    <script>
+        MathJax = {
+            tex: { macros: {cis: "\\mathop{\\rm{cis}}\\nolimits"} },
+            chtml: { displayAlign: 'center', scale: 1.1 }
+        }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+
+<body>
+    <center>
+        <h1>A little rant on cis notation</h1>
+    </center>
+    
+    <a class="link" style="left:1%; top: 1%;" href="https://npc-strider.github.io/maths">🔗 Back to MATHS home page</a><br>
+    <a class="link" style="left:1%; top: 1%;" href="https://npc-strider.github.io">🔗 Back to home page</a><br>
+
+    Warning: This page requires javascript to render the math.
+
+    <hr><br>
+    This is a rant on why I think \(e^{\pi\theta}\) should have been the standard in WA specialist. All opinions are my own, and yes, this is an incredibly nitpicky topic. And no, I don't expect any changes but if it occurs I'll be pleasantly surprised.<br>
+    
+    To many readers, this wouldn't be a debate because you'd be there going, "what the heck is \(\cis\)?"<br>
+    This is the first downside of \(\cis\) notation: it is less known and sparsely used compared to Euler's formula. \(\cis\) is the mathematical equivalent of the imperial system.<br>
+    To answer the question, \(\cis\) is an abbreviation for "\(\cos\) plus \(i\sin\)". This is actually one big thing I like about \(\cis\) notation, in that it's an abbreviation which is easy to remember. In comparison, euler's formula doesn't really make that much sense, you just have to accept that it represents "\(\cos\) plus \(i\sin\)".<br>
+    This pro becomes less significant when you realize that a complex number can be expressed as a vector, and we all know that from the unit circle that \(\cos\) goes on the \(x\) axis, and \(\sin\) on the \(y\) axis. Likewise, \(\cos\) goes on the real axis and \(\sin\) on the imaginary axis.
+    <div class="card">
+        <div class="card-body">
+            <center>\(\cis\) notation of a complex number, \(z\)</center>
+            \[\boxed{\|z\|\cdot \cis(\theta) = \|z\|\cdot\left[\cos(\theta)+i\sin(\theta)\right]}\]<br>
+            <center>Euler's formula</center>
+            \[\boxed{\|z\|\cdot e^{i\theta} = \|z\|\cdot\left[\cos(\theta)+i\sin(\theta)\right]}\]
+        </div>
+    </div>
+    My real issue with \(\cis\) notation is that it's not as obvious what certain operations do. You can't use previous knowledge acquired from index laws. By using \(\cis\), you are restricting yourself and you lose a lot of the complexity (Haha get it? complex? okay...) that is possible with the polar form.<br>
+    <div class="card">
+        <div class="card-body">
+            <center><b>Question 1</b>: Express \(i^i\) in the form \(\alpha+\beta i\)</center>
+            For any method, the first step is to turn this into polar form.
+            \begin{align}
+                \text{Define }z&=i\\
+                \implies&{\|z\| = 1}\\
+                \implies&{\theta = \frac{\pi}{2}}
+            \end{align}
+            Now we want to evaluate \(z^z\)<br>
+            Let's try get somewhere with \(\cis\).
+            \begin{align}
+                z   &= 1\cdot\cis\left(\frac{\pi}{2}\right)\\
+                    &= \cis\left(\frac{\pi}{2}\right)\\
+                z^z &= \cis\left(\frac{\pi}{2}\right)^{\cis\left(\frac{\pi}{2}\right)}\\
+                    &= \cis\left(\frac{\pi}{2}\right)^i\\
+                    &= \cis\left(i\frac{\pi}{2}\right)\\
+                    &= ?
+            \end{align}
+
+            Now what? We have an \(i\) in the phase.<br>
+            It would be much easier if this was a complex exponential!
+            
+            \begin{align}
+                z   &= 1\cdot e^{i\frac{\pi}{2}}\\
+                    &= e^{i\frac{\pi}{2}}\\
+                z^z &= {\left[e^{i\frac{\pi}{2}}\right]}^{e^{i\frac{\pi}{2}}}\\
+                    &= {\left[e^{i\frac{\pi}{2}}\right]}^{i}\\
+                    &= {\left[e^{i\cdot i\frac{\pi}{2}}\right]}\\
+                    &= e^{-\frac{\pi}{2}}
+            \end{align}
+            Wow! And it's neatly packaged as an exponent!
+        </div>
+    </div>
+    I understand the use of \(\cis\) to represent a complex number as a polar coordinate if your curriculum doesn't understand the concept of calculus when the concept of complex numbers is being taught<br>
+    But \(e\) (Euler's number) is a concept taught in year 12 methods. And year 12 methods is a prerequisite for year 12 specialist. So students should be familiar with \(e\) and calculus, so why isn't it being used?<br><br>
+    My argument isn't really that strong, I recognise that. Just wanted to go on a 3am MathRant™ :)<br><br>
+    <div class="card">
+        <div class="card-body">
+            <center><b>Bonus Math Tip</b>: Derive the double angle identities.</center>
+            No need for Euler's formula here, use \(\cis\) for this trick if you want.<br>
+            Not sure why you'd need to know this - sure, in methods these identities aren't given on the formula sheet but they are in specialist. Methods seems to stick to the basic identities such as the 2As and pythagorean, but you're expected to remember them. I always just put these identities on my notes.<br>
+            Use this trick to derive any set of angle identities (triple, quadruple, etc.). Have fun expanding brackets though.<br><br>
+            Let the first angle be \(A\) and the second angle \(B\).
+            \begin{align}
+                e^{\pi A}\cdot e^{\pi B} &= \left[\cos(A)+i\sin(A)\right]\cdot\left[\cos(B)+i\sin(B)\right]\\
+                e^{\pi (A+B)}   &= \cos(A)\cos(B) + i\cos(A)\sin(B) + i\sin(A)\cos(B) + i^2\sin(A)\sin(B)\\
+                \cos(A+B) + i\sin(A+B) &=  \left[\cos(A)\cos(B) - \sin(A)\sin(B)\right] + i\cdot\left[\cos(A)\sin(B) + \sin(A)\cos(B) \right]
+            \end{align}
+            Consider the real and complex components of this equation to get the two identities.
+            \begin{cases}
+                \text{Real:}&\cos(A+B) = \cos(A)\cos(B) - \sin(A)\sin(B)\\
+                \text{Imaginary:}&\sin(A+B) = \cos(A)\sin(B) + \sin(A)\cos(B) 
+            \end{cases}
+            And you can repeat this all again for negative second angle.
+            \begin{align}
+                e^{\pi A}\cdot e^{\pi (-B)} &= \left[\cos(A)+i\sin(A)\right]\cdot\left[\cos(-B)+i\sin(-B)\right]\\
+                                &= \left[\cos(A)+i\sin(A)\right]\cdot\left[\cos(B)-i\sin(B)\right]\\
+                e^{\pi (A-B)}   &= \cos(A)\cos(B)-i\cos(A)\sin(B)+i\sin(A)\cos(B)-i^2\sin(A)\sin(B)\\
+                \cos(A-B) + i\sin(A-B) &=  \left[\cos(A)\cos(B) + \sin(A)\sin(B)\right] + i\cdot\left[\sin(A)\cos(B)-\cos(A)\sin(B)\right]
+            \end{align}
+            \begin{cases}
+                \text{Real:}&\cos(A-B) = \cos(A)\cos(B) + \sin(A)\sin(B)\\
+                \text{Imaginary:}&\sin(A-B) = \sin(A)\cos(B)-\cos(A)\sin(B)
+            \end{cases}
+        </div>
+    </div>
+
+    <br>
+    <a class="link" style="left:1%; bottom: 1%;" href="https://npc-strider.github.io/maths">🔗 Back to MATHS home page</a><br>
+    <a class="link" style="left:1%; bottom: 1%;" href="https://npc-strider.github.io">🔗 Back to home page</a><br>
+</body>
