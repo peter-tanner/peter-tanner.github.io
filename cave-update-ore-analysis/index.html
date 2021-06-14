@@ -1,4 +1,4 @@
-<a class="link" style="left:1%; top: 1%; position: absolute;" href="https://npc-strider.github.io">🔗 Back to home page</a><br><br><br>
+<a class="link" style="left:1%; top: 1%; position: absolute;" href="https://peter-tanner.github.io">🔗 Back to home page</a><br><br><br>
 
 These graphs are interactive - scroll controls the zoom (alternatively, hover over the bottom-left corner and use the magnifying glass to select an area). Use the home icon to reset the view.
 
@@ -19,12 +19,12 @@ These graphs are interactive - scroll controls the zoom (alternatively, hover ov
     </iframe>
 </div><br>
 <hr><br>
-This text was copy-pasted from the github repo at https://github.com/npc-strider/minecraft-ore-analysis
-<h1 id="minecraft-ore-analysis">Minecraft ore analysis</h1>
-<h2 id="let-s-see-how-the-new-cave-update-ore-generation-compares-to-the-old-">Let&#39;s see how the new cave update ore generation compares to the old!</h2>
-<h2 id="go-to-https-npc-strider-github-io-cave-update-ore-analysis-for-interactive-graphs-">Go to <a href="https://npc-strider.github.io/cave-update-ore-analysis">https://npc-strider.github.io/cave-update-ore-analysis</a> for interactive graphs!</h2>
-<h3 id="both-tests-performed-with-seed-0-and-single-biome-mode-enabled-extreme-hills-biome-only-to-include-emerald-ore-statistics-size-of-1024-1024-scanned-">Both tests performed with seed 0 and single biome mode enabled (Extreme hills biome only, to include emerald ore statistics). Size of 1024*1024 scanned.</h3>
-<h3 id="original-world-files-used-for-research-are-located-at-https-drive-google-com-drive-folders-1rsmfdp4nl5kafwfcpl5sank6cgup45to-usp-sharing">Original world files used for research are located at <a href="https://drive.google.com/drive/folders/1RsmfDp4nl5KaFWfCpL5sanK6cGUp45TO?usp=sharing">https://drive.google.com/drive/folders/1RsmfDp4nl5KaFWfCpL5sanK6cGUp45TO?usp=sharing</a></h3>
+This text was copy-pasted from the github repo at https://github.com/peter-tanner/minecraft-ore-analysis
+<h1>Minecraft ore analysis</h1>
+<h2>Let&#39;s see how the new cave update ore generation compares to the old!</h2>
+<h2>Go to <a href="https://peter-tanner.github.io/cave-update-ore-analysis">https://peter-tanner.github.io/cave-update-ore-analysis</a> for interactive graphs!</h2>
+<h3>Both tests performed with seed 0 and single biome mode enabled (Extreme hills biome only, to include emerald ore statistics). Size of 1024*1024 scanned.</h3>
+<h3>Original world files used for research are located at <a href="https://drive.google.com/drive/folders/1RsmfDp4nl5KaFWfCpL5sanK6cGUp45TO?usp=sharing">https://drive.google.com/drive/folders/1RsmfDp4nl5KaFWfCpL5sanK6cGUp45TO?usp=sharing</a></h3>
 <p>#</p>
 <p>The scripts I&#39;ve created take advantage of a slightly modified <a href="https://github.com/DonoA/PyAnvilEditor">PyAnvilEditor</a> to parse the region files.</p>
 <p>I&#39;ve replaced the code in the <code>276</code> (and everything else under <code>def close(self):</code>) of the <code>world</code> class of PyAnvilEditor with <code>true</code> - this is because I&#39;m not writing to the world file, I only intend to read from it. This saves a large amount of time spent writing that would go to waste.</p>
