@@ -1,10 +1,9 @@
 ---
-layout: post
-title: "Hello world"
-description: Finally cleaned up my website.
-date: 2023-08-05
-# categories: [TOP_CATEGORIE, SUB_CATEGORIE]
-tags: [site] # TAG names should always be lowercase
+title: Hello world!
+author: peter
+date: 2023-08-05 02:12:00 +0800
+categories: [Blogging]
+tags: [getting started]
 ---
 
 Welcome to my blog, about time I got one of these since there's a lot of random thoughts and technical experiences I have that might be useful. **The legacy site is still available if you want to see that crap at https://peter-tanner.github.com/legacy_site**
