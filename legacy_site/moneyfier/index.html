@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>moneyfier</title>
+    <meta name="description" content="r€place all of your t€xt with money." />
+    <meta charset="UTF-8" />
+
+    <style>
+      textarea {
+        border: 1px solid #999999;
+        width: 80%;
+        margin: 0.5% 0;
+        padding: 0.25%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div style="text-align: center; margin: 1%">
+      <h2>moneyfier</h2>
+      <h4>💰r€₰la¢€💰your💰৳€x৳💰wi৳h💰₥on€y💰</h4>
+      <h4>Enter any text below</h4>
+      <textarea id="text" spellcheck="false" rows="20">
+Sample text&#13;Ok this is epic&#13;Ea sports:&#13;its in the game
+
+haha i am so funny using this old ea response totally not ripped off from eaifiier.
+woah this application really says a lot about money, so much profound content here right.
+use the damn application already!
+
+The intent is to provide players with a sense of pride and accomplishment for unlocking different heroes. 
+As for cost, we selected initial values based upon data from the Open Beta and other adjustments made to milestone rewards before launch. Among other things, we're looking at average per-player credit earn rates on a daily basis, and we'll be making constant adjustments to ensure that players have challenges that are compelling, rewarding, and of course attainable via gameplay.
+We appreciate the candid feedback, and the passion the community has put forth around the current topics here on Reddit, our forums and across numerous social media outlets.
+Our team will continue to make changes and monitor community feedback and update everyone as soon and as often as we can.</textarea
+      >
+      <br />
+      <button
+        style="width: 10%; height: 5vh; margin: 1%"
+        class="btn btn-danger"
+        onclick="money()"
+      >
+        cool beans
+      </button>
+      <button
+        style="width: 10%; height: 5vh; margin: 1%"
+        class="btn btn-danger"
+        onclick="bag()"
+      >
+        💰
+      </button>
+    </div>
+    <a
+      class="link"
+      style="left: 1%; bottom: 1%; position: absolute"
+      href="https://peter-tanner.github.io/legacy_site"
+      >🔗 Back to home page</a
+    ><br />
+
+    <script>
+      function bag() {
+        const e = document.getElementById("text");
+        e.value = e.value
+          .replace(/ /g, "💰")
+          .replace(/^/g, "💰")
+          .replace(/$/g, "💰")
+          .replace(/\n/g, "💰\n💰");
+      }
+      function money() {
+        const e = document.getElementById("text");
+        const replacementRules = {
+          A: "₳",
+          B: "₿",
+          C: "₵",
+          E: "£",
+          F: "₣",
+          G: "₲",
+          L: "Ł",
+          M: "ℳ",
+          P: "₱",
+          K: "₭",
+          S: "$",
+          T: "₮",
+          W: "₩",
+          Y: "¥",
+
+          c: "¢",
+          d: "₫",
+          e: "€",
+          f: "ƒ",
+          t: "৳",
+          p: "₰",
+          m: "₥",
+        };
+        e.value = e.value.replace(
+          /[ABCEFGLMPKSTWYcdeftpm]/g,
+          (m) => replacementRules[m]
+        );
+      }
+    </script>
+  </body>
+</html>
