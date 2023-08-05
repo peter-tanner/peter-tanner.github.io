@@ -75,13 +75,13 @@ theme_mode: dark # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: assets/img/avatar.jpg
 
 # boolean type, the global switch for TOC in posts.
 toc: true
 
 comments:
-  active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  active: "utterances" # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
@@ -89,8 +89,9 @@ comments:
   utterances:
     repo: "peter-tanner/peter-tanner.github.io" # <gh-username>/<repo>
     issue_term: "pathname" # < url | pathname | title | ...>
-    label: "utteranc.es"
-    theme: "github-dark"
+    label: "Comments"
+    theme: "preferred-color-scheme"
+    crossorigin: "anonymous"
   # Giscus options › https://giscus.app
   giscus:
     repo: # <gh-username>/<repo>
