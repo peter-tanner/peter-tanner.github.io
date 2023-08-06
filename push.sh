@@ -11,14 +11,20 @@ generate_commit_message() {
 }
 
 commit_msg="$(generate_commit_message)"
+new_posts="$(get_new_posts)"
 
 # Check if there are any new or modified files to commit
-if [ -n "$(get_new_posts)" ]; then
+if [ -n "$new_posts" ]; then
     # Add all new and modified files
     echo "$commit_msg"
-    git add $(get_new_posts)
+    git add $new_posts
+    for post in $new_posts; do
+        echo $post
+        post="${post#_posts/}"
+        git add "assets/img/${post%.md}"
+    done
 
-    # Commit the changes with the generated message
+    Commit the changes with the generated message
     git commit -m "$commit_msg"
     git push
     echo "Changes committed successfully."

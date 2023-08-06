@@ -27,8 +27,8 @@ sanitized_title=$(sanitize_title "$user_title")
 
 # Generate the filename with the current date
 current_date=$(date +'%Y-%m-%d')
-filename="${current_date}-${sanitized_title}.md"
-filepath="_posts/${filename}"
+filename="${current_date}-${sanitized_title}"
+filepath="_posts/${filename}.md"
 
 # Check if the file already exists
 if [ -e "$filepath" ]; then
@@ -36,5 +36,6 @@ if [ -e "$filepath" ]; then
 else
     # Create the new file and add the front matter
     generate_front_matter "$user_title" > "$filepath"
-    echo "File '$filename' created successfully in the '_posts' subdirectory."
+    mkdir -p "assets/img/${filename}"
+    echo "File '$filename.md' created successfully in the '_posts' subdirectory."
 fi
