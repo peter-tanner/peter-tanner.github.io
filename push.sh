@@ -10,14 +10,16 @@ generate_commit_message() {
     get_new_posts
 }
 
+commit_msg="$(generate_commit_message)"
+
 # Check if there are any new or modified files to commit
 if [ -n "$(get_new_posts)" ]; then
     # Add all new and modified files
-    echo "$(generate_commit_message)"
+    echo "$commit_msg"
     git add $(get_new_posts)
 
     # Commit the changes with the generated message
-    git commit -m "$(generate_commit_message)"
+    git commit -m "$commit_msg"
     git push
     echo "Changes committed successfully."
 else
