@@ -23,4 +23,5 @@ By changing the center frequency I can select the output frequency of the TG. As
 At 200 MHz, the signal is heavily attenuated (as expected - the bandwidth of the Hitachi VC-6025 is 50 MHz in analog mode) and it is heavily unfocused, however it still triggers. Above 200 MHz it is so unfocused, it becomes unrecognizable.
 
 Bonus image: why CRTs are just great to look at
+
 ![CRTs](/assets/img/2023-08-06-HP-8560A-spectrum/IMG20230801205713.jpg)
