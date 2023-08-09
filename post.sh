@@ -12,7 +12,7 @@ generate_front_matter() {
     current_date=$(date +'%Y-%m-%d %H:%M:%S %z')
     echo "---"
     echo "title: $1"
-    echo "author: Peter Tanner"
+    echo "author: peter"
     echo "date: $current_date"
     echo "categories: [Blogging]    # Blogging | Electronics | Programming | Mechanical"
     echo "tags: [getting started]   # systems | embedded | rf | microwave | electronics | solidworks | automation"

@@ -1,6 +1,6 @@
 ---
 title: Automatically push Altium to GitHub
-author: Peter Tanner
+author: peter
 date: 2023-08-05 22:43:22 +0800
 categories: [Electronics] # Blogging | Electronics | Programming | Mechanical
 tags: [getting started, altium, github, git] # systems | embedded | rf | microwave | electronics | solidworks | automation

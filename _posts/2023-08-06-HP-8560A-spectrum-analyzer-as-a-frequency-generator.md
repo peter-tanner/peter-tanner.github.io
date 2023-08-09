@@ -1,6 +1,6 @@
 ---
 title: HP 8560A spectrum analyzer as a frequency generator
-author: Peter Tanner
+author: peter
 date: 2023-08-06 21:45:13 +0800
 categories: [Electronics] # Blogging | Electronics | Programming | Mechanical
 tags: [electronics, rf, oscilloscope, spectrum analyzer, hack] # systems | embedded | rf | microwave | electronics | solidworks | automation

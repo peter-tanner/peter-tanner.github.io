@@ -1,6 +1,6 @@
 ---
 title: Aliexpress DC block characterization
-author: Peter Tanner
+author: peter
 date: 2023-08-09 19:41:27 +0800
 categories: [Electronics] # Blogging | Electronics | Programming | Mechanical
 tags: [rf, microwave, electronics] # systems | embedded | rf | microwave | electronics | solidworks | automation
