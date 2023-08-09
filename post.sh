@@ -36,6 +36,6 @@ if [ -e "$filepath" ]; then
 else
     # Create the new file and add the front matter
     generate_front_matter "$user_title" > "$filepath"
-    mkdir -p "assets/img/${filename}"
+    mkdir -p "assets/img/${filename:0:31}"
     echo "File '$filename.md' created successfully in the '_posts' subdirectory."
 fi

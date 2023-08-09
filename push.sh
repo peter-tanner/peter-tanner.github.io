@@ -20,8 +20,12 @@ if [ -n "$new_posts" ]; then
     git add $new_posts
     for post in $new_posts; do
         echo $post
+
+        sed 's|](../|](/|' -i "$post" # make markdown images absolute
+
         post="${post#_posts/}"
-        git add "assets/img/${post%.md}"
+        post="${post%.md}"
+        git add "assets/img/${post:0:31}"
     done
 
     Commit the changes with the generated message
