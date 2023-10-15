@@ -54,7 +54,7 @@ There are some charging ICs for single-cell lithium ion batteries (TP4054, TP405
 ### W25Q128JVSIQ NOR flash (0.558$/1 units)
 
 128 MBit SPI flash memory in a SOP-8 package. Drivers for the W25Q series are widely available.
-![](https://assets.lcsc.com/images/lcsc/96x96/20180914_Winbond-Elec-W25Q128JVSIQ_C97521_front_10.jpg)
+![test](https://assets.lcsc.com/images/lcsc/96x96/20180914_Winbond-Elec-W25Q128JVSIQ_C97521_front_10.jpg)
 
 ### I2C EEPROMs
 
@@ -90,7 +90,7 @@ I don't recommend using the MPU-6050 since it is a very outdated accelerometer. 
 
 Very cheap ESD protection for your USB interface. Maximum VDD is 5V though, so you can't use it for higher voltages.
 
-![](https://assets.lcsc.com/images/lcsc/96x96/20180914_ProTek-Devices-SRV05-4-P-T7_C85364_front_10.jpg)
+![test](https://assets.lcsc.com/images/lcsc/96x96/20180914_ProTek-Devices-SRV05-4-P-T7_C85364_front_10.jpg)
 
 ### All TVS diodes:
 
@@ -134,7 +134,7 @@ There are bridge rectifiers, optoisolators, magnetic isolators, operational ampl
 
 7.28 GB eMMC in a 153 BGA package. Not sure if this is usable given the via minimum spacing of JLCPCB standard, or if this needs pad-in-via technology (which would raise the cost). If you can make this work with standard PCB, it would save a lot of cost.
 
-![](https://assets.lcsc.com/images/lcsc/96x96/20230202_FORESEE-FEMDRM008G-58A39_C719499_back.jpg)
+![test](https://assets.lcsc.com/images/lcsc/96x96/20230202_FORESEE-FEMDRM008G-58A39_C719499_back.jpg)
 
 # Not recommended ❌
 
@@ -148,11 +148,11 @@ I don't have first-hand experience using this chip, but my mate used it in a des
 
 Currently the only button in the basic parts is the TS-1187A-B-A-B. It has a HUGE footprint
 
-![](https://assets.lcsc.com/images/lcsc/96x96/20181028_XKB-Connectivity-TS-1187A-B-A-B_C318884_front.jpg)
+![test](https://assets.lcsc.com/images/lcsc/96x96/20181028_XKB-Connectivity-TS-1187A-B-A-B_C318884_front.jpg)
 
 I would like something smaller like these [oval shaped buttons](https://www.lcsc.com/product-detail/Tactile-Switches_XUNPU-TS-1089S-02526_C455282.html):
 
-![](https://assets.lcsc.com/images/lcsc/96x96/20230118_XUNPU-TS-1089S-02526_C455282_front.jpg)
+![test](https://assets.lcsc.com/images/lcsc/96x96/20230118_XUNPU-TS-1089S-02526_C455282_front.jpg)
 
 ## Buck-boost converter
 

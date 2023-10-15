@@ -28,7 +28,7 @@ if [ -n "$new_posts" ]; then
         git add "assets/img/${post:0:31}"
     done
 
-    Commit the changes with the generated message
+    # Commit the changes with the generated message
     git commit -m "$commit_msg"
     git push
     echo "Changes committed successfully."
