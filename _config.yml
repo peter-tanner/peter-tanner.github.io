@@ -163,6 +163,10 @@ defaults:
       path: assets/js/dist
     values:
       swcache: true
+  - scope:
+      path: legacy_site
+    values:
+      swcache: true
 
 sass:
   style: compressed
