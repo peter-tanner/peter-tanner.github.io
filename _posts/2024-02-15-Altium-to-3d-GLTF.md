@@ -8,7 +8,7 @@ tags: [electronics, solidworks] # systems | embedded | rf | microwave | electron
 
 As part of the Neptunium flight computer, I wanted to create a proper webpage to showcase the flight computer. This will also be a landing page for people who want to use the wasm powered Neptunium Explorer, which will allow users to analyze flight data in the browser. At the center of this webpage I want to show an interactive 3d model of the flight computer
 
-![Neptunium website](/assets/img/2024-02-15-Altium-to-3d-GLTF/website.png){: height="500" }
+![Neptunium website](/assets/img/2024-02-15-Altium-to-3d-GLTF/website.png){: style="height: 500px" }
 
 While [Altium viewer](https://www.altium.com/viewer/) offers a method of showing PCBs in the browser as interactive 3d models, I wanted more control over this so I wanted to use the [`three.js`](https://threejs.org/) library to display the PCB.
 
