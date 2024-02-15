@@ -1,7 +1,6 @@
 ---
 # the default layout is 'page'
 icon: fas fa-info-circle
-order: 5
+permalink: /legacy_site/index.html
+order: 6
 ---
-
-Legacy homepage: [https://peter-tanner.github.io/legacy_site/index.html](https://peter-tanner.github.io/legacy_site/index.html)
