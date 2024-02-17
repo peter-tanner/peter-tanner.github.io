@@ -7,4 +7,4 @@ order: 4
 > Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
 > {: .prompt-tip }
 
-Legacy homepage: [https://peter-tanner.github.io/legacy_site/index.html](https://peter-tanner.github.io/legacy_site/index.html)
+Legacy homepage: [https://www.petertanner.dev/legacy_site/index.html](https://www.petertanner.dev/legacy_site/index.html)

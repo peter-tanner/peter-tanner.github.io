@@ -1,5 +1,5 @@
 # Welcome to my personal website
 
-## peter-tanner.github.io
+## www.petertanner.dev
 
 Chirpy template is MIT licensed, Copyright (c) 2021 Cotes Chung
