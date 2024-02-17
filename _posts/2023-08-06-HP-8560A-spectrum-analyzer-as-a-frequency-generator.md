@@ -4,6 +4,7 @@ author: peter
 date: 2023-08-06 21:45:13 +0800
 categories: [Electronics] # Blogging | Electronics | Programming | Mechanical
 tags: [electronics, rf, oscilloscope, spectrum analyzer, hack] # systems | embedded | rf | microwave | electronics | solidworks | automation
+image: /assets/img/2023-08-06-HP-8560A-spectrum/IMG20230801205713.jpg
 ---
 
 I just bought a Hitachi VC-6025 oscilloscope from my Singapore trip for 85 SGD. It's a good deal, since there is not a lot of second-hand electronics auctions on Ebay Australia, and the shipping costs from overseas or even interstate make it not very economical.

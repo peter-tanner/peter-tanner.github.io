@@ -4,6 +4,7 @@ author: peter
 date: 2023-08-09 19:41:27 +0800
 categories: [Electronics] # Blogging | Electronics | Programming | Mechanical
 tags: [rf, microwave, electronics] # systems | embedded | rf | microwave | electronics | solidworks | automation
+image: /assets/img/2023-08-09-Aliexpress-DC-block/IMG20230809200758.jpg
 ---
 
 I recently purchased [this DC block](https://www.aliexpress.com/item/1005002575850555.html) from Aliexpress to protect our HP 8560A spectrum analyzer. I did some basic tests on the DC block and it looks good for the price. These N type DC blocks seem to be less common and twice as expensive than the SMA type, but I wanted to avoid using SMA hardware for my setup.

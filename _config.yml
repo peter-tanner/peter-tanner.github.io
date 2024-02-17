@@ -42,10 +42,10 @@ social:
   links:
     # The first element serves as the copyright owner's link
     - https://github.com/peter-tanner # change to your github homepage
+    - https://www.linkedin.com/in/peter-tanner-
     - https://instagram.com/__peterus # change to your twitter homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
 
 # google_site_verification: # fill in to your verification string
 # ↑ --------------------------
