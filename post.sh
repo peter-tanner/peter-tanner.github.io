@@ -7,18 +7,6 @@ sanitize_title() {
     echo "$sanitized_title" | tr ' ' '-'
 }
 
-# Function to generate the front matter with the current date
-generate_front_matter() {
-    current_date=$(date +'%Y-%m-%d %H:%M:%S %z')
-    echo "---"
-    echo "title: $1"
-    echo "author: peter"
-    echo "date: $current_date"
-    echo "categories: [Blogging]    # Blogging | Electronics | Programming | Mechanical"
-    echo "tags: [getting started]   # systems | embedded | rf | microwave | electronics | solidworks | automation"
-    echo "---"
-}
-
 # Prompt the user for a title
 read -e -p "Enter the title: " user_title
 
@@ -29,6 +17,19 @@ sanitized_title=$(sanitize_title "$user_title")
 current_date=$(date +'%Y-%m-%d')
 filename="${current_date}-${sanitized_title}"
 filepath="_posts/${filename}.md"
+
+# Function to generate the front matter with the current date
+generate_front_matter() {
+    current_date=$(date +'%Y-%m-%d %H:%M:%S %z')
+    echo "---"
+    echo "title: $1"
+    echo "author: peter"
+    echo "date: $current_date"
+    echo "categories: [Blogging]    # Blogging | Electronics | Programming | Mechanical"
+    echo "tags: [getting started]   # systems | embedded | rf | microwave | electronics | solidworks | automation"
+    echo "# image: assets/img/${filename:0:31}/preview.png"
+    echo "---"
+}
 
 # Check if the file already exists
 if [ -e "$filepath" ]; then

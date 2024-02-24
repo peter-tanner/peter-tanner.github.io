@@ -4,7 +4,7 @@ author: peter
 date: 2024-02-15 16:41:46 +0800
 categories: [Blogging, Electronics] # Blogging | Electronics | Programming | Mechanical
 tags: [electronics, solidworks] # systems | embedded | rf | microwave | electronics | solidworks | automation
-image: /assets/img/2024-02-15-Altium-to-3d-GLTF/website.png
+image: /assets/img/2024-02-15-Altium-to-3d-GLTF/preview.png
 ---
 
 As part of the [Neptunium flight computer](https://www.petertanner.dev/neptunium/), I wanted to create a proper webpage to showcase the flight computer. This will also be a landing page for people who want to use the wasm powered Neptunium Explorer, which will allow users to analyze flight data in the browser. At the center of this webpage I want to show an interactive 3d model of the flight computer

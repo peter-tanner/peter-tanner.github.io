@@ -15,6 +15,9 @@ new_posts="$(get_new_posts)"
 
 # Check if there are any new or modified files to commit
 if [ -n "$new_posts" ]; then
+
+    ./generate-preview-images.sh
+
     # Add all new and modified files
     echo "$commit_msg"
     git add $new_posts
