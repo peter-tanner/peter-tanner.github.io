@@ -7,7 +7,7 @@ tags: [getting started] # systems | embedded | rf | microwave | electronics | so
 # image: assets/img/2024-03-03-How-to-read-datashee/preview.png
 ---
 
-General advice on how to read a datasheet
+General advice on how to read a datasheet (I am updating this as I go)
 
 ## Digital pins
 
