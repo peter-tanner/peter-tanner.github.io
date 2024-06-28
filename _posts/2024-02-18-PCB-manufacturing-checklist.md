@@ -20,6 +20,8 @@ A list of things to check before putting a board into production. Update this li
        ![Remove order number options](/assets/img/2024-02-18-PCB-manufacturing-ch/order-number.png)
 - [ ] Make sure expensive items/option parts not meant for assembly are not placed down/autodetected by JLCPCB's parts catalog (you should use the variants system to ensure this cannot happen).
 - [ ] Check the orientation of each IC and diode in the PCBA list. For each item, make a note that it has been checked/corrected.
+- [ ] Check if impedance control is needed. Select `JLC04161H-7628` for standard impedance control stackup.\
+       ![Impedance stackup](/assets/img/2024-02-18-PCB-manufacturing-ch/stackup.png)
 
 ### Checkout
 
