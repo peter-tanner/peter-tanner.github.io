@@ -9,6 +9,12 @@ tags: [tip] # systems | embedded | rf | microwave | electronics | solidworks | a
 
 Gitea doesn't include the canonical tag in their pages, leading to a lot of duplicate pages being indexed by Google. Each page being indexed has a different sorting option, or other superflous parameter.
 
+> Duplicate without user-selected canonical
+>
+> These pages aren't indexed or served on Google
+
+Not sure if having a lot of these errors affects SEO but I've noticed a lot of my real pages are being discovered but not indexed by Google.
+
 ![Search console page getting spammed with duplicate urls](/assets/img/2024-06-29-Adding-the-canonical/search%20console.png)
 
 To fix this,
