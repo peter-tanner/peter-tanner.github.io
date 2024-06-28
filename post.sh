@@ -25,8 +25,8 @@ generate_front_matter() {
     echo "title: $1"
     echo "author: peter"
     echo "date: $current_date"
-    echo "categories: [Blogging]    # Blogging | Electronics | Programming | Mechanical"
-    echo "tags: [getting started]   # systems | embedded | rf | microwave | electronics | solidworks | automation"
+    echo "categories: [Blogging]    # Blogging | Electronics | Programming | Mechanical | SelfHosting"
+    echo "tags: [getting started]   # systems | embedded | rf | microwave | electronics | solidworks | automation | tip"
     echo "# image: assets/img/${filename:0:31}/preview.png"
     echo "---"
 }

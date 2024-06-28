@@ -131,6 +131,8 @@ The maximum is `32678` bytes
 
 The read/write speeds improve on the previous tests, however it is still no where near the limit of the eMMC module. Currently I have not tried anything else to improve the speed, if there is any way then let me know.
 
+This benchmark is with the largest media packet size (32768), 4 bit wide bus, 0 clock div and DMA.
+
 ![crystaldiskmark benchmark with largest media packet size](/assets/img/2024-06-23-Debugging-STM32-USB-/crystaldiskmark_fast_large_buf.png)
 
 ## Conclusion
