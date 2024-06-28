@@ -9,6 +9,10 @@ tags: [electronics, emmc, embedded] # systems | embedded | rf | microwave | elec
 
 Summary of my thought process when troubleshooting a board containing eMMC and USB mass storage class device on the STM32L476.
 
+## If you are using the STM32L476, check out my repository which has a working example: https://github.com/peter-tanner/eMMC-USB-mass-storage-device-STM32L476
+
+## Prerequisites
+
 Download Wireshark and the USB pcap plugin.
 
 TLDR: Minimum configuration you should try for troubleshooting is:
@@ -144,6 +148,8 @@ In my next project I will try out those embedded SD card modules, they come in D
 I will update this post with more cases as I run into them. Comment on your experiences debugging USB on STM32 and I'll quote them in the article.
 
 ## Sample code for eMMC and USB mass storage class device (`#define BLOCKING` for simple, non-DMA implementation)
+
+**Adapted from https://github.com/peter-tanner/eMMC-USB-mass-storage-device-STM32L476**
 
 ### `main.c`
 
