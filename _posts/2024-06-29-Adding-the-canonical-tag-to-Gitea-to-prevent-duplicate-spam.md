@@ -24,7 +24,9 @@ To fix this,
 3. Modify `head.tmpl`: Add this line somewhere in the `<head>` section:
 
 ```html
+{% raw %}
 <link rel="canonical" href="{{AppUrl}}{{if $.Link}}{{slice $.Link 1}}{{end}}" />
+{% endraw %}
 ```
 
 4. Restart the gitea service
