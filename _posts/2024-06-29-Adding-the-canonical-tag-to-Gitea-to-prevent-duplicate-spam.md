@@ -23,10 +23,12 @@ To fix this,
 2. CD to the base directory and run `wget https://raw.githubusercontent.com/go-gitea/gitea/main/templates/base/head.tmpl`. Make sure your Gitea is updated to the latest version, or choose the right version instead of the `main` branch.
 3. Modify `head.tmpl`: Add this line somewhere in the `<head>` section:
 
+<!-- {% raw %} -->
+
 ```html
-{% raw %}
 <link rel="canonical" href="{{AppUrl}}{{if $.Link}}{{slice $.Link 1}}{{end}}" />
-{% endraw %}
 ```
+
+<!-- {% endraw %} -->
 
 4. Restart the gitea service
