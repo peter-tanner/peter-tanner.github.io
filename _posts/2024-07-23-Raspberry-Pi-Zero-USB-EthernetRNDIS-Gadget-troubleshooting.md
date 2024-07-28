@@ -171,6 +171,8 @@ Add this to your `wsl.conf` or `.wslconfig` file and restart wsl:
 networkingMode=virtioproxy
 ```
 
+Note that the `virtioproxy` mode does appear to slow networking down, for example when I run a GUI X program such as `cool-retro-term` over the network to xming on the windows host side, the performance is heavily degraded when using `virtioproxy`.
+
 Example of me failing to ping the device over wifi when using NAT mode
 
 ```
