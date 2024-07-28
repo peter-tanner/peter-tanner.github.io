@@ -14,7 +14,7 @@ This is a VERY messy guide outlining my struggles to get raspberry pi zero W USB
 - Download the ACER RNDIS driver
 - Add the drivers to the boot
 - Set a static IP address and set this in your host operating system's network manager
-- When sharing network, add some stuff to the `/etc/network/interfaces` file and most importantly **NEVER USE WSL** to connect to the pi since wsl has issues with internet connection sharing (ICS) on windows.
+- When sharing network, add some stuff to the `/etc/network/interfaces` file and most importantly NEVER USE WSL in NAT networking mode (Use `bridged` on windows 11 or the undocumented `virtioproxy` on windows 10) to connect to the pi since wsl has issues with internet connection sharing (ICS) on windows.
 - Don't use bookworm, just use bullseye? **For this guide I'm using bullseye since I gave up on bookworm**
 
 ## `/boot/config.txt`
@@ -158,11 +158,20 @@ rtt min/avg/max/mdev = 49.909/50.530/50.855/0.439 ms
 
 ### ⚠ IMPORTANT NOTE ON WSL1/2 and `Destination Host Unreachable` error:
 
-DO NOT USE WSL to connect to the device, internet connection sharing (ICS) seems to break WSL networking resulting in any attempts to ping devices on the network failing (example errors for searchability)
+DO NOT USE WSL to connect to the device in NAT mode, internet connection sharing (ICS) seems to break WSL networking resulting in any attempts to ping devices on the network failing (example errors for searchability)
 
 This appears to be related to this [github issue](https://github.com/microsoft/WSL/issues/8428)
 
-Example of me trying to ping the device over wifi
+EDIT 2024-07-28: It appears that the NAT networking mode specifically causes this issue, you may try bridged networking mode in windows 11 (I am using windows 10 so I cannot test this) or the undocumented virtioproxy mode in windows 10.
+
+Add this to your `wsl.conf` or `.wslconfig` file and restart wsl:
+
+```ini
+[wsl2]
+networkingMode=virtioproxy
+```
+
+Example of me failing to ping the device over wifi when using NAT mode
 
 ```
 [13:08:21] peter@MACHINE : ~ (master)
@@ -178,7 +187,7 @@ From HOST icmp_seq=6 Destination Host Unreachable
 7 packets transmitted, 0 received, +2 errors, 100% packet loss, time 6218ms
 ```
 
-Example of me trying to ping the ethernet gadget directly
+Example of me failing to ping the ethernet gadget directly when using NAT mode
 
 ```
 [13:07:20] peter@MACHINE : ~ (master)
