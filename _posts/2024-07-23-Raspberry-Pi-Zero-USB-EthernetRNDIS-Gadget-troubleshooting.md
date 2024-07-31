@@ -205,6 +205,11 @@ From HOST icmp_seq=6 Destination Host Unreachable
 9 packets transmitted, 0 received, +2 errors, 100% packet loss, time 8283ms
 ```
 
+## General Failure when pinging the machine after rebooting Windows
+
+- If you are using a Wireguard VPN client which is activated on startup, try disconnecting and reconnecting the VPN tunnel
+- Make sure the the static IP configuration is still correct (You might need to re-configure this when switching to a new network if it gets reset)
+
 ## It still doesn't work
 
 I originally used debian bookworm lite as my OS, but looks like there are still a lot of issues specifically with the ethernet gadget and I never got it to work (In my case, while I could ping the pi I could never ssh into it, it appeared that the packets were never being recevied by the pi according to the `sshd` logs).
