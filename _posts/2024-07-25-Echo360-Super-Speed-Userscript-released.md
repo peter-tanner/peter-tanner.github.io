@@ -4,7 +4,7 @@ author: peter
 date: 2024-07-25 02:35:04 +0800
 categories: [Programming] # Blogging | Electronics | Programming | Mechanical | SelfHosting
 tags: [extension, userscript, browser] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
-image: /assets/img/2024-07-25-Echo360-Super-Speed-/superspeed.png
+image: /assets/img/2024-07-25-Echo360-Super-Speed-/preview.png
 ---
 
 I've just made a userscript which allows you to set the speed of the Echo360 lecture player over the 2x maximum. By default, the script lets you set the player speed to 4x and 3x in addition to the default set of speeds, but you may customize the dropdown to have any speed you want (subject to browser limits).
