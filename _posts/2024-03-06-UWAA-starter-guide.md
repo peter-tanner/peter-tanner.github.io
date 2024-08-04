@@ -11,7 +11,16 @@ tags: [getting started] # systems | embedded | rf | microwave | electronics | so
 
 Welcome to UWAA avionics! Here's some resources I would recommend to get started and some commentary on them.
 
-## Sites to bookmark/use
+## The essentials
+
+Have a read of this section at minimum.
+
+- [UWAA sharepoint](https://uniwa.sharepoint.com/sites/uwaaerospace/) - Our sharepoint which is where our files are kept. Pro tip: Use the onedrive app to access/synchronize the files in your local filesystem instead of having to download/upload through the web interface.
+- [GitHub](https://github.com/) - Make an account here and join the [UWAA organization](https://github.com/uwa-aerospace) (Ask for access and send me a message if you have sent a request). Also consider applying for the [GitHub student pack](https://education.github.com/pack) which offers free GitHub pro and free trials of tools from many software vendors (For example, cloud credits or domains).
+- [Altium Designer](https://www.altium.com/) - Primary ECAD software we use here. You'll need to go to your account to download it. License is through UWA Aerospace, I will add your student email to the Altium365 organization and the Altium license pool and you should get two emails (assuming you have not registered an altium account yet).
+  - On Mac or GNU/Linux, you will need to use a VM.
+
+## Other sites to bookmark/use
 
 ### Etc.
 
@@ -19,8 +28,6 @@ Welcome to UWAA avionics! Here's some resources I would recommend to get started
 
 ### Tools
 
-- [UWAA sharepoint](https://uniwa.sharepoint.com/sites/uwaaerospace/) - Our sharepoint which is where our files are kept. Pro tip: Use the onedrive app to access/synchronize the files in your local filesystem instead of having to download/upload through the web interface.
-- [GitHub](https://github.com/) - Make an account here and join the [UWAA organization](https://github.com/uwa-aerospace) (Ask for access). Also consider applying for the [GitHub student pack](https://education.github.com/pack) which offers free GitHub pro and free trials of tools from many software vendors (For example, cloud credits or domains).
 - [ChatGPT](https://chat.openai.com/) - I think everyone knows what this does by now. It's definitely useful, one issue related to avionics is, that if you get it to write firmware based on sensor-specific libraries, it may hallucinate functions or incorrect function signatures, since there is not much embedded code on the internet for specific sensors, compared to the amount of web dev code out there where it performs better.
 - [Circuit JS](https://www.falstad.com/circuit/circuitjs.html) - A real-time circuit simulator! You can modify components live while it is simulating, so it is great for experimentation. However there are [limitations](https://electronics.stackexchange.com/a/56902) compared to SPICE simulators, often times you will see this limitations manifest as convergence errors, but if your circuit is complex then it is best to copy it over to a SPICE simulator for a more accurate result after making it here.
   ![circuitjs](/assets/img/2024-03-06-UWAA-starter-guide/circuitjs.png){: style="height: 300px" }
@@ -38,12 +45,10 @@ Welcome to UWAA avionics! Here's some resources I would recommend to get started
 
 ## Software to download
 
-### Avionics essential software
+### Avionics software
 
-Please download this software
+Your first project will likely involve one or more of these software packages, I will specify in the project brief.
 
-- [Altium Designer](https://www.altium.com/) - Primary ECAD software we use here. You'll need to go to your account to download it. License is through UWA Aerospace.
-  - On Mac, you will need to use a VM.
 - [Visual Studio Code](https://code.visualstudio.com/) - IDE for many languages, very customizable.
 - [LTspice](https://www.analog.com/en/resources/design-tools-and-calculators/ltspice-simulator.html) - Advanced circuit simulator. Also comes with model files for Analog Devices components, but is able to use third-party model files too.
   - Runs on Linux through Wine

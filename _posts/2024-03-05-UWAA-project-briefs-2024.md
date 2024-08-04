@@ -42,6 +42,116 @@ The Telemetrum's Teledongle ground station is out of stock everywhere. We should
 
 - Make this a module card which can go into a standalone battery powered ground station which does not need a laptop to use. This can be helpful if our laptops run out of energy and there are no generators.
 
+# WiFi-based video transmitter
+
+SAC now has a some award for the best live video downlink from a rocket. I think the best way in terms of quality would be to use WiFi equipment and transmit the video down using some directional antenna. This is a very ambitious project.
+
+## Success criteria
+
+- Milestone 1: Receive data at a rate of 4000 kbit/s over a distance of 10kft, LOS.
+- Milestone 2: ???
+
+## Scope
+
+- Video transmitter on the rocket and receiver on the ground
+
+## Hints and notes
+
+- You should check this project out [wifibroadcast](https://befinitiv.wordpress.com/wifibroadcast-analog-like-transmission-of-live-video-data/)... looks exactly what we need, it's designed for FPV drone applications.
+- Make a comparison of cost vs data rate?
+- This project is very ambitious and we will probably have to keep this text updated
+- Laptops have PCIe NIC cards, check if an SDIO-based NIC is available which can be used on a raspberry pi
+- An option is to use a COTS laptop and temporarily bring out the coax to a big antenna?
+
+# HPIB/GPIB to USB adapter for HP8560A
+
+We have an [old spectrum analyzer](https://www.petertanner.dev/posts/HP-8560A-spectrum-analyzer-as-a-frequency-generator/) which outputs data over [IEEE-488, or GPIB/HPIB](https://en.wikipedia.org/wiki/GPIB?&useskin=vector). We'd like to connect the spectrum analyzer to a laptop over USB.
+
+## Success criteria
+
+- Create one plot on your PC connected to the spectrum analyzer over your GPIB adapter, use [this software](http://www.ke5fx.com/gpib/7470.htm) to receive the plot.
+
+## Hints and notes
+
+- GPIB uses 5V so you may need to [level shift](https://en.wikipedia.org/wiki/Level_shifter?&useskin=vector) depending on the maximum GPIO voltage of your chosen microcontroller
+- You may choose to pick a microcontroller with USB transceiver built in, or a microcontroller combined with a UART-USB bridge IC.
+- You are meant to use these [bus transceivers](https://www.ti.com/product/SN75160B), but some designs have gotten away with not using them for single-device applications. It is up to you whether you want your adapter to be compatible with GPIB and accept multiple devices, or only for adapting one device to one usb.
+- Search up "GPIB to USB" for other existing designs floating around on GitHub.
+- You'll probably need to watch a video on choosing components. I have recorded slides that I've presented last semester, but any video online will do.
+
+## Milestones
+
+1. Choose your parts (microcontroller mainly, and other major parts such as interface ICs or level translators)
+1. Create a schematic (Once you get to this stage let me know so I can give you Altium training)
+1. Create a PCB (Once you get to this stage let me know so I can give you Altium training)
+1. Request design review and get the PCB made
+1. Program the PCB (Should be simple since it's just adapting protocols, since this project is more about the PCB side than programming you can rip off some GPIB library code)
+
+# Flight Computer programming
+
+While the hardware will be different, the concept of a flight computer doesn't really change. I will set you up with some breakout boards and you will program a flight computer on an STM32 microcontroller.
+
+## Success criteria
+
+- Program a flight computer which can:
+  - Set off a pyrotechnic charge using a basic relay when apogee and a set alittude is released
+  - Log information from all sensors to an SD card
+- Extension: Maintain a radio downlink
+
+## Hints and notes
+
+- The standard IDE is STM32CubeIDE, but if you hate Eclipse-based IDEs like me you can use the "Embedded tools" VSCode extension
+  - To use this extension you should install STM32CubeMX, STM32CubeCLT and STM32CubeProgrammer.
+- Use STM32CubeMX for configuring the GPIO pins/Alternate functions
+- You can also use STM32CubeMX to include a real time operating system (RTOS), which will make your life easier since it allows you to have threads which can allow for some "concurrency" (actually multitasking).
+- You may use C or C++, although I don't find many C++ features useful in this context.
+- Look up libraries for your sensor part number to rip off. ST provides "platform independent drivers (PIDs)" which may be useful (you just need to implement the read/write function stubs by populating it with the appropriate code to call HAL functions)
+- Please don't hesitate to ask me questions, programming microcontrollers are quite fiddly.
+
+# Squib driver demo board
+
+Squib drivers are used in automotive applications to safely deploy airbags, which use e-matches just like in our avionics. The current avionics uses a current-sense amplifier and analog-to-digital converter. When an ADC interrupt is triggered, the microcontroller switches off the channel momentarily. This system is quite convoluted and failure prone, and having an automotive-certified part would remove this risk even if 10x more expensive.
+
+## Success criteria
+
+- Create a board of "any" size (it can be larger than normal, up to `100 mm * 100 mm`) which can accomodate an automotive squib driver. Ensure you use terminal blocks or some high-current connector for the pins that connect the driver to the squib/e-match.
+- Make sure every other pin is accessible through a pin header
+- Follow the application note/eval board design if one exists
+- Look up parts on mouser or digikey, search squib driver
+- Also see if any of these parts are available on JLCPCB directly for cheaper
+- Put LEDs and stuff on the board to indicate visually!
+- Some parameters to consider are the cost, how many channels are available per IC, the minimum voltage and firing current for example?
+
+## Milestones
+
+1. Choose your parts (Make a comparison table based on the parameters I suggested?)
+1. Create a schematic (Once you get to this stage let me know so I can give you Altium training)
+1. Create a PCB (Once you get to this stage let me know so I can give you Altium training)
+1. Request design review and get the PCB made
+
+# ESP32 development board
+
+We typically use STM32 microcontrollers for flight computers, but ESP32 may be a good alternative since it has support for WiFi and BLE, which may simplify interfacing with the flight computer. One example of this is the Blue Raven flight computer, which has a mobile phone application.
+
+## Success criteria
+
+- Make an ESP32 dev board with basics such as voltage regulator, USB connection. Also include a WiFi antenna on the board (either integrated into the PCB or using a pre-made sheet metal stamp antenna, ask me when you get to this stage)
+- Make sure it has headers spaced correctly so we can use it on a standard breadboard
+- Look at arduinos for design ideas.
+
+## Hints/notes
+
+- I'm not too sure what the ESP32 ecosystem is like, I think it would be good to start off by doing a comparison of each of the parts (flash, ram, peripherals, pin count, cost...) and then we can decide which part to use.
+- Ask me when you get to the antenna design stage which is in the PCB design phase (after schematics)
+
+## Milestones
+
+1. Choose your parts (Make a comparison table based on the parameters I suggested?)
+1. Create a schematic (Once you get to this stage let me know so I can give you Altium training)
+1. Create a PCB (Once you get to this stage let me know so I can give you Altium training)
+1. Request design review and get the PCB made
+
+<!--
 # Analog video transmitter
 
 ## Success criteria
@@ -84,7 +194,7 @@ The Telemetrum's Teledongle ground station is out of stock everywhere. We should
 
 - Miniaturize this setup and add a power system for use on a rocket
 - Make a custom RF frontend specialized for the GNSS signals which is cheaper than buying an SDR
-- Is it possible to use an FPGA to process this signal in real-time? (It's apparently really hard to do... I searched and the latest real-time implementation is from 2013)
+- Is it possible to use an FPGA to process this signal in real-time? (It's apparently really hard to do... I searched and the latest real-time implementation is from 2013) -->
 
 <!-- # Computer vision based rocket tracker
 
