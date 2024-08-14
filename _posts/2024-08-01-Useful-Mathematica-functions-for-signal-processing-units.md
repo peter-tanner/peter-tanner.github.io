@@ -14,19 +14,20 @@ Using it for the unit ELEC4402 Communication Systems
 ```mathematica
 (* Signal power *)
 SigPower[expr_, t_] :=
- Limit[1/(2 T) Integrate[expr, {t, -T, T}], T -> Infinity]
+ Limit[1/(2 T) Integrate[expr^2, {t, -T, T}], T -> Infinity]
 
-(* Normalized sinc function, default Sinc in Mathematica is not normalized *)
+(* Normalized sinc function,default Sinc in Mathematica is not \
+normalized *)
 SincNorm[Infinity] := Sinc[Pi  Infinity]
 SincNorm[t_?NumericQ] := Sinc[Pi  t]
 
-(* Fourier transform, frequency in Hz *)
+(* Fourier transform,frequency in Hz *)
 FTfreq[varargs__] :=
  FourierTransform[varargs,
    FourierParameters -> {0, -2*Pi}] /. {Sinc[f_] :>
     SincNorm[Simplify[f/Pi]]}
 
-(* Inverse Fourier transform, frequency in Hz *)
+(* Inverse Fourier transform,frequency in Hz *)
 IFTfreq[varargs__] :=
  InverseFourierTransform[varargs,
    FourierParameters -> {0, -2*Pi}] /. {Sinc[f_] :>
