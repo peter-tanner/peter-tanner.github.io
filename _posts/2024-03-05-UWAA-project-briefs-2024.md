@@ -21,10 +21,15 @@ The Telemetrum's Teledongle ground station is out of stock everywhere. We should
 
 ### Scope
 
-- Make a PCB which contains a cheap microcontroller with USB support and the CC12xx or CC11xx radio transceiver.
+- Make a PCB which contains a cheap microcontroller with USB support and the CC12xx or [CC11xx](https://jlcpcb.com/parts/componentSearch?searchTxt=CC1120) radio transceiver.
+  - Compare what options are in stock on JLCPCB, I think both families should be compatible with each other but double check.
   - Make sure the PCB has mounting holes so it can fit into a case.
   - Use an SMA connector.
 - Create software to copy the data from the receiver to the computer over USB through an intermediate MCU.
+- CHALLENGE: Use an ESP32 or some BLE enabled MCU so that we don't need USB cables to connect to this station, or maybe a phone application.
+- CHALLENGE: Incorporate a planar inverted-F antenna (PIFA), meandering antenna on the PCB for Wi-Fi or BLE.
+- CHALLENGE: Incorporate a single-cell 3.7V lithium polymer battery to allow it to operate without USB connection or powerbanks. Use the TP4057 or similar battery charger, which can be found on JLCPCB under their basic parts category.
+- CHALLENGE: Design a 3d printed or laser cut case (or just ask someone in mech to make it)
 
 ### Hints and notes
 
@@ -32,6 +37,7 @@ The Telemetrum's Teledongle ground station is out of stock everywhere. We should
 - You should look at the schematics and PCB layout for the Teledongle for inspiration https://altusmetrum.org/TeleDongle/.
   - I advise you don't use the NXP LPC11U14 since a cheaper microcontroller can do well
 - [!] PRO TIP: Use JLCPCB's part library to save on money! It tends to be cheaper per unit than buying from distributors online since JLC buys the parts at wholesale prices.
+  - Looks like the ESP32-C3 is very reasonably priced, see the list of [ESP32s here](https://jlcpcb.com/parts/componentSearch?searchTxt=esp32)
   - You should consider using the [basic parts library](https://jlcpcb.com/parts/basic_parts) to place passives (resistors, capacitors). On Altium, all components in this library will have a `JLC_PN` attribute.
   - Using extended parts outside the basic library list will incur a $3 USD fee per unique part, but when assembling 5 boards this still beats distributor prices. Of course, if a part is in the basic library it should be used if possible
   - You may decide to use this alternative site to look up parts since JLC's parametric search isn't great https://yaqwsx.github.io/jlcparts/
@@ -41,6 +47,7 @@ The Telemetrum's Teledongle ground station is out of stock everywhere. We should
 ### Future development
 
 - Make this a module card which can go into a standalone battery powered ground station which does not need a laptop to use. This can be helpful if our laptops run out of energy and there are no generators.
+  - Or just make it BLE enabled and use phones which should have good enough battery life anyways.
 
 ## WiFi-based video transmitter
 
@@ -62,6 +69,26 @@ SAC now has a some award for the best live video downlink from a rocket. I think
 - This project is very ambitious and we will probably have to keep this text updated
 - Laptops have PCIe NIC cards, check if an SDIO-based NIC is available which can be used on a raspberry pi
 - An option is to use a COTS laptop and temporarily bring out the coax to a big antenna?
+
+## E22-900T30S development board
+
+> _E22-900T30S is a wireless serial port module (UART) based on SEMTECH's SX1262 RF chip. It has multiple transmission modes, LoRa spread spectrum technology, TTL level output, compatible with 3.3V and 5V IO port voltage_
+
+We have some of these E22-900T30S modules laying around, they would make for great long range telemetry modules since they have a power amplifier.
+
+### Goals
+
+- Create a dev board which exposes all the useful pins on the E22-900T30S.
+- Use an SMA connector to expose the RF port
+- Put in a pi network on the RF output for impedance matching
+- 2.54 mm headers
+- If you can make this board under 5cm\*5cm, you may opt to use JLC's 6-layer process (even if you aren't using all 6 layers, the free ENIG is a nice touch)
+- Extra goal: integrate a USB-UART TTL interface and USB-C port so you can directly plug the dev board into a computer without needing an external USB-UART adapter.
+
+### Hints and notes
+
+- The Altium already has the module created in the components library with a 3d model, all you need to do is place the headers and other supporting parts
+- Datasheet for this module is [here](https://www.ebyte.com/en/downpdf.aspx?id=485)
 
 ## HPIB/GPIB to USB adapter for HP8560A
 
