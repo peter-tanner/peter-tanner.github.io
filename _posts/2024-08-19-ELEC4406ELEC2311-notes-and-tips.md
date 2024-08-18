@@ -13,8 +13,10 @@ The optimizer is once again causing issues.
 
 My recommendation is to use `qrun` and do things in the terminal with `assert`s instead of trying to do it graphically using the verification diagrams. It also is much quicker.
 
+For some reason, I can't get incremental compilation working and it just causes more issuse than the time it saves right now, since it results in changes not affecting the simulation, so for now I am cleanly rebuilding each simulation.
+
 ```cmd
-qrun main.vhd -optimize -simulate -top <Your top level element>
+qrun main.vhd -optimize -simulate -cleanlib -top <Your top level element>
 ```
 
 ## No objects appearing in modelsim/questa for testbenches
