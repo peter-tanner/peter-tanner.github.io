@@ -104,75 +104,91 @@ Make table like this for delta time (required for followthrough marks):
 
 Tip: when using pin planner, you can copy paste multiple selections if you are using vscode multi cursors and copying from the markdown version of this page. Useful for filling out seven segment displays.
 
-| Key                           | Value          |
-| ----------------------------- | -------------- |
-| Part number                   | 10M50DAF484C7G |
-| 50 MHz signal (MAX10_CLK1_50) | PIN_P11        |
-| SW0                           | PIN_C10        |
-| SW1                           | PIN_C11        |
-| SW2                           | PIN_D12        |
-| SW3                           | PIN_C12        |
-| SW4                           | PIN_A12        |
-| SW5                           | PIN_B12        |
-| SW6                           | PIN_A13        |
-| SW7                           | PIN_A14        |
-| SW8                           | PIN_B14        |
-| SW9                           | PIN_F15        |
-| LEDR0                         | PIN_A8         |
-| LEDR1                         | PIN_A9         |
-| LEDR2                         | PIN_A10        |
-| LEDR3                         | PIN_B10        |
-| LEDR4                         | PIN_D13        |
-| LEDR5                         | PIN_C13        |
-| LEDR6                         | PIN_E14        |
-| LEDR7                         | PIN_D14        |
-| LEDR8                         | PIN_A11        |
-| LEDR9                         | PIN_B11        |
-| HEX00                         | PIN_C14        |
-| HEX01                         | PIN_E15        |
-| HEX02                         | PIN_C15        |
-| HEX03                         | PIN_C16        |
-| HEX04                         | PIN_E16        |
-| HEX05                         | PIN_D17        |
-| HEX06                         | PIN_C17        |
-| HEX07                         | PIN_D15        |
-| HEX10                         | PIN_C18        |
-| HEX11                         | PIN_D18        |
-| HEX12                         | PIN_E18        |
-| HEX13                         | PIN_B16        |
-| HEX14                         | PIN_A17        |
-| HEX15                         | PIN_A18        |
-| HEX16                         | PIN_B17        |
-| HEX17                         | PIN_A16        |
-| HEX20                         | PIN_B20        |
-| HEX21                         | PIN_A20        |
-| HEX22                         | PIN_B19        |
-| HEX23                         | PIN_A21        |
-| HEX24                         | PIN_B21        |
-| HEX25                         | PIN_C22        |
-| HEX26                         | PIN_B22        |
-| HEX27                         | PIN_A19        |
-| HEX30                         | PIN_F21        |
-| HEX31                         | PIN_E22        |
-| HEX32                         | PIN_E21        |
-| HEX33                         | PIN_C19        |
-| HEX34                         | PIN_C20        |
-| HEX35                         | PIN_D19        |
-| HEX36                         | PIN_E17        |
-| HEX37                         | PIN_D22        |
-| HEX40                         | PIN_F18        |
-| HEX41                         | PIN_E20        |
-| HEX42                         | PIN_E19        |
-| HEX43                         | PIN_J18        |
-| HEX44                         | PIN_H19        |
-| HEX45                         | PIN_F19        |
-| HEX46                         | PIN_F20        |
-| HEX47                         | PIN_F17        |
-| HEX50                         | PIN_J20        |
-| HEX51                         | PIN_K20        |
-| HEX52                         | PIN_L18        |
-| HEX53                         | PIN_N18        |
-| HEX54                         | PIN_M20        |
-| HEX55                         | PIN_N19        |
-| HEX56                         | PIN_N20        |
-| HEX57                         | PIN_L19        |
+| Key                           | Value          | Notes                                                          |
+| ----------------------------- | -------------- | -------------------------------------------------------------- |
+| Part number                   | 10M50DAF484C7G |                                                                |
+| 50 MHz signal (MAX10_CLK1_50) | PIN_P11        |                                                                |
+| KEY0                          | PIN_B8         | ⚠ IMPORTANT: USE 2.5V Schmitt trigger I/O standard to debounce |
+| KEY1                          | PIN_A7         | ⚠ IMPORTANT: USE 2.5V Schmitt trigger I/O standard to debounce |
+| SW0                           | PIN_C10        |                                                                |
+| SW1                           | PIN_C11        |                                                                |
+| SW2                           | PIN_D12        |                                                                |
+| SW3                           | PIN_C12        |                                                                |
+| SW4                           | PIN_A12        |                                                                |
+| SW5                           | PIN_B12        |                                                                |
+| SW6                           | PIN_A13        |                                                                |
+| SW7                           | PIN_A14        |                                                                |
+| SW8                           | PIN_B14        |                                                                |
+| SW9                           | PIN_F15        |                                                                |
+| LEDR0                         | PIN_A8         |                                                                |
+| LEDR1                         | PIN_A9         |                                                                |
+| LEDR2                         | PIN_A10        |                                                                |
+| LEDR3                         | PIN_B10        |                                                                |
+| LEDR4                         | PIN_D13        |                                                                |
+| LEDR5                         | PIN_C13        |                                                                |
+| LEDR6                         | PIN_E14        |                                                                |
+| LEDR7                         | PIN_D14        |                                                                |
+| LEDR8                         | PIN_A11        |                                                                |
+| LEDR9                         | PIN_B11        |                                                                |
+| HEX00                         | PIN_C14        |                                                                |
+| HEX01                         | PIN_E15        |                                                                |
+| HEX02                         | PIN_C15        |                                                                |
+| HEX03                         | PIN_C16        |                                                                |
+| HEX04                         | PIN_E16        |                                                                |
+| HEX05                         | PIN_D17        |                                                                |
+| HEX06                         | PIN_C17        |                                                                |
+| HEX07                         | PIN_D15        |                                                                |
+| HEX10                         | PIN_C18        |                                                                |
+| HEX11                         | PIN_D18        |                                                                |
+| HEX12                         | PIN_E18        |                                                                |
+| HEX13                         | PIN_B16        |                                                                |
+| HEX14                         | PIN_A17        |                                                                |
+| HEX15                         | PIN_A18        |                                                                |
+| HEX16                         | PIN_B17        |                                                                |
+| HEX17                         | PIN_A16        |                                                                |
+| HEX20                         | PIN_B20        |                                                                |
+| HEX21                         | PIN_A20        |                                                                |
+| HEX22                         | PIN_B19        |                                                                |
+| HEX23                         | PIN_A21        |                                                                |
+| HEX24                         | PIN_B21        |                                                                |
+| HEX25                         | PIN_C22        |                                                                |
+| HEX26                         | PIN_B22        |                                                                |
+| HEX27                         | PIN_A19        |                                                                |
+| HEX30                         | PIN_F21        |                                                                |
+| HEX31                         | PIN_E22        |                                                                |
+| HEX32                         | PIN_E21        |                                                                |
+| HEX33                         | PIN_C19        |                                                                |
+| HEX34                         | PIN_C20        |                                                                |
+| HEX35                         | PIN_D19        |                                                                |
+| HEX36                         | PIN_E17        |                                                                |
+| HEX37                         | PIN_D22        |                                                                |
+| HEX40                         | PIN_F18        |                                                                |
+| HEX41                         | PIN_E20        |                                                                |
+| HEX42                         | PIN_E19        |                                                                |
+| HEX43                         | PIN_J18        |                                                                |
+| HEX44                         | PIN_H19        |                                                                |
+| HEX45                         | PIN_F19        |                                                                |
+| HEX46                         | PIN_F20        |                                                                |
+| HEX47                         | PIN_F17        |                                                                |
+| HEX50                         | PIN_J20        |                                                                |
+| HEX51                         | PIN_K20        |                                                                |
+| HEX52                         | PIN_L18        |                                                                |
+| HEX53                         | PIN_N18        |                                                                |
+| HEX54                         | PIN_M20        |                                                                |
+| HEX55                         | PIN_N19        |                                                                |
+| HEX56                         | PIN_N20        |                                                                |
+| HEX57                         | PIN_L19        |                                                                |
+
+identity:
+
+```vhdl
+"000000001"
+"000000010"
+"000000100"
+"000001000"
+"000010000"
+"000100000"
+"001000000"
+"010000000"
+"100000000"
+```
