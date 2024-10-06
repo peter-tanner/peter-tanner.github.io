@@ -7,7 +7,7 @@ tags: [rf, electronics, fpga, ebaz4205, max2769, zynq7010]   # systems | embedde
 # image: assets/img/2024-10-02-Dev-log-GPS-receiver/preview.png
 ---
 
-# 🚧🚧 THIS PAGE IS NOT FINISHED 🚧🚧
+## 🚧🚧 THIS PAGE IS NOT FINISHED 🚧🚧
 
 ## Notes:
 

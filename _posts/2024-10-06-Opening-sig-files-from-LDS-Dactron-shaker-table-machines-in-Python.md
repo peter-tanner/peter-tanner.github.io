@@ -41,36 +41,20 @@ regsvr32 .\DactronSignal.dll
 
 5. Create a **32-bit** Python virtual environment and activate the virtual environment OR use a **32-bit** Python installation. It must be 32-bit since the DLL is 32-bit, if you use 64-bit it will not find the class, and you will get this error:
 
-<details close><summary>Error (click to expand)</summary>
-
 ```powershell
 PS C:\<path>\signal_reader> python
 Python 3.9.6 (tags/v3.9.6:db3ff76, Jun 28 2021, 15:26:21) [MSC v.1929 64 bit (AMD64)] on win32
-Type "help", "copyright", "credits" or "license" for more information.
->>> exit()
+--- ✂
 PS C:\<path>\signal_reader> python .\test.py
-Traceback (most recent call last):
-  File "C:\Python39\lib\site-packages\win32com\client\dynamic.py", line 86, in _GetGoodDispatch
-    IDispatch = pythoncom.connect(IDispatch)
+--- ✂
 pywintypes.com_error: (-2147221021, 'Operation unavailable', None, None)
 
 During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-File "C:\<path>\signal_reader\test.py", line 6, in <module>
-dac_signal = win32com.client.Dispatch("SignalReader.DacSignal.1")
-File "C:\Python39\lib\site-packages\win32com\client\_\_init\_\_.py", line 117, in Dispatch
-dispatch, userName = dynamic.\_GetGoodDispatchAndUserName(dispatch, userName, clsctx)
-File "C:\Python39\lib\site-packages\win32com\client\dynamic.py", line 106, in \_GetGoodDispatchAndUserName
-return (\_GetGoodDispatch(IDispatch, clsctx), userName)
-File "C:\Python39\lib\site-packages\win32com\client\dynamic.py", line 88, in \_GetGoodDispatch
-IDispatch = pythoncom.CoCreateInstance(
+--- ✂
 pywintypes.com_error: (-2147221164, 'Class not registered', None, None)
 PS C:\<path>\signal_reader>
 
 ```
-
-</details>
 
 6. Install `pywin32` (and `numpy` and `matplotlib` for plotting)
 
