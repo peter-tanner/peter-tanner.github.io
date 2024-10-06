@@ -1,5 +1,5 @@
 ---
-title: Dev log: GPS receiver based on MAX2769 and Zynq 7010 FPGA
+title: Dev log\: GPS receiver based on MAX2769 and Zynq 7010 FPGA
 author: peter
 date: 2024-10-02 20:10:44 +0800
 categories: [Electronics, Programming]    # Blogging | Electronics | Programming | Mechanical | SelfHosting
