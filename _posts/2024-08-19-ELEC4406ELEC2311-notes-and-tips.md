@@ -231,3 +231,16 @@ begin
   end process;
 end behavioral;
 ```
+
+## lab-test tips
+
+The lab test has a very high time pressure (kind of like comms if you have/are doing it).
+
+- Use the DE-10 board project template to prevent wasting time entering pin definitions in the pin planner GUI.
+- Bring in components for clock divider, 7 segment display, FSM template and all lab materials at the minimum.
+- Focus on getting a working design before moving on to another design, they will only give one mark if your design has code, but you can't demonstrate it working (mock lab test). If your working design has a bug then they don't take too many marks away in my experience (mock lab test: I had a speed switch erroneously affect both speed and direction of a FSM - this only copped a 1 mark penalty in the mock lab test).
+- Enable autocomplete. It's better than nothing, but it's definitely not intellisense.
+
+![Enable autocomplete](/assets/img/2024-08-19-ELEC4406ELEC2311-not/autocomplete.png)
+
+- **Check for your current year**. As of 2024, you may use your personal computer in the test and you don't need to use the lab computers (subject to same restrictions). You may not use anything other than Altera Quartus, Modelsim and Adobe Acrobat. You _cannot_ use vscode.

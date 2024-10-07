@@ -39,6 +39,10 @@ As shown in the [user manual for their PC software](https://www.bksv.com/downloa
 regsvr32 .\DactronSignal.dll
 ```
 
+After copying the `DactronSignal.dll` file to another directory you may uninstall the program.
+
+The `Bruel and Kjaer\LASER and COMET Vibration Control\Signal Reader` directory contains examples for Visual C++ and MATLAB. There are also some sample `.sig` files.
+
 5. Create a **32-bit** Python virtual environment and activate the virtual environment OR use a **32-bit** Python installation. It must be 32-bit since the DLL is 32-bit, if you use 64-bit it will not find the class, and you will get this error:
 
 ```powershell
