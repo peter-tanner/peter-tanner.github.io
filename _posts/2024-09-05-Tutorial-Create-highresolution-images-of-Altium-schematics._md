@@ -1,0 +1,16 @@
+---
+title: Tutorial: Create high-resolution images of Altium schematics
+author: peter
+date: 2024-09-05 05:50:04 +0800
+categories: [Blogging]    # Blogging | Electronics | Programming | Mechanical | SelfHosting
+tags: [getting started]   # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
+# image: assets/img/2024-09-05-Tutorial-Create-high/preview.png
+---
+
+<!-- Smart PDF -> PDF -> pdftopng.exe -r 1500 (use windows to inherit system fonts, don't use WSL) -->
+<!-- Don't use imagemagick, creates poor-quality PDFs -->
+<!-- Doesn't seem to be possible to export vectors from altium or the pdf -->
+
+<!-- print preview -> right click -> export to emf -->
+
+<!-- For word - Select all - Copy paste into word or inkscape, altium exports as embedded media file (EMF) -->

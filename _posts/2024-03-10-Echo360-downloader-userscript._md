@@ -1,0 +1,540 @@
+---
+title: Echo360 downloader userscript
+author: peter
+date: 2024-03-10 23:27:38 +0800
+categories: [Blogging] # Blogging | Electronics | Programming | Mechanical
+tags: [getting started] # systems | embedded | rf | microwave | electronics | solidworks | automation
+# image: assets/img/2024-03-10-Echo360-downloader-u/preview.png
+---
+
+## APIs
+
+Start by reverse engineering the APIs, look for IDs in the HTML to find out how you should parse the page to start requesting from these APIs.
+
+```
+https://echo360.net.au/lesson/${LESSON_ID}/media
+
+{
+  "status": "ok",
+  "message": "",
+  "data": [
+    {
+      "lesson": {
+        "id": "${LESSON_ID}",
+        "institutionId": "${INST_ID}",
+        "sectionId": "5c4ac4ff-13bb-4ea7-b252-f162d2e6de70",
+        "captureOccurrenceId": "90acabaf-9956-4f89-b90a-d6abddae130e_20240227T0058",
+        "name": "${NAME}",
+        "timing": {
+          "start": "2024-02-27T08:58:00.000",
+          "end": "2024-02-27T10:52:00.000"
+        },
+        "timeZone": {
+          "id": "Australia/Perth",
+          "name": "(+08:00) Australia/Perth",
+          "standardOffset": "PT8H"
+        },
+        "fromSchedule": true,
+        "shouldStreamLive": false,
+        "createdAt": "2024-02-27T02:56:03.430Z",
+        "updatedAt": "2024-02-27T02:56:03.430Z",
+        "displayName": "${NAME}",
+        "lessonHasName": true
+      },
+      "video": {
+        "media": {
+          "id": "${MEDIA_ID}",
+          "institutionId": "${INST_ID}",
+          "captureOccurrenceId": "90acabaf-9956-4f89-b90a-d6abddae130e_20240227T0058",
+          "createdAt": "2024-02-27T00:58:00Z",
+          "updatedAt": "2024-02-27T05:07:53.618Z",
+          "timeZone": {
+            "id": "Australia/Perth",
+            "name": "(+08:00) Australia/Perth",
+            "standardOffset": "PT8H"
+          },
+          "name": "${NAME}",
+          "status": "Processed",
+          "media": {
+            "current": {
+              "mediaId": "${MEDIA_ID}",
+              "primaryFiles": [
+                {
+                  "s3Url": "https://content.echo360.net.au/0000.${INST_ID}/${MEDIA_ID}/1/sd1.mp4",
+                  "width": 640,
+                  "height": 360,
+                  "size": 88149199
+                },
+                {
+                  "s3Url": "https://content.echo360.net.au/0000.${INST_ID}/${MEDIA_ID}/1/hd1.mp4",
+                  "width": 1280,
+                  "height": 720,
+                  "size": 378163225
+                }
+              ],
+              "secondaryFiles": [
+                {
+                  "s3Url": "https://content.echo360.net.au/0000.${INST_ID}/${MEDIA_ID}/1/sd2.mp4",
+                  "width": 640,
+                  "height": 360,
+                  "size": 88128484
+                },
+                {
+                  "s3Url": "https://content.echo360.net.au/0000.${INST_ID}/${MEDIA_ID}/1/hd2.mp4",
+                  "width": 1280,
+                  "height": 720,
+                  "size": 378281631
+                }
+              ],
+              "tertiaryFiles": [],
+              "quaternaryFiles": [],
+              "audioFiles": [
+                {
+                  "s3Url": "https://content.echo360.net.au/0000.${INST_ID}/${MEDIA_ID}/1/audio.mp3",
+                  "size": 105651115
+                }
+              ],
+              "duration": "PT6845.104S",
+              "primaryThumbnails": {
+                "baseUrl": "https://thumbnails.echo360.net.au/0000.${INST_ID}/${MEDIA_ID}/1/thumbnails1",
+                "ext": "jpg",
+                "thumbnailIds": [
+                  huge array of numbers...
+                ]
+              },
+              "secondaryThumbnails": {
+                "baseUrl": "https://thumbnails.echo360.net.au/0000.${INST_ID}/${MEDIA_ID}/1/thumbnails2",
+                "ext": "jpg",
+                "thumbnailIds": [
+                  huge array of numbers...
+                ]
+              },
+              "primaryPosterImageUri": "https://thumbnails.echo360.net.au/0000.${INST_ID}/${MEDIA_ID}/1/poster1.jpg",
+              "secondaryPosterImageUri": "https://thumbnails.echo360.net.au/0000.${INST_ID}/${MEDIA_ID}/1/poster2.jpg",
+              "introDuration": "PT5S",
+              "outroDuration": "PT0S",
+              "processedWithEdits": false,
+              "preliminary": false,
+              "editClips": []
+            },
+            "versions": [
+              {
+                "mediaId": "${MEDIA_ID}",
+                "version": 0,
+                "duration": "PT6840.024S",
+                "disableAutoBandwidth": true,
+                "preliminary": true,
+                "processedWithEdits": false,
+                "manifests": [
+                  {
+                    "uri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/${INST_ID}/00-1C-08-00-4D-D8/content/90acabaf-9956-4f89-b90a-d6abddae130e_20240227T0058/s0_a.m3u8",
+                    "sizeInBytes": 235,
+                    "sourceIndex": 0,
+                    "quality": [
+                      0
+                    ],
+                    "trackType": [
+                      "Audio"
+                    ]
+                  },
+                  {
+                    "uri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/${INST_ID}/00-1C-08-00-4D-D8/content/90acabaf-9956-4f89-b90a-d6abddae130e_20240227T0058/s1_av.m3u8",
+                    "sizeInBytes": 391,
+                    "sourceIndex": 1,
+                    "quality": [
+                      0
+                    ],
+                    "trackType": [
+                      "Audio",
+                      "Video"
+                    ]
+                  },
+                  {
+                    "uri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/${INST_ID}/00-1C-08-00-4D-D8/content/90acabaf-9956-4f89-b90a-d6abddae130e_20240227T0058/s1_v.m3u8",
+                    "sizeInBytes": 180,
+                    "sourceIndex": 1,
+                    "quality": [
+                      0
+                    ],
+                    "trackType": [
+                      "Video"
+                    ]
+                  },
+                  {
+                    "uri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/${INST_ID}/00-1C-08-00-4D-D8/content/90acabaf-9956-4f89-b90a-d6abddae130e_20240227T0058/s2_av.m3u8",
+                    "sizeInBytes": 383,
+                    "sourceIndex": 2,
+                    "quality": [
+                      0
+                    ],
+                    "trackType": [
+                      "Audio",
+                      "Video"
+                    ]
+                  },
+                  {
+                    "uri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/${INST_ID}/00-1C-08-00-4D-D8/content/90acabaf-9956-4f89-b90a-d6abddae130e_20240227T0058/s2_v.m3u8",
+                    "sizeInBytes": 172,
+                    "sourceIndex": 2,
+                    "quality": [
+                      0
+                    ],
+                    "trackType": [
+                      "Video"
+                    ]
+                  }
+                ],
+                "posterMedia": [
+                  {
+                    "uri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/${INST_ID}/00-1C-08-00-4D-D8/content/90acabaf-9956-4f89-b90a-d6abddae130e_20240227T0058/thumbnails1/241.jpg",
+                    "sizeInBytes": 34120,
+                    "sourceIndex": 1,
+                    "imageProperties": {
+                      "width": 640,
+                      "height": 360
+                    }
+                  },
+                  {
+                    "uri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/${INST_ID}/00-1C-08-00-4D-D8/content/90acabaf-9956-4f89-b90a-d6abddae130e_20240227T0058/thumbnails2/241.jpg",
+                    "sizeInBytes": 34120,
+                    "sourceIndex": 2,
+                    "imageProperties": {
+                      "width": 640,
+                      "height": 360
+                    }
+                  }
+                ],
+                "thumbnailMedia": [
+                  {
+                    "baseUri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/${INST_ID}/00-1C-08-00-4D-D8/content/90acabaf-9956-4f89-b90a-d6abddae130e_20240227T0058/thumbnails1",
+                    "extension": "jpg",
+                    "sourceIndex": 1,
+                    "imageProperties": {
+                      "width": 640,
+                      "height": 360
+                    },
+                    "timesInSeconds": [
+                      huge array of numbers...
+                    ]
+                  },
+                  {
+                    "baseUri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/${INST_ID}/00-1C-08-00-4D-D8/content/90acabaf-9956-4f89-b90a-d6abddae130e_20240227T0058/thumbnails2",
+                    "extension": "jpg",
+                    "sourceIndex": 2,
+                    "imageProperties": {
+                      "width": 640,
+                      "height": 360
+                    },
+                    "timesInSeconds": [
+                      huge array of numbers...
+                    ]
+                  }
+                ]
+              },
+              {
+                "mediaId": "${MEDIA_ID}",
+                "version": 1,
+                "duration": "PT6845.104S",
+                "introDuration": "PT5S",
+                "outroDuration": "PT0S",
+                "disableAutoBandwidth": false,
+                "preliminary": false,
+                "processedWithEdits": false,
+                "manifests": [
+                  {
+                    "uri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/0000.${INST_ID}/${MEDIA_ID}/1/s0_a.m3u8",
+                    "sizeInBytes": 181,
+                    "sourceIndex": 0,
+                    "quality": [
+                      0,
+                      1
+                    ],
+                    "trackType": [
+                      "Audio"
+                    ]
+                  },
+                  {
+                    "uri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/0000.${INST_ID}/${MEDIA_ID}/1/s1_v.m3u8",
+                    "sizeInBytes": 256,
+                    "sourceIndex": 1,
+                    "quality": [
+                      0,
+                      1
+                    ],
+                    "trackType": [
+                      "Video"
+                    ]
+                  },
+                  {
+                    "uri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/0000.${INST_ID}/${MEDIA_ID}/1/s1_av.m3u8",
+                    "sizeInBytes": 517,
+                    "sourceIndex": 1,
+                    "quality": [
+                      0,
+                      1
+                    ],
+                    "trackType": [
+                      "Audio",
+                      "Video"
+                    ]
+                  },
+                  {
+                    "uri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/0000.${INST_ID}/${MEDIA_ID}/1/s2_v.m3u8",
+                    "sizeInBytes": 256,
+                    "sourceIndex": 2,
+                    "quality": [
+                      0,
+                      1
+                    ],
+                    "trackType": [
+                      "Video"
+                    ]
+                  },
+                  {
+                    "uri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/0000.${INST_ID}/${MEDIA_ID}/1/s2_av.m3u8",
+                    "sizeInBytes": 517,
+                    "sourceIndex": 2,
+                    "quality": [
+                      0,
+                      1
+                    ],
+                    "trackType": [
+                      "Audio",
+                      "Video"
+                    ]
+                  }
+                ],
+                "posterMedia": [
+                  {
+                    "uri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/0000.${INST_ID}/${MEDIA_ID}/1/poster1.jpg",
+                    "sizeInBytes": 125872,
+                    "sourceIndex": 1,
+                    "imageProperties": {
+                      "width": 1280,
+                      "height": 720
+                    }
+                  },
+                  {
+                    "uri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/0000.${INST_ID}/${MEDIA_ID}/1/poster2.jpg",
+                    "sizeInBytes": 125872,
+                    "sourceIndex": 2,
+                    "imageProperties": {
+                      "width": 1280,
+                      "height": 720
+                    }
+                  }
+                ],
+                "thumbnailMedia": [
+                  {
+                    "baseUri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/0000.${INST_ID}/${MEDIA_ID}/1/thumbnails1",
+                    "extension": "jpg",
+                    "sourceIndex": 1,
+                    "imageProperties": {
+                      "width": 320,
+                      "height": 180
+                    },
+                    "timesInSeconds": [
+                      huge array of numbers...
+                    ]
+                  },
+                  {
+                    "baseUri": "https://au-org-echo360-alpprod-ap-southeast-upload.s3.amazonaws.com/0000.${INST_ID}/${MEDIA_ID}/1/thumbnails2",
+                    "extension": "jpg",
+                    "sourceIndex": 2,
+                    "imageProperties": {
+                      "width": 320,
+                      "height": 180
+                    },
+                    "timesInSeconds": [
+                      huge array of numbers...
+                    ]
+                  }
+                ]
+              }
+            ],
+            "source": "HardwareCapture2",
+            "liveStreamed": false,
+            "duration": 6845104,
+            "thumbnailUrl": "https://thumbnails.echo360.net.au/0000.${INST_ID}/${MEDIA_ID}/1/poster1.jpg",
+            "isAudio": false,
+            "type": "VideoPresentation"
+          },
+          "tags": [],
+          "isInteractive": false,
+          "currentDurationSec": 6845.104,
+          "isDeleted": false,
+          "isArchived": false,
+          "isPublishable": true,
+          "mediaType": "Video"
+        },
+        "published": {
+          "lessonId": "${LESSON_ID}",
+          "mediaId": "${MEDIA_ID}",
+          "institutionId": "${INST_ID}",
+          "termId": "bb68dc0a-35d7-4d94-8a9c-55f69ad8981a",
+          "termName": "2024",
+          "courseId": "b6bba317-8794-4e79-b7ec-b79762f895b0",
+          "sectionId": "5c4ac4ff-13bb-4ea7-b252-f162d2e6de70",
+          "lessonName": "${NAME}",
+          "lessonTiming": {
+            "start": "2024-02-27T08:58:00.000",
+            "end": "2024-02-27T10:52:00.000"
+          },
+          "timeZone": {
+            "id": "Australia/Perth",
+            "name": "(+08:00) Australia/Perth",
+            "standardOffset": "PT8H"
+          },
+          "courseName": "Signal Processing",
+          "contentAvailability": {
+            "body": {},
+            "type": "Immediate"
+          },
+          "mediaType": "Video",
+          "createdAt": "2024-02-27T02:56:03.729Z",
+          "updatedAt": "2024-02-27T02:56:03.729Z",
+          "isAvailable": true,
+          "isDeleted": false,
+          "availabilityString": "Library.immediate",
+          "publishableMediaId": "${MEDIA_ID}"
+        },
+        "receipt": {
+          "institutionId": "${INST_ID}",
+          "userId": "0ebaa2ec-b796-4fee-a497-0ec86934965f",
+          "associationId": "${MEDIA_ID}",
+          "associationType": "PublishableMedia",
+          "read": true,
+          "liked": false,
+          "bookmarked": false,
+          "position": 670,
+          "createdAt": "2024-02-28T07:24:25.407",
+          "updatedAt": "2024-03-10T15:20:46.157"
+        },
+        "copyable": false,
+        "unpublishable": false
+      },
+      "userSection": {
+        "id": "6be1f452-80b6-4e7f-bc44-c41b7a3763f3",
+        "userId": "0ebaa2ec-b796-4fee-a497-0ec86934965f",
+        "institutionId": "${INST_ID}",
+        "role": "Student",
+        "sectionId": "5c4ac4ff-13bb-4ea7-b252-f162d2e6de70",
+        "sectionNumber": "ELEC4404_SEM-1_2024",
+        "courseId": "b6bba317-8794-4e79-b7ec-b79762f895b0",
+        "termId": "bb68dc0a-35d7-4d94-8a9c-55f69ad8981a",
+        "createdAt": "2024-02-25T15:09:06.482Z",
+        "updatedAt": "2024-02-25T15:09:06.482Z"
+      },
+      "questionCount": 0,
+      "hideUncaptionedVideo": false,
+      "downloadPermissionsByMediaId": {
+        "${MEDIA_ID}": {
+          "canDownload": true,
+          "audioDownloadsOnly": false
+        }
+      },
+      "noLessonDate": false,
+      "isScheduled": true,
+      "coverImage": "https://thumbnails.echo360.net.au/0000.${INST_ID}/${MEDIA_ID}/1/poster1.jpg",
+      "hasContent": true,
+      "hasAvailableVideo": true,
+      "hasAvailableSlideDeck": false,
+      "hasVideo": true,
+      "hasSlideDeck": false,
+      "medias": [
+        {
+          "id": "${MEDIA_ID}",
+          "title": "${NAME}",
+          "mediaType": "Video",
+          "coverImage": "https://thumbnails.echo360.net.au/0000.${INST_ID}/${MEDIA_ID}/1/poster1.jpg",
+          "isScheduled": false,
+          "isAvailable": true,
+          "isRead": true,
+          "isDownloadable": true,
+          "isProcessing": false,
+          "isFailed": false,
+          "isPreliminary": false,
+          "isInteractiveMedia": false,
+          "is360Video": false,
+          "isOwned": false,
+          "downloadUri": "/media/download/${MEDIA_ID}/ELEC4404%20-%2027%20Feb%202024,%2009:00%20-%20Lecture",
+          "canCopy": false,
+          "unpublishable": false,
+          "hasResponded": null
+        }
+      ],
+      "isLive": false,
+      "isPast": true,
+      "isFuture": false,
+      "startTimeUTC": "2024-02-27T00:58:00.000Z",
+      "endTimeUTC": "2024-02-27T02:52:00.000Z",
+      "captureEndedAt": "2024-02-27T10:52:00.109"
+    }
+  ]
+}
+```
+
+```
+https://echo360.net.au/api/ui/library/medias/${SOME_ID}/download-info
+
+{
+  "status": "ok",
+  "message": "",
+  "data": {
+    "audioFiles": [
+      {
+        "fileName": "audio.mp3",
+        "fileSize": ${SIZE_AUDIO},
+        "label": "MP3"
+      }
+    ],
+    "primaryFiles": {
+      "posterUrl": "https://thumbnails.echo360.net.au/0000.${INSTITUTION_ID}/${SOME_ID}/1/poster1.jpg?x-uid=${USER_ID}&x-instid=${INSTITUTION_ID}&x-mid=${SOME_ID}&x-act=mediaDownload&x-src=desktop",
+      "files": [
+        {
+          "fileName": "sd1.mp4",
+          "fileSize": ${SIZE_SOURCE_1_SD},
+          "label": "Lower"
+        },
+        {
+          "fileName": "hd1.mp4",
+          "fileSize": ${SIZE_SOURCE_2_HD},
+          "label": "Full"
+        }
+      ],
+      "isInteractive": false
+    },
+    "secondaryFiles": {
+      "posterUrl": "https://thumbnails.echo360.net.au/0000.${INSTITUTION_ID}/${SOME_ID}/1/poster2.jpg?x-uid=${USER_ID}&x-instid=${INSTITUTION_ID}&x-mid=${SOME_ID}&x-act=mediaDownload&x-src=desktop",
+      "files": [
+        {
+          "fileName": "sd2.mp4",
+          "fileSize": ${SIZE_SOURCE_2_SD},
+          "label": "Lower"
+        },
+        {
+          "fileName": "hd2.mp4",
+          "fileSize": ${SIZE_SOURCE_2_HD},
+          "label": "Full"
+        }
+      ],
+      "isInteractive": false
+    },
+    "transcriptFiles": []
+  }
+}
+```
+
+Transcript download
+
+```
+https://echo360.net.au/api/ui/echoplayer/lessons/${LESSON_ID}/medias/${MEDIA_ID}/transcript-file?format=vtt
+https://echo360.net.au/api/ui/echoplayer/lessons/${LESSON_ID}/medias/${MEDIA_ID}/transcript-file?format=text
+```
+
+```
+https://echo360.net.au/media/download/${SOME_ID}/${fileName}
+
+Downloads video.
+Note: Seems like the lessonId parameter is optional.
+```

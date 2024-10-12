@@ -1,0 +1,89 @@
+---
+title: U-blox MAX-M10 and NEO-M9 comparison
+author: peter
+date: 2024-02-24 15:04:28 +0800
+categories: [Electronics] # Blogging | Electronics | Programming | Mechanical
+tags: [GNSS, electronics] # systems | embedded | rf | microwave | electronics | solidworks | automation
+---
+
+Here's a comparison of the u-blox NEO-M9N and MAX-M10S GNSS receiver modules
+
+## NEO-M9N
+
+### NEO-M9N-00B typical performance in multi-constellation GNSS modes
+
+| GNSS                           | GPS+GLO+GAL+BDS | GPS+GLO+GAL | GPS+GLO   | GPS+BDS   | GPS+GAL   |
+| ------------------------------ | --------------- | ----------- | --------- | --------- | --------- |
+| Acquisition Cold start         | 24 s            | 25 s        | 26 s      | 28 s      | 29 s      |
+| Acquisition Hot start          | 2 s             | 2 s         | 2 s       | 2 s       | 2 s       |
+| Acquisition Aided start        | 2 s             | 2 s         | 2 s       | 2 s       | 2 s       |
+| Max navigation update rate PVT | 25 Hz           | 25 Hz       | 25 Hz     | 25 Hz     | 25 Hz     |
+| Sensitivity Tracking and nav.  | -167 dBm        | -167 dBm    | -167 dBm  | -166 dBm  | -166 dBm  |
+| Sensitivity Reacquisition      | -160 dBm        | -160 dBm    | -160 dBm  | -160 dBm  | -160 dBm  |
+| Sensitivity Cold start         | -148 dBm        | -148 dBm    | -148 dBm  | -148 dBm  | -148 dBm  |
+| Sensitivity Hot start          | -159 dBm        | -159 dBm    | -159 dBm  | -159 dBm  | -159 dBm  |
+| Position accuracy PVT          | 2.0 m CEP       | 2.0 m CEP   | 2.0 m CEP | 2.0 m CEP | 2.0 m CEP |
+
+### NEO-M9N-00B typical performance in single-GNSS modes
+
+| GNSS                           | GPS       | GLONASS   | BEIDOU    | GALILEO   |
+| ------------------------------ | --------- | --------- | --------- | --------- |
+| Acquisition Cold start         | 29 s      | 27 s      | 32 s      | 42 s      |
+| Acquisition Hot start          | 2 s       | 2 s       | 2 s       | 2 s       |
+| Acquisition Aided start        | 2 s       | 2 s       | 2 s       | 5 s       |
+| Max navigation update rate PVT | 25 Hz     | 25 Hz     | 25 Hz     | 25 Hz     |
+| Sensitivity Tracking and nav.  | -166 dBm  | -166 dBm  | -160 dBm  | -159 dBm  |
+| Sensitivity Reacquisition      | -160 dBm  | -156 dBm  | -158 dBm  | -154 dBm  |
+| Sensitivity Cold start         | -148 dBm  | -145 dBm  | -145 dBm  | -140 dBm  |
+| Sensitivity Hot start          | -159 dBm  | -156 dBm  | -159 dBm  | -154 dBm  |
+| Position accuracy PVT          | 2.0 m CEP | 4.0 m CEP | 3.0 m CEP | 3.0 m CEP |
+
+## MAX-M10S
+
+### MAX-M10S typical performance in multi-constellation GNSS modes.
+
+| Parameter                                     | GPS+GAL  | GPS+GAL+GLO | GPS+GAL+BDS B1I (default) | GPS+GAL+BDS B1C | GPS+GAL+BDS B1C+GLO |
+| --------------------------------------------- | -------- | ----------- | ------------------------- | --------------- | ------------------- |
+| Max navigation update rate Default            | 10 Hz    | 6 Hz        | 3 Hz                      | 8 Hz            | 4 Hz                |
+| Max navigation update rate High performance   | 20 Hz    | 16 Hz       | 12 Hz                     | 16 Hz           | 10 Hz               |
+| Position accuracy (CEP)                       | 1.5 m    | 1.5 m       | 1.5 m                     | 1.5 m           | 1.5 m               |
+| Time To First Fix (TTFF) Cold start           | 28 s     | 23 s        | 27 s                      | 28 s            | 23 s                |
+| Time To First Fix (TTFF) Hot start            | 1 s      | 1 s         | 1 s                       | 1 s             | 1 s                 |
+| Time To First Fix (TTFF) AssistNow Online     | 1 s      | 1 s         | 1 s                       | 1 s             | 1 s                 |
+| Time To First Fix (TTFF) AssistNow Offline    | 2 s      | 2 s         | 3 s                       | 2 s             | 2 s                 |
+| Time To First Fix (TTFF) AssistNow Autonomous | 3 s      | 4 s         | 4 s                       | 4 s             | 4 s                 |
+| Sensitivity Tracking and nav.                 | -167 dBm | -167 dBm    | -167 dBm                  | -167 dBm        | -167 dBm            |
+| Sensitivity Reacquisition                     | -160 dBm | -160 dBm    | -160 dBm                  | -160 dBm        | -160 dBm            |
+| Sensitivity Cold Start                        | -148 dBm | -148 dBm    | -148 dBm                  | -148 dBm        | -148 dBm            |
+| Sensitivity Hot start                         | -159 dBm | -159 dBm    | -159 dBm                  | -159 dBm        | -159 dBm            |
+
+### MAX-M10S typical performance in single-GNSS modes
+
+| Parameter                                   | GPS      | GLONASS  | BDS B1I  | GALILEO  | BDS B1C  |
+| ------------------------------------------- | -------- | -------- | -------- | -------- | -------- |
+| Max navigation update rate Default          | 18 Hz    | 18 Hz    | 18 Hz    | 18 Hz    | 18 Hz    |
+| Max navigation update rate High performance | 25 Hz    | 25 Hz    | 25 Hz    | 25 Hz    | 25 Hz    |
+| Position accuracy (CEP)                     | 1.5 m    | 4 m      | 2 m      | 3 m      | 2 m      |
+| Time To First Fix (TTFF) Cold start         | 29 s     | 27 s     | 30 s     | 41 s     | 56 s     |
+| Time To First Fix (TTFF) Hot start          | 1 s      | 1 s      | 1 s      | 1 s      | 1 s      |
+| Time To First Fix (TTFF) AssistNow Online   | 1 s      | 1 s      | 1 s      | 5 s      | N/A      |
+| Sensitivity Tracking and nav.               | -167 dBm | -166 dBm | -160 dBm | -161 dBm | -163 dBm |
+| Sensitivity Reacquisition                   | -160 dBm | -158 dBm | -158 dBm | -154 dBm | -156 dBm |
+| Sensitivity Cold Start                      | -148 dBm | -147 dBm | -146 dBm | -141 dBm | -136 dBm |
+| Sensitivity Hot start                       | -159 dBm | -159 dBm | -159 dBm | -155 dBm | -157 dBm |
+
+
+SDO
+ASDx
+ASCx
+INT1
+VDDIO
+GNDIO
+GND
+VDD
+INT2
+OCSB
+OSDO
+CSB
+SCx
+SDx

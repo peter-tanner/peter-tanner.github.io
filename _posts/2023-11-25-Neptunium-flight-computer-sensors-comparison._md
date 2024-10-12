@@ -1,0 +1,31 @@
+---
+title: Neptunium flight computer sensors comparison
+author: peter
+date: 2023-11-25 19:43:56 +0800
+categories: [Electronics] # Blogging | Electronics | Programming | Mechanical
+tags: [embedded, electronics] # systems | embedded | rf | microwave | electronics | solidworks | automation
+---
+
+## Inertial measurement unit (IMU) and accelerometers
+
+`minimum (Maximum acceleration) >= 16 g`
+
+| Part number           | Cost+Assy fee (USD) | Max. accel. (g) | Accel. bits | Accel. max ODR (Hz) | Max. angular accel. (º/s) | Angular accel. bits | Gyro max ODR (Hz) | Notes                  |
+| --------------------- | ------------------- | --------------- | ----------- | ------------------- | ------------------------- | ------------------- | ----------------- | ---------------------- |
+| **_LSM6DSOWTR_**      | **_$1.75_**         | ±16             | 16          | **_6664_**          | ±2000                     | 16                  | **_6664_**        |                        |
+| LSM6DSRTR             | $2.4759             | ±16             | 16          | **_6664_**          | **_±4000_**               | 16                  | **_6664_**        |                        |
+| BMI088                | $3.83               | **_±24_**       | 16          | 1600                | ±2000                     | 16                  | 2000              |
+| MPU-6050              | $4.64               | ±16             | 16          | 1000                | ±2000                     | 16                  | 8000              | Obsolete               |
+| **_ADXL375BCCZ-RL7_** | $6.0962             | **±200**        | 16          | 3200                | -                         | -                   | -                 | High-_g_ accelerometer |
+
+## Barometer
+
+Sea level pressure: 1013.25 hPa\
+Pressure at 33kft: 260 hPa
+
+| Part number     | Cost+Assy fee (USD) | Min pressure (hPa) | Max pressure (hPa) | Max ODR (Hz) | Bits | Rel. accuracy (hPa) | Abs. accuracy (hPa)  |     | Notes |
+| --------------- | ------------------- | ------------------ | ------------------ | ------------ | ---- | ------------------- | -------------------- | --- | ----- |
+| SPL06-001       | $1.8237             | 300                | 1100               | 128          | 24   | ±0.06               | ±1                   |
+| **_LPS22HBTR_** | $1.8740             | **_260_**          | 1260               | 75           | 24   | ±0.1                | **_±0.1 (OPC)_**, ±1 |
+| HP203B          | $1.9598             | 300                | 1200               | 475          | 24   | ±1.5                | ±3                   |
+| DPS310          | $2.4123             | 300                | 1200               | 128          | 24   | ±0.06               | ±1                   |

@@ -1,0 +1,71 @@
+---
+title: JLCPCB shipping costs
+author: peter
+date: 2024-05-07 20:19:45 +0800
+categories: [Blogging] # Blogging | Electronics | Programming | Mechanical
+tags: [getting started] # systems | embedded | rf | microwave | electronics | solidworks | automation
+# image: assets/img/2024-05-07-JLCPCB-shipping-cost/preview.png
+---
+
+# TLDR:
+
+These examples should get the point across
+
+| Dimensions                          | Merchandise price | Global Standard Direct Line | DHL express | S.F Express Standard | FedEx International Packet | UPS Express Saver |
+| ----------------------------------- | ----------------- | --------------------------- | ----------- | -------------------- | -------------------------- | ----------------- |
+| 100 mm \* 100 mm, 0.29 kg           | 65.29             | 2.27                        | 28.40       | 31.42                | 31.72                      | 49.52             |
+| 39 mm \* 40 mm (STENCIL), 0.33 kg   | 10.57             | 14.35                       | 28.40       | 31.42                | 31.72                      | 49.52             |
+| 100 mm \* 100 mm, 0.46 kg           | 76.86             | 14.35                       | 28.40       | 31.42                | 31.72                      | 49.52             |
+| 100 mm \* 100 mm, 0.67 kg           | -                 | 23.39                       | 40.49       | 37.42                | 45.02                      | 67.74             |
+| 100 mm \* 28 mm (Neptunium), 0.8 kg | 108.54            | 23.61                       | 40.49       | 37.42                | 45.02                      | 67.74             |
+| 1.19 kg order  |206.75$A |31.59 | 63.01 | 43.06 | 64.40 | 46.65$A |
+
+# Trial and error:
+
+## 2 layer boards
+
+2 layer boards, 5pcs, default modifiers
+
+Prices in AUD and shipping to Australia
+
+| Dimensions        | Merchandise price | Global Standard Direct Line | DHL express | S.F Express Standard | FedEx International Packet | UPS Express Saver |
+| ----------------- | ----------------- | --------------------------- | ----------- | -------------------- | -------------------------- | ----------------- |
+| 20 mm \* 20 mm:   | 6.06              | 2.27                        | 28.46       | 31.49                | 31.79                      | 49.63             |
+| 100 mm \* 100 mm: | 6.06              | 2.27                        | 28.46       | 31.49                | 31.79                      | 49.63             |
+
+## 4 layer boards
+
+4 layer boards, 5pcs, default modifiers
+
+Prices in AUD and shipping to Australia
+
+| Dimensions        | Merchandise price | Global Standard Direct Line | DHL express | S.F Express Standard | FedEx International Packet | UPS Express Saver |
+| ----------------- | ----------------- | --------------------------- | ----------- | -------------------- | -------------------------- | ----------------- |
+| 20 mm \* 20 mm:   | 10.60             | 2.27                        | 28.46       | 31.49                | 31.79                      | 49.63             |
+| 50 mm \* 50 mm:   | 10.60             | 2.27                        | 28.46       | 31.49                | 31.79                      | 49.63             |
+| 100 mm \* 100 mm: | 10.60             | 2.27                        | 28.46       | 31.49                | 31.79                      | 49.63             |
+
+100mm \* 100mm with medical and enig:
+
+| Dimensions                | Merchandise price | Global Standard Direct Line | DHL express | S.F Express Standard | FedEx International Packet | UPS Express Saver |
+| ------------------------- | ----------------- | --------------------------- | ----------- | -------------------- | -------------------------- | ----------------- |
+| 100 mm \* 100 mm, 0.29 kg | 65.29             | 2.27                        | 28.40       | 31.42                | 31.72                      | 49.52             |
+| 100 mm \* 100 mm, 0.46 kg | 76.86             | 14.35                       | 28.40       | 31.42                | 31.72                      | 49.52             |
+| 100 mm \* 100 mm, 0.67 kg | -                 | 23.39                       | 40.49       | 37.42                | 45.02                      | 67.74             |
+| Neptunium, 0.8 kg         | 108.54            | 23.61                       | 40.49       | 37.42                | 45.02                      | 67.74             |
+
+## Previous orders and shipping costs
+
+| Dimensions         | Layers | Assembly | Merchandise price | Global Standard Direct Line | DHL express | S.F Express Standard | FedEx International Packet | UPS Express Saver |
+| ------------------ | ------ | -------- | ----------------- | --------------------------- | ----------- | -------------------- | -------------------------- | ----------------- |
+| 100 mm \* 31.6 mm: | 2      | N        | 6.04 (2024 MAR)   | 2.27 (2024 MAR)             | -           | -                    | -                          | -                 |
+| 100 mm \* 31.6 mm: | 4      | Y        | 16.22 (2024 MAR)  | 2.30 (2024 MAR)             | -           | -                    | -                          | -                 |
+| 100 mm \* 28 mm:   | 4      | Y        | 108.54            | 23.61                       | 40.49       | 37.42                | 45.02                      | 67.74             |
+
+## Stencils
+
+They seem to be more expensive to ship than boards...
+
+| Dimensions                       | Merchandise price | Global Standard Direct Line | DHL express | S.F Express Standard | FedEx International Packet | UPS Express Saver |
+| -------------------------------- | ----------------- | --------------------------- | ----------- | -------------------- | -------------------------- | ----------------- |
+| 39 mm \* 40 mm (CUSTOM), 0.33 kg | 10.57             | 14.35                       | 28.40       | 31.42                | 31.72                      | 39.78             |
