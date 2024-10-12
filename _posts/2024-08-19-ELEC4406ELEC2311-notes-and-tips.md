@@ -7,50 +7,220 @@ tags: [getting started] # systems | embedded | rf | microwave | electronics | so
 # image: assets/img/2024-08-19-ELEC4406ELEC2311-not/preview.png
 ---
 
-## Issues with saving file/modifying files not updating the simulation
+## lab-test tips
 
-The optimizer is once again causing issues.
+The lab test has a very high time pressure (kind of like comms if you have/are doing it).
 
-My recommendation is to use `qrun` and do things in the terminal with `assert`s instead of trying to do it graphically using the verification diagrams. It also is much quicker.
+### Components to bring
 
-For some reason, I can't get incremental compilation working and it just causes more issuse than the time it saves right now, since it results in changes not affecting the simulation, so for now I am cleanly rebuilding each simulation.
+- Bring in components for clock divider, 7 segment display, FSM template, DE10-lite `attribute chip_pin` mappings and all lab materials at the minimum.
 
-In GUI mode, manually start the simulation. When you need to update the simulation run this commandline
+### Strategy
 
-<!--
-```bash
-qrun $FILE_NAME -optimize -cleanlib -top $TOP_LEVEL_ENTITY; restart -force; run -all
-``` -->
+- Save time, you will not have enough time for mistakes
+- Use `attribute chip_pin` to avoid using the pin planner (saves mouse-clicks and time). See section [`attribute chip_pin` section](#attribute-chip_pin) of this page for pin mappings (adapted from DE10-lite manual).
+- Use a mouse, you will not have time for trackpad.
+- Focus on getting a working design before moving on to another design, they will only give one mark if your design has code, but you can't demonstrate it working (mock lab test). If your working design has a bug then they don't take too many marks away in my experience (mock lab test: I had a speed switch erroneously affect both speed and direction of a FSM - this only copped a 1 mark penalty in the mock lab test).
+- **NOTE: Check for your current year**. As of 2024, you may use your personal computer in the test and you don't need to use the lab computers (subject to same restrictions). You may not use anything other than Altera Quartus, Modelsim and Adobe Acrobat. You _cannot_ use vscode.
+- Make a few project files and the directory structure before the test, DO NOT put modelsim project in the same directory as code.
 
-```bash
-vcom *.vhd; restart -force; run -all
+```
+[SID]
+  -> SYNTH
+    -> Part1
+    -> Part2
+    ...
+  -> SIM
+    -> PartN
+    ...
 ```
 
-Here's also how to run the simulation in headless mode from a commandline (Do not run from Questa GUI, since it will make Questa quit)
+### Testbenches
 
-```bash
-qrun $FILE_NAME -optimize -simulate -cleanlib -top $TOP_LEVEL_ENTITY
+- Test top-level block, but modifications can be made to make it more readable for testbench
+  - Example: Instead of 50MHz clock_in, make it something more reasonable like 2Hz so the clock divider does not have to pulse 50 million times for one cycle
+  - Example: If it has a 7 segment display output instead of testing the display outputs just directly put the number out in the test bench version.
+  - Examples from source _Mock Lab test part 2 solutions/Part 3 building the simulation_
+- It might be easier just to copy-paste the whole code and change the constants instead of making it generic which needs to be instantiated again
+
+```tcl
+# Start simulation and add all waves
+vsim $TESTBENCH_ID -voptargs=+acc; add wave *
+
+# Recompile and restart simulation (if file modified)
+project compileoutofdate; restart -force; run -all
 ```
 
-## No objects appearing in modelsim/questa for testbenches
+### Syntax checking
 
-⚠ TODO: Fix previous issue in GUI as well (I am now using qrun instead of the GUI).
+You will run into syntax issues one way or another, but the main point is to use the most time-efficient way to find them.
 
-This is because the signals are being optimized out since they aren't really used for anything useful.
+- Enable autocomplete. It's better than nothing, but it's definitely not intellisense.
 
-The intel questa/modelsim version shipped with the unit is 18.1, but this allowed vopt to be disabled. This is no longer the case on the latest versions of intel questa (You will get a compile error if you disable vopt flow).
+![Enable autocomplete](/assets/img/2024-08-19-ELEC4406ELEC2311-not/autocomplete.png)
 
-Go to `Simulate > Start Simulation...`, ensure optimization is enabled then click on `Optimization Options...`
+- Use Questasim/Modelsim for syntax checking, a lot of time was wasted in the lab test waiting for quartus analysis to complete to check syntax, whereas modelsim can check it instantly. Use the command `project compileall` in the tcl console if you don't want to right-click > compile all every time you save a file (use up arrow to repeat last command instead of retyping it).
+- Double-click a line in the compile results to see the detailed errors for that file\
+  Example:
 
-![Start simulation GUI](/assets/img/2024-08-19-ELEC4406ELEC2311-not/start_simulation.png)
+```text
+Questa> project compileall
+# Compile of clk_div.vhd was successful.
+# Compile of fsm.vhd failed with 1 errors. <--- double click on this to see errors in fsm.vhd in a new window
+# Compile of part2.vhd was successful.
+# Compile of part2_tb.vhd was successful.
+# Compile of seven_seg_dec.vhd was successful.
+# 5 compiles, 1 failed with 1 error.
+```
 
-Then select `Apply full visibility to all modules(full debug mode)` and press `OK`.
+- In the new window, double-click on an error to move your cursor to that line in modelsim.
 
-![Enable debug mode](/assets/img/2024-08-19-ELEC4406ELEC2311-not/debug_mode.png)
+```text
+vcom -work work -2002 -explicit -vopt -stats=none $PATH/fsm.vhd
+Questa Intel Starter FPGA Edition-64 vcom 2023.3 Compiler 2023.07 Jul 17 2023
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity fsm
+-- Compiling architecture behavior of fsm
+** Error: $PATH/fsm.vhd(16): near "beg": (vcom-1576) expecting BEGIN. <--- double click this error line to view location of error in modelsim.
+** Note: $PATH/fsm.vhd(16): VHDL Compiler exiting
+```
 
-## Dark mode in intel quartus
+- I recommend fixing errors in modelsim editor instead of alt-tabbing between modelsim and quartus to fix errors. when going back to quartus you will need to press 'yes' when it asks if you want to overwrite local changes.
 
-Run this script I made on windows. [🔗Link](https://github.com/peter-tanner/Intel-Quartus-Dark-Mode-Windows)
+## [`attribute chip_pin`](https://www.intel.com/content/www/us/en/programmable/quartushelp/17.0/hdl/vhdl/vhdl_file_dir_chip.htm)
+
+Quick reference for DE10-LITE. [🔗io_10M50DAF484C7G.vhd](/assets/lib/2024-08-19-ELEC4406ELEC2311-not/io_10M50DAF484C7G.vhd)
+
+```vhdl
+    attribute chip_pin : string; -- MUST BE DECLARED.
+    ---------------------
+    -- 50 MHz CLOCK IN --
+    ---------------------
+    attribute chip_pin of CLK_IN_50MHz : signal is "P11";
+
+    ----------------------
+    -- TACTILE SWITCHES --
+    ----------------------
+    -- IMPORTANT: YOU MUST SET THE INPUT TYPE TO "2.5V Schmitt trigger I/O standard" TO DEBOUNCE.
+    -- Behavior: HIGH (Pullup)
+    attribute chip_pin of KEY0 : signal is "B8";
+    attribute chip_pin of KEY1 : signal is "A7";
+
+    ---------------------
+    -- TOGGLE SWITCHES --
+    ---------------------
+    -- SINGLE VECTOR
+    attribute chip_pin of SW9_0 : signal is "F15, B14, A14, A13, B12, A12, C12, D12, C11, C10";
+    attribute chip_pin of SW0_9 : signal is "C10, C11, D12, C12, A12, B12, A13, A14, B14, F15";
+    -- MULTIPLE
+    attribute chip_pin of SW0 : signal is "C10";
+    attribute chip_pin of SW1 : signal is "C11";
+    attribute chip_pin of SW2 : signal is "D12";
+    attribute chip_pin of SW3 : signal is "C12";
+    attribute chip_pin of SW4 : signal is "A12";
+    attribute chip_pin of SW5 : signal is "B12";
+    attribute chip_pin of SW6 : signal is "A13";
+    attribute chip_pin of SW7 : signal is "A14";
+    attribute chip_pin of SW8 : signal is "B14";
+    attribute chip_pin of SW9 : signal is "F15";
+
+    ----------
+    -- LEDS --
+    ----------
+    -- SINGLE VECTOR
+    attribute chip_pin of LEDR9_0 : signal is "B11, A11, D14, E14, C13, D13, B10, A10, A9,  A8";
+    attribute chip_pin of LEDR0_9 : signal is "A8,  A9,  A10, B10, D13, C13, E14, D14, A11, B11";
+
+    -- MULTIPLE OUTPUTS
+    attribute chip_pin of LEDR0 : signal is "A8";
+    attribute chip_pin of LEDR1 : signal is "A9";
+    attribute chip_pin of LEDR2 : signal is "A10";
+    attribute chip_pin of LEDR3 : signal is "B10";
+    attribute chip_pin of LEDR4 : signal is "D13";
+    attribute chip_pin of LEDR5 : signal is "C13";
+    attribute chip_pin of LEDR6 : signal is "E14";
+    attribute chip_pin of LEDR7 : signal is "D14";
+    attribute chip_pin of LEDR8 : signal is "A11";
+    attribute chip_pin of LEDR9 : signal is "B11";
+
+    ------------------
+    -- HEX DISPLAYS --
+    ------------------
+    attribute chip_pin of HEX0    : signal is "C17, D17, E16, C16, C15, E15, C14";
+    attribute chip_pin of HEX0_DP : signal is "D15"; -- DECIMAL POINT
+    attribute chip_pin of HEX1    : signal is "B17, A18, A17, B16, E18, D18, C18";
+    attribute chip_pin of HEX1_DP : signal is "A16"; -- DECIMAL POINT
+    attribute chip_pin of HEX2    : signal is "B22, C22, B21, A21, B19, A20, B20";
+    attribute chip_pin of HEX2_DP : signal is "A19"; -- DECIMAL POINT
+    attribute chip_pin of HEX3    : signal is "E17, D19, C20, C19, E21, E22, F21";
+    attribute chip_pin of HEX3_DP : signal is "D22"; -- DECIMAL POINT
+    attribute chip_pin of HEX4    : signal is "F20, F19, H19, J18, E19, E20, F18";
+    attribute chip_pin of HEX4_DP : signal is "F17"; -- DECIMAL POINT
+    attribute chip_pin of HEX5    : signal is "N20, N19, M20, N18, L18, K20, J20";
+    attribute chip_pin of HEX5_DP : signal is "L19"; -- DECIMAL POINT
+```
+
+### Example of usage
+
+```vhdl
+architecture rtl of top_level_entity is
+    attribute chip_pin : string; -- MUST BE DECLARED.
+    attribute chip_pin of X : signal is "A B C ...";
+    attribute chip_pin of Y : signal is "Q R S ...";
+    ...
+begin
+```
+
+## fsm template
+
+```vhdl
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity fsm is
+    port (
+        clk, nrst_async, x  : in std_logic;
+        out_async, out_sync : out std_logic -- or appropriate output type
+        -- [...]
+    );
+end fsm;
+
+architecture behavioral of fsm is
+    type state_t is (
+        s1, s2, -- [...]
+        sN
+    );
+    signal ps : state_t := s1; -- present_state, default s1
+    signal ns : state_t;       -- next_state
+begin
+    process (clk, nrst_async)
+    begin
+        if (nrst_async = '0') then
+            ps <= s1; -- s1 default on reset
+        elsif (rising_edge(clk)) then
+            ps <= ns;
+        end if;
+    end process;
+
+    process (x, ps)
+    begin
+        case ps is
+            when s1 =>
+                out_sync <= 'U'; -- Synchronous/Moore. This case: (s1/U)
+                if x = '1' then
+                    out_async <= 'U'; -- Asynchronous/Mealy. This case: (s1/*)--x/U-->(sN/*)
+                    ns        <= sN;
+                else
+                    out_async <= 'U'; -- Asynchronous/Mealy. This case: (s1/*)--\bar{x}/U-->(sN/*)
+                    ns        <= sN;
+                end if;
+                -- [s2,...,sN]
+        end case;
+    end process;
+end behavioral;
+```
 
 ## Test 1
 
@@ -100,100 +270,15 @@ Make table like this for delta time (required for followthrough marks):
 - Do not include data in sensitivity list for flip flops.
 - Process: only use tokens with `sequential-statement` (`when` is not sequential)
 
-## Lab quick reference
+## Test 2
 
-Tip: when using pin planner, you can copy paste multiple selections if you are using vscode multi cursors and copying from the markdown version of this page. Useful for filling out seven segment displays.
+### TEST 2 CAN HAVE ANY CONTENT FROM TEST 1!
 
-| Key                           | Value          | Notes                                                                                  |
-| ----------------------------- | -------------- | -------------------------------------------------------------------------------------- |
-| Part number                   | 10M50DAF484C7G |                                                                                        |
-| 50 MHz signal (MAX10_CLK1_50) | PIN_P11        |                                                                                        |
-| KEY0                          | PIN_B8         | Default: HIGH (Pullup). ⚠ IMPORTANT: USE 2.5V Schmitt trigger I/O standard to debounce |
-| KEY1                          | PIN_A7         | Default: HIGH (Pullup). ⚠ IMPORTANT: USE 2.5V Schmitt trigger I/O standard to debounce |
-| SW0                           | PIN_C10        |                                                                                        |
-| SW1                           | PIN_C11        |                                                                                        |
-| SW2                           | PIN_D12        |                                                                                        |
-| SW3                           | PIN_C12        |                                                                                        |
-| SW4                           | PIN_A12        |                                                                                        |
-| SW5                           | PIN_B12        |                                                                                        |
-| SW6                           | PIN_A13        |                                                                                        |
-| SW7                           | PIN_A14        |                                                                                        |
-| SW8                           | PIN_B14        |                                                                                        |
-| SW9                           | PIN_F15        |                                                                                        |
-| LEDR0                         | PIN_A8         |                                                                                        |
-| LEDR1                         | PIN_A9         |                                                                                        |
-| LEDR2                         | PIN_A10        |                                                                                        |
-| LEDR3                         | PIN_B10        |                                                                                        |
-| LEDR4                         | PIN_D13        |                                                                                        |
-| LEDR5                         | PIN_C13        |                                                                                        |
-| LEDR6                         | PIN_E14        |                                                                                        |
-| LEDR7                         | PIN_D14        |                                                                                        |
-| LEDR8                         | PIN_A11        |                                                                                        |
-| LEDR9                         | PIN_B11        |                                                                                        |
-| HEX00                         | PIN_C14        |                                                                                        |
-| HEX01                         | PIN_E15        |                                                                                        |
-| HEX02                         | PIN_C15        |                                                                                        |
-| HEX03                         | PIN_C16        |                                                                                        |
-| HEX04                         | PIN_E16        |                                                                                        |
-| HEX05                         | PIN_D17        |                                                                                        |
-| HEX06                         | PIN_C17        |                                                                                        |
-| HEX07                         | PIN_D15        | DECIMAL POINT                                                                          |
-| HEX10                         | PIN_C18        |                                                                                        |
-| HEX11                         | PIN_D18        |                                                                                        |
-| HEX12                         | PIN_E18        |                                                                                        |
-| HEX13                         | PIN_B16        |                                                                                        |
-| HEX14                         | PIN_A17        |                                                                                        |
-| HEX15                         | PIN_A18        |                                                                                        |
-| HEX16                         | PIN_B17        |                                                                                        |
-| HEX17                         | PIN_A16        | DECIMAL POINT                                                                          |
-| HEX20                         | PIN_B20        |                                                                                        |
-| HEX21                         | PIN_A20        |                                                                                        |
-| HEX22                         | PIN_B19        |                                                                                        |
-| HEX23                         | PIN_A21        |                                                                                        |
-| HEX24                         | PIN_B21        |                                                                                        |
-| HEX25                         | PIN_C22        |                                                                                        |
-| HEX26                         | PIN_B22        |                                                                                        |
-| HEX27                         | PIN_A19        | DECIMAL POINT                                                                          |
-| HEX30                         | PIN_F21        |                                                                                        |
-| HEX31                         | PIN_E22        |                                                                                        |
-| HEX32                         | PIN_E21        |                                                                                        |
-| HEX33                         | PIN_C19        |                                                                                        |
-| HEX34                         | PIN_C20        |                                                                                        |
-| HEX35                         | PIN_D19        |                                                                                        |
-| HEX36                         | PIN_E17        |                                                                                        |
-| HEX37                         | PIN_D22        | DECIMAL POINT                                                                          |
-| HEX40                         | PIN_F18        |                                                                                        |
-| HEX41                         | PIN_E20        |                                                                                        |
-| HEX42                         | PIN_E19        |                                                                                        |
-| HEX43                         | PIN_J18        |                                                                                        |
-| HEX44                         | PIN_H19        |                                                                                        |
-| HEX45                         | PIN_F19        |                                                                                        |
-| HEX46                         | PIN_F20        |                                                                                        |
-| HEX47                         | PIN_F17        | DECIMAL POINT                                                                          |
-| HEX50                         | PIN_J20        |                                                                                        |
-| HEX51                         | PIN_K20        |                                                                                        |
-| HEX52                         | PIN_L18        |                                                                                        |
-| HEX53                         | PIN_N18        |                                                                                        |
-| HEX54                         | PIN_M20        |                                                                                        |
-| HEX55                         | PIN_N19        |                                                                                        |
-| HEX56                         | PIN_N20        |                                                                                        |
-| HEX57                         | PIN_L19        | DECIMAL POINT                                                                          |
+Do not forget how to do delta delay, timing diagrams, VHDL -> diagram or diagram -> VHDL.
 
-identity:
+### identities
 
-```vhdl
-"000000001"
-"000000010"
-"000000100"
-"000001000"
-"000010000"
-"000100000"
-"001000000"
-"010000000"
-"100000000"
-```
-
-## identities
+Re-remember these identities again for XOR method
 
 | Name            | 1                                       | 2                                            |
 | --------------- | --------------------------------------- | -------------------------------------------- |
@@ -201,46 +286,54 @@ identity:
 | De Morgan's law | $\overline{AB}=\overline A+\overline B$ | $\overline{A+B}=\overline A\cdot\overline B$ |
 | Idempotency     | $AA=A$                                  | $A+A=A$                                      |
 
-## fsm template
+## Issues with saving file/modifying files not updating the simulation
 
-```vhdl
-entity fsm is port (
-  clk,nrst,x in : std_logic;
-  ...
-);
-end fsm;
+The optimizer is once again causing issues.
 
-architecture behavioral of fsm is
-  type state is {sdefault, s1, s2, ...};
-  signal ps, ns : state; -- present_state, next_state
-begin
-  process (clk, nrst)
-  begin
-    if (nrst = '0') then
-      ps <= sdefault;
-    elsif (rising_edge(clk)) then
-      ps <= ns;
-    end if;
-  end process;
+My recommendation is to use `qrun` and do things in the terminal with `assert`s instead of trying to do it graphically using the verification diagrams. It also is much quicker.
 
-  process (x,ps)
-  begin
-    case x is
-      when s1 =>
-    [...]
-  end process;
-end behavioral;
+For some reason, I can't get incremental compilation working and it just causes more issuse than the time it saves right now, since it results in changes not affecting the simulation, so for now I am cleanly rebuilding each simulation.
+
+In GUI mode, manually start the simulation. When you need to update the simulation run this commandline
+
+<!--
+```bash
+qrun $FILE_NAME -optimize -cleanlib -top $TOP_LEVEL_ENTITY; restart -force; run -all
+``` -->
+
+```bash
+project compileoutofdate; restart -force; run -all
 ```
 
-## lab-test tips
+Here's also how to run the simulation in headless mode from a commandline (Do not run from Questa GUI, since it will make Questa quit)
 
-The lab test has a very high time pressure (kind of like comms if you have/are doing it).
+```bash
+qrun $FILE_NAME -optimize -simulate -cleanlib -top $TOP_LEVEL_ENTITY
+```
 
-- Use the DE-10 board project template to prevent wasting time entering pin definitions in the pin planner GUI.
-- Bring in components for clock divider, 7 segment display, FSM template and all lab materials at the minimum.
-- Focus on getting a working design before moving on to another design, they will only give one mark if your design has code, but you can't demonstrate it working (mock lab test). If your working design has a bug then they don't take too many marks away in my experience (mock lab test: I had a speed switch erroneously affect both speed and direction of a FSM - this only copped a 1 mark penalty in the mock lab test).
-- Enable autocomplete. It's better than nothing, but it's definitely not intellisense.
+## No objects appearing in modelsim/questa for testbenches
 
-![Enable autocomplete](/assets/img/2024-08-19-ELEC4406ELEC2311-not/autocomplete.png)
+⚠ TODO: Fix previous issue in GUI as well (I am now using qrun instead of the GUI).
 
-- **Check for your current year**. As of 2024, you may use your personal computer in the test and you don't need to use the lab computers (subject to same restrictions). You may not use anything other than Altera Quartus, Modelsim and Adobe Acrobat. You _cannot_ use vscode.
+This is because the signals are being optimized out since they aren't really used for anything useful.
+
+The intel questa/modelsim version shipped with the unit is 18.1, but this allowed vopt to be disabled. This is no longer the case on the latest versions of intel questa (You will get a compile error if you disable vopt flow).
+
+Go to `Simulate > Start Simulation...`, ensure optimization is enabled then click on `Optimization Options...`
+
+![Start simulation GUI](/assets/img/2024-08-19-ELEC4406ELEC2311-not/start_simulation.png)
+
+Then select `Apply full visibility to all modules(full debug mode)` and press `OK`.
+
+![Enable debug mode](/assets/img/2024-08-19-ELEC4406ELEC2311-not/debug_mode.png)
+
+Alternatively, add `+acc` to `voptargs` if you are using the TCL command line:
+
+```tcl
+# Start simulation and add all waves
+vsim $TESTBENCH_ID -voptargs=+acc; add wave *
+```
+
+## Dark mode in intel quartus
+
+Run this script I made on windows. [🔗Link](https://github.com/peter-tanner/Intel-Quartus-Dark-Mode-Windows)

@@ -36,3 +36,25 @@ https://dsp.stackexchange.com/questions/92028/max2769-i-q-for-signal-acquisition
 > the LSB is at Q1.
 
 Surely two-bit correlation is the same process, just with more precision because of the additional bit?
+
+## I and Q
+
+This answer says we need both I and Q for acquisition
+
+https://dsp.stackexchange.com/questions/92028/max2769-i-q-for-signal-acquisition-tracking
+
+But the GPS document says
+
+> The two L1 carrier components modulated by the two separate bit trains (C/A-code plus data and P(Y)-code
+> plus data) shall be in phase quadrature (within ±100 milliradians) with the C/A signal carrier lagging the P
+> signal by 90 degrees
+
+Another confusing thing is the GPS doc says In phase is P(Y) xor D(t) while Quadrature is C/A xor D(t), but the MAX2769 seems to operate where I is the C/A code since that's the only component the STM32 based GPS receiver uses. However, the diagram in the MAX2769 seems to have Q be +90deg phase shift ahead of I, whereas in the GPS document C/A lags by 90deg behind P(y) so I in GPS doc is +90deg phase shift ahead of Q in gps doc, so i guess the receiver and the doc have opposite conventions?
+
+## Signal generation
+
+Use MATLAB
+
+https://au.mathworks.com/help/satcom/ug/gps-waveform-generation.html#mw_rtc_GPSWaveformGenerationExample_52AA1397
+
+Looks like this generates a GPS baseband waveform OR it can generate the bits.

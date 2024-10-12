@@ -31,7 +31,7 @@ As shown in the [user manual for their PC software](https://www.bksv.com/downloa
 ## Tutorial on how to use in Python
 
 1. Download [Shaker Control](https://www.bksv.com/en/services/downloads/vibration-control-software/version-9). While a license key is required to use the software, we only need the `DactronSignal.dll` file.
-2. Install the software to a directory of your choosing, I think it installs in `C:\Program Files (x86)` by default but I am not sure since I chose to install it to `D:\Programs`.
+2. Install the software to a directory of your choosing, I think it installs in `C:\Program Files (x86)` by default but I am not sure since I chose to install it to `D:\Programs`. Annoyingly you do need to install the program, inspecting the installation files in 7-zip doesn't show this DLL specifically.
 3. Go to `Bruel and Kjaer\LASER and COMET Vibration Control\Shaker Control LaserUSB\bin` and copy `DactronSignal.dll` to a directory of your choosing.
 4. Create a command prompt and `cd` to the directory containing the DLL and register the DLL:
 
