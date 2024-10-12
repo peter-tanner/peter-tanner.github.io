@@ -11,12 +11,25 @@ tail_includes:
 
 {% include lang.html %}
 
+<script>
+  window.onload = function () {
+    tocbot.init({
+      tocSelector: "#toc",
+      contentSelector: ".post-content",
+      headingSelector: "h2, h3, h4",
+    });
+  };
+</script>
+
 <h1 data-toc-skip>{{ page.title }}</h1>
 
 <style>
   img.lazyloaded,
   img.lazyloading {
     max-height: 80vh;
+  }
+  nav * {
+    list-style: none;
   }
 </style>
 

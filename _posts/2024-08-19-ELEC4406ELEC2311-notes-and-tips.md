@@ -4,8 +4,11 @@ author: peter
 date: 2024-08-19 02:26:49 +0800
 categories: [Blogging] # Blogging | Electronics | Programming | Mechanical | SelfHosting
 tags: [getting started] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
+toc: true
 # image: assets/img/2024-08-19-ELEC4406ELEC2311-not/preview.png
 ---
+
+# Notes for ELEC4406
 
 ## lab-test tips
 
@@ -91,7 +94,7 @@ Questa Intel Starter FPGA Edition-64 vcom 2023.3 Compiler 2023.07 Jul 17 2023
 
 ## [`attribute chip_pin`](https://www.intel.com/content/www/us/en/programmable/quartushelp/17.0/hdl/vhdl/vhdl_file_dir_chip.htm)
 
-Quick reference for DE10-LITE. [🔗io_10M50DAF484C7G.vhd](/assets/lib/2024-08-19-ELEC4406ELEC2311-not/io_10M50DAF484C7G.vhd)
+Quick reference for DE10-LITE. [🔗 Download `io_10M50DAF484C7G.vhd`](/assets/lib/2024-08-19-ELEC4406ELEC2311-not/io_10M50DAF484C7G.vhd)
 
 ```vhdl
     attribute chip_pin : string; -- MUST BE DECLARED.

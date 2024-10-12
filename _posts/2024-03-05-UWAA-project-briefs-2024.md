@@ -96,7 +96,7 @@ We have an [old spectrum analyzer](https://www.petertanner.dev/posts/HP-8560A-sp
 
 ### Success criteria
 
-- Create one plot on your PC connected to the spectrum analyzer over your GPIB adapter, use [this software](http://www.ke5fx.com/gpib/7470.htm) to receive the plot.
+- Create one plot on your PC connected to the spectrum analyzer over your GPIB adapter, use [this software](https://www.qsl.net/ke5fx/gpib/7470.htm) to receive the plot.
 
 ### Hints and notes
 
