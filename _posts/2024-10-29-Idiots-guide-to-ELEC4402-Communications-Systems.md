@@ -97,7 +97,6 @@ Calculate $C_n$ coefficient as follows from $x_p(t)$:
 
 $$
 \begin{align*}
-    % C_n&=X_p(nf_s)\\
     C_n&=\frac{1}{T_s} \int_{T_s} x_p(t)\exp(-j2\pi f_s t)dt\\
        &=\frac{1}{T_s} X(nf_s)\quad\color{red}\text{(TODO: Check)}\quad\color{white}\text{$x(t-nT_s)$ is contained in the interval $T_s$}
 \end{align*}
@@ -417,7 +416,6 @@ Calculate $C_n$ coefficient as follows from $x_p(t)$:
 
 $$
 \begin{align*}
-    % C_n&=X_p(nf_s)\\
     C_n&=\frac{1}{T_s} \int_{T_s} x_p(t)\exp(-j2\pi f_s t)dt\\
        &=\frac{1}{T_s} X(nf_s)\quad\color{red}\text{(TODO: Check)}\quad\color{white}\text{$x(t-nT_s)$ is contained in the interval $T_s$}
 \end{align*}
@@ -647,9 +645,6 @@ Bit error rate (BER) from matched filter outputs and filter output noise
 
 $$
 \begin{align*}
-    % H_\text{opt}(f)&=\max_{H(f)}\left(\frac{s_{o1}-s_{o2}}{2\sigma_o}\right)
-
-    % \text{BER}_\text{bin}&=p Q\left(\frac{s_{o1}-V_T}{\sigma_o}\right)+(1-p)Q\left(\frac{V_T-s_{o2}}{\sigma_o}\right)\text{, $p\rightarrow$Probability $s_1(t)$ sent, $V_T\rightarrow$Threshold voltage}
     Q(x)&=\frac{1}{2}-\frac{1}{2}\text{erf}\left(\frac{x}{\sqrt{2}}\right)\Leftrightarrow\text{erf}\left(\frac{x}{\sqrt{2}}\right)=1-2Q(x)\\
     E_b&=d^2=\int_{-\infty}^\infty|s_1(t)-s_2(t)|^2dt\quad\text{Energy per bit/Distance}\\
     T&=1/R_b\quad\text{$R_b$: Bitrate}\\
@@ -928,7 +923,7 @@ $$
 
 Input has probability distribution $p_X(a_i)=P(X=a_i)$
 
-Channel maps alphabet $`\{a_1,\dots,a_M\} \to \{b_1,\dots,b_N\}`$
+Channel maps alphabet $\{a_1,\dots,a_M\} \to \{b_1,\dots,b_N\}$
 
 Output has probabiltiy distribution $p_Y(b_j)=P(y=b_j)$
 
