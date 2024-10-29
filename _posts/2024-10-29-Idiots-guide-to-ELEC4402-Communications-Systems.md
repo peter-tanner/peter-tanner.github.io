@@ -242,7 +242,7 @@ h(t)&=h_I(t)\cos(2\pi f_c t)-h_Q(t)\sin(2\pi f_c t)\\
     m_a&=k_a A_m \quad\text{ (Symmetrical $m(t)$)}\\
     x(t)&=A_c\cos(2\pi f_c t)\left[1+k_a m(t)\right]=A_c\cos(2\pi f_c t)\left[1+m_a m(t)/A_c\right], \\
     &\text{where $m(t)=A_m\hat m(t)$ and $\hat m(t)$ is the normalized modulating signal}\\
-    P_c &=\frac{{A_c}^2}{2}\quad\text{Carrier power}\\
+    P_c &=\frac{ {A_c}^2}{2}\quad\text{Carrier power}\\
     P_x &=\frac{1}{4}{m_a}^2{A_c}^2\\
     \eta&=\frac{\text{Signal Power}}{\text{Total Power}}=\frac{P_x}{P_x+P_c}\\
     B_T&=2f_m=2B
@@ -288,8 +288,8 @@ Overmodulation (resulting in phase reversals at crossing points): $m_a>1$
 
 ```math
 \begin{align*}
-    P_\text{av}&=\frac{{A_c}^2}{2}\\
-    P_\text{band\_index}&=\frac{{A_c}^2{J_\text{band\_index}}^2(\beta)}{2}\\
+    P_\text{av}&=\frac{ {A_c}^2}{2}\\
+    P_\text{band\_index}&=\frac{ {A_c}^2{J_\text{band\_index}}^2(\beta)}{2}\\
     \text{band\_index}&=0\implies f_c+0f_m\\
     \text{band\_index}&=1\implies f_c+1f_m,\dots\\
 \end{align*}
@@ -507,7 +507,7 @@ b_n:\{1,0\}\to a_n:\{1,0\}
 \begin{align*}
     s_1(t)&=A_c\sqrt{\frac{T_b}{2}}\varphi_1(t)=\sqrt{2E_b}\varphi_1(t)\\
     s_1(t)&=0\\
-    &\text{Since $E_b=E_\text{average}=\frac{1}{2}(\frac{{A_c}^2}{2}\times T_b + 0)=\frac{{A_c}^2}{4}T_b$}
+    &\text{Since $E_b=E_\text{average}=\frac{1}{2}(\frac{ {A_c}^2}{2}\times T_b + 0)=\frac{ {A_c}^2}{4}T_b$}
 \end{align*}
 ```
 
@@ -535,7 +535,7 @@ b_n:\{1,0\}\to a_n:\{1,\color{green}-1\color{white}\}
 \begin{align*}
     s_1(t)&=A_c\sqrt{\frac{T_b}{2}}\varphi_1(t)=\sqrt{E_b}\varphi_1(t)\\
     s_1(t)&=-A_c\sqrt{\frac{T_b}{2}}\varphi_1(t)=-\sqrt{E_b}\varphi_2(t)\\
-    &\text{Since $E_b=E_\text{average}=\frac{1}{2}(\frac{{A_c}^2}{2}\times T_b + \frac{{A_c}^2}{2}\times T_b)=\frac{{A_c}^2}{2}T_b$}
+    &\text{Since $E_b=E_\text{average}=\frac{1}{2}(\frac{ {A_c}^2}{2}\times T_b + \frac{ {A_c}^2}{2}\times T_b)=\frac{ {A_c}^2}{2}T_b$}
 \end{align*}
 ```
 
@@ -594,7 +594,7 @@ tBitstream[bitstream_, Tb_, title_] :=
   Module[{timeSteps, gridLines, plot},
    timeSteps = 
     Flatten[Table[{(n - 1)     Tb, bitstream[[n]]}, {n, 1, 
-        Length[bitstream]}] /. {t_, v_} :> {{t, v}, {t + Tb, v}}, 1]; 
+        Length[bitstream]}] /. {t_, v_} :> { {t, v}, {t + Tb, v}}, 1]; 
    gridLines = {Join[
       Table[{n  Tb, Dashed}, {n, 1, 2  Length[bitstream], 2}], 
       Table[{n  Tb, Thin}, {n, 0, 2  Length[bitstream], 2}]], None};
@@ -851,7 +851,7 @@ Adapted from table 11.4 M F Mesiya - Contemporary Communication Systems
 
 | Modulation | $G_x(f)$                                                                                          |
 | ---------- | ------------------------------------------------------------------------------------------------- |
-| Quadrature | $\color{red}\frac{{A_c}^2}{4}[G_I(f-f_c)+G_I(f+f_c)+G_Q(f-f_c)+G_Q(f+f_c)]$                       |
+| Quadrature | $\color{red}\frac{ {A_c}^2}{4}[G_I(f-f_c)+G_I(f+f_c)+G_Q(f-f_c)+G_Q(f+f_c)]$                      |
 | Linear     | $\color{red}\frac{\|V(f)\|^2}{2}\sum_{l=-\infty}^\infty R(l)\exp(-j2\pi l f T)\quad\text{What??}$ |
 
 ### Symbol error probability
