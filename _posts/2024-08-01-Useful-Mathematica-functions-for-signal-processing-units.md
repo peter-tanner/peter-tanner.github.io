@@ -2,8 +2,8 @@
 title: Useful Mathematica functions for signal processing units
 author: peter
 date: 2024-08-01 01:40:23 +0800
-categories: [Uni] # Blogging | Electronics | Programming | Mechanical | SelfHosting
-tags: [ELEC4402] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
+categories: [Programming, University] # Blogging | Electronics | Programming | Mechanical | SelfHosting
+tags: [ELEC4402, communications systems, mathematica] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
 # image: assets/img/2024-08-01-Useful-Mathematica-f/preview.png
 ---
 

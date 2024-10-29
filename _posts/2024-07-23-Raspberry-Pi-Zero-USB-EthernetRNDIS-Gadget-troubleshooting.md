@@ -2,8 +2,8 @@
 title: Raspberry Pi Zero USB Ethernet/RNDIS Gadget troubleshooting
 author: peter
 date: 2024-07-23 05:43:32 +0800
-categories: [Blogging] # Blogging | Electronics | Programming | Mechanical | SelfHosting
-tags: [getting started] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
+categories: [Electronics, Programming] # Blogging | Electronics | Programming | Mechanical | SelfHosting
+tags: [raspberry pi, raspberry pi zero, ethernet, ethernet gadget, rndis, usb] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
 # image: assets/img/2024-07-23-Raspberry-Pi-Zero-US/preview.png
 ---
 

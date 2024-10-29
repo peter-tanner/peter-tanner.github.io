@@ -3,7 +3,7 @@ title: Adding the canonical tag to Gitea to prevent duplicate spam
 author: peter
 date: 2024-06-29 02:55:28 +0800
 categories: [SelfHosting] # Blogging | Electronics | Programming | Mechanical
-tags: [tip] # systems | embedded | rf | microwave | electronics | solidworks | automation
+tags: [tip, gitea, seo] # systems | embedded | rf | microwave | electronics | solidworks | automation
 # image: assets/img/2024-06-29-Adding-the-canonical/preview.png
 ---
 

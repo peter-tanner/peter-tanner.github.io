@@ -3,7 +3,7 @@ title: "Dev log: GPS receiver based on MAX2769 and Zynq 7010 FPGA"
 author: peter
 date: 2024-10-02 20:10:44 +0800
 categories: [Electronics, Programming] # Blogging | Electronics | Programming | Mechanical | SelfHosting
-tags: [rf, electronics, fpga, ebaz4205, max2769, zynq7010] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
+tags: [rf, electronics, fpga, ebaz4205, max2769, zynq7010, gps, devlog] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
 # image: assets/img/2024-10-02-Dev-log-GPS-receiver/preview.png
 ---
 
@@ -58,3 +58,11 @@ Use MATLAB
 https://au.mathworks.com/help/satcom/ug/gps-waveform-generation.html#mw_rtc_GPSWaveformGenerationExample_52AA1397
 
 Looks like this generates a GPS baseband waveform OR it can generate the bits.
+
+https://gge.ext.unb.ca/Resources/gpsworld.april93.pdf Observables (carrier phase, pseudorange)
+
+https://descanso.jpl.nasa.gov/monograph/series2/Descanso2_S13.pdf Observables
+
+## ZYNQ platform
+
+https://www.xilinx.com/support/answers/65240.html  https://old.reddit.com/r/FPGA/comments/e5e8ia/be_aware_of_zynq_7020_arm_core_1_bricking_due_to/  Seems important for devboard

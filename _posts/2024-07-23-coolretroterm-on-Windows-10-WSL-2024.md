@@ -2,8 +2,8 @@
 title: cool-retro-term on Windows 10 WSL 2024
 author: peter
 date: 2024-07-23 18:21:42 +0800
-categories: [Blogging] # Blogging | Electronics | Programming | Mechanical | SelfHosting
-tags: [getting started] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
+categories: [Programming] # Blogging | Electronics | Programming | Mechanical | SelfHosting
+tags: [terminal, cool retro term] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
 image: assets/img/2024-07-23-coolretroterm-on-Win/working.png
 ---
 

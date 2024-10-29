@@ -2,8 +2,8 @@
 title: ELEC4406/ELEC2311 notes and tips
 author: peter
 date: 2024-08-19 02:26:49 +0800
-categories: [Blogging] # Blogging | Electronics | Programming | Mechanical | SelfHosting
-tags: [getting started] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
+categories: [Guide, University] # Blogging | Electronics | Programming | Mechanical | SelfHosting
+tags: [ELEC4406, vhdl, fpga, digital system design, ELEC2311] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
 toc: true
 # image: assets/img/2024-08-19-ELEC4406ELEC2311-not/preview.png
 ---
@@ -279,6 +279,12 @@ Make table like this for delta time (required for followthrough marks):
 
 Do not forget how to do delta delay, timing diagrams, VHDL -> diagram or diagram -> VHDL.
 
+### Test vectors ⚠
+
+**Can be expressed using X for don't care**, do not need to enumerate every combination.
+
+Example: "`11X0X`"
+
 ### identities
 
 Re-remember these identities again for XOR method
@@ -288,6 +294,16 @@ Re-remember these identities again for XOR method
 | Absorption rule | $A(A+B)=A$                              | $A+AB=A$                                     |
 | De Morgan's law | $\overline{AB}=\overline A+\overline B$ | $\overline{A+B}=\overline A\cdot\overline B$ |
 | Idempotency     | $AA=A$                                  | $A+A=A$                                      |
+
+## Timing
+
+$$
+\begin{align*}
+    \delta_t &= \pm\delta'\qquad\text{Example: $\delta_t=\pm60$ ps}\\
+    T_\text{min} &= T_\text{CQ,max} + T_\text{CL,max} + T_\text{setup,max} + |\delta_t|\\
+    T_\text{hold} &\le T_\text{CQ,min} + T_\text{CL,min} - |\delta_t|
+\end{align*}
+$$
 
 ## Issues with saving file/modifying files not updating the simulation
 
@@ -340,3 +356,48 @@ vsim $TESTBENCH_ID -voptargs=+acc; add wave *
 ## Dark mode in intel quartus
 
 Run this script I made on windows. [🔗Link](https://github.com/peter-tanner/Intel-Quartus-Dark-Mode-Windows)
+
+## Exam study
+
+### **2024 EXAM OUTLINE IMPORTANT**
+- 5 questions x 20 marks
+- **1** Testing 25 marks
+  - No _XOR method_ (XOR can be used still for validation)
+  - Path sensitization
+- **2** Read VHDL (??? so probably a delta time question)
+- **3** VHDL -> Draw circuit
+- **4** Circuit -> VHDL
+- **5** Timing question (practical 5)
+- 10 marks allocated to general questions
+
+### Implementation technologies
+
+- No practice questions, but may have worded questions
+
+Partitioning
+
+
+>    Yeah, you can implement, you know, in any any function,
+>    uh, partition is important to understand why we do partitioning.
+>    I'm not gonna ask you this, OK, because, uh, you
+>    know, some of you may have forgotten this.
+>    Uh, we're going at a bit a bit higher level,
+>    Uh, but it's good to to to to know what
+>    is behind, uh, below the the surface.
+
+>    Uh uh, So there won't be any problems per SE.
+>   It's more, uh, an overview of of of the FPG.
+>   Uh, so I want to ask you to implement, but
+>   I may ask you questions.
+>   You know why, uh, why do we you know, why
+>   would we need a large look up table or whatever?
+>   Any questions?
+>   All right.
+
+
+PAL > CPLD > FPGA > standard cell > custom design
+
+### LECTURES TO WATCH
+
+- [(low-med priority, has a video which might be asked in final) Digital System Design - ELEC2311_SEM-2_2024 / ELEC2311 - 17 Sep 2024, 10:00 - Lecture - Tue 17, Sept](https://echo360.net.au/lesson/G_d242de04-466c-4e5c-90c5-8559bf05817a_f680b162-bea0-4466-ba23-9c4e4e8608f4_2024-09-17T09:58:00.000_2024-09-17T11:52:00.000/classroom)
+- [(low priority, already tested to success) Digital System Design - ELEC2311_SEM-2_2024 / ELEC2311 - 18 Sep 2024, 09:00 - Lecture - Wed 18, Sept](https://echo360.net.au/lesson/G_cd2b8e85-7208-4aef-bd38-9ec27622ec31_f680b162-bea0-4466-ba23-9c4e4e8608f4_2024-09-18T08:58:00.000_2024-09-18T09:52:00.000/classroom)

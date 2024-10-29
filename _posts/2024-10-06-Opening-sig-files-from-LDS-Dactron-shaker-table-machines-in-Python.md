@@ -3,7 +3,7 @@ title: Opening .sig files from B&K LDS shaker table machines in Python
 author: peter
 date: 2024-10-06 16:59:44 +0800
 categories: [Programming, Mechanical] # Blogging | Electronics | Programming | Mechanical | SelfHosting
-tags: [python, com, 32-bit, tip] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
+tags: [python, com, 32-bit, tip, shaker table, B&K] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
 # image: assets/img/2024-10-06-Opening-sig-files-fr/preview.png
 ---
 

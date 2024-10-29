@@ -2,8 +2,8 @@
 title: Buggy shell extensions causing Windows explorer to hang
 author: peter
 date: 2024-10-05 22:44:41 +0800
-categories: [Blogging] # Blogging | Electronics | Programming | Mechanical | SelfHosting
-tags: [getting started] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
+categories: [Windows] # Blogging | Electronics | Programming | Mechanical | SelfHosting
+tags: [windows, shell extension] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
 # image: assets/img/2024-10-05-Buggy-shell-extensio/preview.png
 ---
 

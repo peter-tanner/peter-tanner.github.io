@@ -2,8 +2,8 @@
 title: Echo360 Super Speed Userscript released!
 author: peter
 date: 2024-07-25 02:35:04 +0800
-categories: [Programming] # Blogging | Electronics | Programming | Mechanical | SelfHosting
-tags: [extension, userscript, browser] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
+categories: [Programming, University] # Blogging | Electronics | Programming | Mechanical | SelfHosting
+tags: [extension, userscript, browser, echo360] # systems | embedded | rf | microwave | electronics | solidworks | automation | tip
 image: /assets/img/2024-07-25-Echo360-Super-Speed-/preview.png
 ---
 
