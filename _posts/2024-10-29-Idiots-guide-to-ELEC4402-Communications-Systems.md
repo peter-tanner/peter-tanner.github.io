@@ -105,7 +105,7 @@ Calculate $C_n$ coefficient as follows from $x_p(t)$:
 
 ### $\text{rect}$ function
 
-![rect](assets/img/2024-10-29-Idiots-guide-to-ELEC/rect.drawio.svg)
+![rect](/assets/img/2024-10-29-Idiots-guide-to-ELEC/rect.drawio.svg)
 
 ### Bessel function
 
@@ -429,12 +429,14 @@ Calculate $C_n$ coefficient as follows from $x_p(t)$:
 
 Do not transmit more than $2B$ samples per second over a channel of $B$ bandwidth.
 
-![By Bob K - Own work, CC0, https://commons.wikimedia.org/w/index.php?curid=94674142](assets/img/2024-10-29-Idiots-guide-to-ELEC/Nyquist_frequency_&_rate.svg)
+![By Bob K - Own work, CC0, https://commons.wikimedia.org/w/index.php?curid=94674142](/assets/img/2024-10-29-Idiots-guide-to-ELEC/Nyquist_frequency_&_rate.svg)
 
 ### Insert here figure 8.3 from M F Mesiya - Contemporary Communication Systems (Add image to `assets/img/2024-10-29-Idiots-guide-to-ELEC/sampling.png`)
 
-![sampling](copyrighted_assets/img/2024-10-29-Idiots-guide-to-ELEC/sampling.png)
-![sampling](assets/img/2024-10-29-Idiots-guide-to-ELEC/sampling.png)
+Cannot add directly due to copyright!
+ 
+<!-- ![sampling](copyrighted_assets/img/2024-10-29-Idiots-guide-to-ELEC/sampling.png) -->
+<!-- ![sampling](/assets/img/2024-10-29-Idiots-guide-to-ELEC/sampling.png) -->
 
 ## Quantizer
 
@@ -458,12 +460,13 @@ Do not transmit more than $2B$ samples per second over a channel of $B$ bandwidt
 
 ### Insert here figure 8.17 from M F Mesiya - Contemporary Communication Systems (Add image to `assets/img/2024-10-29-Idiots-guide-to-ELEC/quantizer.png`)
 
-![quantizer](copyrighted_assets/img/2024-10-29-Idiots-guide-to-ELEC/quantizer.png)
-![quantizer](assets/img/2024-10-29-Idiots-guide-to-ELEC/quantizer.png)
+Cannot add directly due to copyright!
+<!-- ![quantizer](copyrighted_assets/img/2024-10-29-Idiots-guide-to-ELEC/quantizer.png) -->
+<!-- ![quantizer](/assets/img/2024-10-29-Idiots-guide-to-ELEC/quantizer.png) -->
 
 ## Line codes
 
-![binary_codes](assets/img/2024-10-29-Idiots-guide-to-ELEC/Line_Codes.drawio.svg)
+![binary_codes](/assets/img/2024-10-29-Idiots-guide-to-ELEC/Line_Codes.drawio.svg)
 
 ```math
 \begin{align*}
@@ -776,7 +779,7 @@ TODO:
 
 ### Raised cosine (RC) pulse
 
-![Raised cosine pulse](assets/img/2024-10-29-Idiots-guide-to-ELEC/RC.drawio.svg)
+![Raised cosine pulse](/assets/img/2024-10-29-Idiots-guide-to-ELEC/RC.drawio.svg)
 
 ```math
 0\leq\alpha\leq1
