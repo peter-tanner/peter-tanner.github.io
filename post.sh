@@ -25,7 +25,7 @@ generate_front_matter() {
     echo "title: $1"
     echo "author: peter"
     echo "date: $current_date"
-    echo "categories: [TOP_CATEGORY, SUB_CATEGORY]    # 0-2 categories. Blogging | Electronics | Programming | Mechanical | SelfHosting"
+    echo "categories: [TOP_CATEGORY, SUB_CATEGORY]    # 0-2 categories. Blogging | Electronics | Programming | Mechanical | SelfHosting | Guides | University"
     echo "tags: [getting started]   # 0-\infty. systems | embedded | rf | microwave | electronics | solidworks | automation | tip"
     echo "# image: assets/img/${filename:0:31}/preview.png"
     echo "---"
@@ -36,7 +36,7 @@ if [ -e "$filepath" ]; then
     echo "A file with the name '$filename' already exists in the '_posts' subdirectory."
 else
     # Create the new file and add the front matter
-    generate_front_matter "$user_title" > "$filepath"
+    generate_front_matter "$user_title" >"$filepath"
     mkdir -p "assets/img/${filename:0:31}"
     echo "File '$filename.md' created successfully in the '_posts' subdirectory."
 fi
