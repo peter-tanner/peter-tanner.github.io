@@ -153,7 +153,7 @@ G_y(f)&=G(f)G_w(f)\\
 | ergodic in mean                     | $$\lim_{T\to\infty}\braket{X(t)}_T=m_X(t)=m_X$$         | $$\lim_{T\to\infty}\text{VAR}[\braket{X(t)}_T]=0$$          |
 | ergodic in autocorrelation function | $$\lim_{T\to\infty}\braket{X(t+\tau)X(t)}_T=R_X(\tau)$$ | $$\lim_{T\to\infty}\text{VAR}[\braket{X(t+\tau)X(t)}_T]=0$$ |
 
-**A WSS random process needs to be both ergodic in mean and autocorrelation to be considered an ergodic process**
+Note: **A WSS random process needs to be both ergodic in mean and autocorrelation to be considered an ergodic process**
 
 ### Other identities
 
@@ -434,7 +434,7 @@ Do not transmit more than $2B$ samples per second over a channel of $B$ bandwidt
 ### Insert here figure 8.3 from M F Mesiya - Contemporary Communication Systems (Add image to `assets/img/2024-10-29-Idiots-guide-to-ELEC/sampling.png`)
 
 Cannot add directly due to copyright!
- 
+
 <!-- ![sampling](copyrighted_assets/img/2024-10-29-Idiots-guide-to-ELEC/sampling.png) -->
 <!-- ![sampling](/assets/img/2024-10-29-Idiots-guide-to-ELEC/sampling.png) -->
 
@@ -593,22 +593,22 @@ Note on energy per symbol: Since $|s_i(t)|=A_c$, have to normalize distance as f
 <details>
 <summary>Code</summary>
 <pre><code>
-tBitstream[bitstream_, Tb_, title_] := 
+tBitstream[bitstream_, Tb_, title_] :=
   Module[{timeSteps, gridLines, plot},
-   timeSteps = 
-    Flatten[Table[{(n - 1)     Tb, bitstream[[n]]}, {n, 1, 
-        Length[bitstream]}] /. {t_, v_} :> { {t, v}, {t + Tb, v}}, 1]; 
+   timeSteps =
+    Flatten[Table[{(n - 1)     Tb, bitstream[[n]]}, {n, 1,
+        Length[bitstream]}] /. {t_, v_} :> { {t, v}, {t + Tb, v}}, 1];
    gridLines = {Join[
-      Table[{n  Tb, Dashed}, {n, 1, 2  Length[bitstream], 2}], 
+      Table[{n  Tb, Dashed}, {n, 1, 2  Length[bitstream], 2}],
       Table[{n  Tb, Thin}, {n, 0, 2  Length[bitstream], 2}]], None};
-   plot = 
-    Labeled[ListLinePlot[timeSteps, InterpolationOrder -> 0, 
-      PlotRange -> Full, GridLines -> gridLines, PlotStyle -> Thick, 
-      Ticks -> {Table[{n     Tb, 
-          Row[{n, "\!\(\*SubscriptBox[\(T\), \(b\)]\)"}]}, {n, 0, 
-          Length[bitstream]}], {-1, 0, 1}}, 
-      LabelStyle -> Directive[Bold, 12], 
-      PlotRangePadding -> {Scaled[.05]}, AspectRatio -> 0.1, 
+   plot =
+    Labeled[ListLinePlot[timeSteps, InterpolationOrder -> 0,
+      PlotRange -> Full, GridLines -> gridLines, PlotStyle -> Thick,
+      Ticks -> {Table[{n     Tb,
+          Row[{n, "\!\(\*SubscriptBox[\(T\), \(b\)]\)"}]}, {n, 0,
+          Length[bitstream]}], {-1, 0, 1}},
+      LabelStyle -> Directive[Bold, 12],
+      PlotRangePadding -> {Scaled[.05]}, AspectRatio -> 0.1,
       ImageSize -> Large], {Style[title, "Text", 16]}, {Right}]];
 
 tBitstream[{0, 1, 0, 0, 1, 0, 1, 1, 1, 0}, 1, "Bitstream Step Plot"]
@@ -666,26 +666,6 @@ Bit error rate (BER) from matched filter outputs and filter output noise
 
 ## Value tables for $\text{erf}(x)$ and $Q(x)$
 
-### $\text{erf}(x)$ function
-
-| $x$    | $\text{erf}(x)$ | $x$    | $\text{erf}(x)$ | $x$    | $\text{erf}(x)$ |
-| ------ | --------------- | ------ | --------------- | ------ | --------------- |
-| $0.00$ | $0.00000$       | $0.75$ | $0.71116$       | $1.50$ | $0.96611$       |
-| $0.05$ | $0.05637$       | $0.80$ | $0.74210$       | $1.55$ | $0.97162$       |
-| $0.10$ | $0.11246$       | $0.85$ | $0.77067$       | $1.60$ | $0.97635$       |
-| $0.15$ | $0.16800$       | $0.90$ | $0.79691$       | $1.65$ | $0.98038$       |
-| $0.20$ | $0.22270$       | $0.95$ | $0.82089$       | $1.70$ | $0.98379$       |
-| $0.25$ | $0.27633$       | $1.00$ | $0.84270$       | $1.75$ | $0.98667$       |
-| $0.30$ | $0.32863$       | $1.05$ | $0.86244$       | $1.80$ | $0.98909$       |
-| $0.35$ | $0.37938$       | $1.10$ | $0.88021$       | $1.85$ | $0.99111$       |
-| $0.40$ | $0.42839$       | $1.15$ | $0.89612$       | $1.90$ | $0.99279$       |
-| $0.45$ | $0.47548$       | $1.20$ | $0.91031$       | $1.95$ | $0.99418$       |
-| $0.50$ | $0.52050$       | $1.25$ | $0.92290$       | $2.00$ | $0.99532$       |
-| $0.55$ | $0.56332$       | $1.30$ | $0.93401$       | $2.50$ | $0.99959$       |
-| $0.60$ | $0.60386$       | $1.35$ | $0.94376$       | $3.00$ | $0.99998$       |
-| $0.65$ | $0.64203$       | $1.40$ | $0.95229$       | $3.30$ | $0.999998$\*\*  |
-| $0.70$ | $0.67780$       | $1.45$ | $0.95970$       |        |                 |
-
 ### $Q(x)$ function
 
 | $x$    | $Q(x)$     | $x$    | $Q(x)$                  | $x$    | $Q(x)$                   | $x$    | $Q(x)$                   |
@@ -735,11 +715,33 @@ Bit error rate (BER) from matched filter outputs and filter output noise
 | $2.10$ | $0.017864$ | $4.40$ | $5.4125 \times 10^{-6}$ | $6.65$ | $1.4655 \times 10^{-11}$ | $8.90$ | $2.7923 \times 10^{-19}$ |
 | $2.15$ | $0.015778$ | $4.45$ | $4.2935 \times 10^{-6}$ | $6.70$ | $1.0421 \times 10^{-11}$ | $8.95$ | $1.7774 \times 10^{-19}$ |
 | $2.20$ | $0.013903$ | $4.50$ | $3.3977 \times 10^{-6}$ | $6.75$ | $7.3923 \times 10^{-12}$ | $9.00$ | $1.1286 \times 10^{-19}$ |
-| $2.25$ | $0.012224$ |        |                         |        |                          |
+| $2.25$ | $0.012224$ |        |                         |        |                          |        |                          |
 
 Adapted from table 6.1 M F Mesiya - Contemporary Communication Systems
 
+### $\text{erf}(x)$ function
+
+| $x$    | $\text{erf}(x)$ | $x$    | $\text{erf}(x)$ | $x$    | $\text{erf}(x)$ |
+| ------ | --------------- | ------ | --------------- | ------ | --------------- |
+| $0.00$ | $0.00000$       | $0.75$ | $0.71116$       | $1.50$ | $0.96611$       |
+| $0.05$ | $0.05637$       | $0.80$ | $0.74210$       | $1.55$ | $0.97162$       |
+| $0.10$ | $0.11246$       | $0.85$ | $0.77067$       | $1.60$ | $0.97635$       |
+| $0.15$ | $0.16800$       | $0.90$ | $0.79691$       | $1.65$ | $0.98038$       |
+| $0.20$ | $0.22270$       | $0.95$ | $0.82089$       | $1.70$ | $0.98379$       |
+| $0.25$ | $0.27633$       | $1.00$ | $0.84270$       | $1.75$ | $0.98667$       |
+| $0.30$ | $0.32863$       | $1.05$ | $0.86244$       | $1.80$ | $0.98909$       |
+| $0.35$ | $0.37938$       | $1.10$ | $0.88021$       | $1.85$ | $0.99111$       |
+| $0.40$ | $0.42839$       | $1.15$ | $0.89612$       | $1.90$ | $0.99279$       |
+| $0.45$ | $0.47548$       | $1.20$ | $0.91031$       | $1.95$ | $0.99418$       |
+| $0.50$ | $0.52050$       | $1.25$ | $0.92290$       | $2.00$ | $0.99532$       |
+| $0.55$ | $0.56332$       | $1.30$ | $0.93401$       | $2.50$ | $0.99959$       |
+| $0.60$ | $0.60386$       | $1.35$ | $0.94376$       | $3.00$ | $0.99998$       |
+| $0.65$ | $0.64203$       | $1.40$ | $0.95229$       | $3.30$ | $0.999998$\*\*  |
+| $0.70$ | $0.67780$       | $1.45$ | $0.95970$       |        |                 |
+
 \*\*The value of $\text{erf}(3.30)$ should be $\approx0.999997$ instead, but this value is quoted in the formula table.
+
+<div style="page-break-after: always;"></div>
 
 ### Receiver output shit
 
@@ -811,7 +813,7 @@ To solve this type of question:
 
 ### Nyquist stuff
 
-#### Condition for 0 ISI TODO:
+#### TODO: Condition for 0 ISI
 
 ```math
 P_r(kT)=\begin{cases}
@@ -829,8 +831,6 @@ P_r(kT)=\begin{cases}
     T&=1/D
 \end{align*}
 ```
-
-<div style="page-break-after: always;"></div>
 
 ### Table of bandpass signalling and BER
 
