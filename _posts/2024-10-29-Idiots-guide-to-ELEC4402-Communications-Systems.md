@@ -69,7 +69,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 | $u(t)$                                                                | $\frac{1}{2} \delta(f) + \frac{1}{j2\pi f}$                                                                                               |
 | $\sum_{n=-\infty}^{\infty} \delta(t - nT_0)$                          | $\frac{1}{T_0} \sum_{n=-\infty}^{\infty} \delta\left(f - \frac{n}{T_0}\right)=f_0 \sum_{n=-\infty}^{\infty} \delta\left(f - n f_0\right)$ |
 
-```math
+$$
 \begin{align*}
     u(t) &= \begin{cases} 1, & t > 0 \\ \frac{1}{2}, & t = 0 \\ 0, & t < 0 \end{cases}&\text{Unit Step Function}\\
     \text{sgn}(t) &= \begin{cases} +1, & t > 0 \\ 0, & t = 0 \\ -1, & t < 0 \end{cases}&\text{Signum Function}\\
@@ -77,7 +77,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
     \text{rect}(t) = \Pi(t) &= \begin{cases} 1, & -0.5 < t < 0.5 \\ 0, & \lvert t \rvert > 0.5 \end{cases}&\text{Rectangular/Gate Function}\\
     g(t)*h(t)=(g*h)(t)&=\int_\infty^\infty g(\tau)h(t-\tau)d\tau&\text{Convolution}\\
 \end{align*}
-```
+$$
 
 ### Fourier transform of continuous time periodic signal
 
@@ -87,21 +87,21 @@ Required for some questions on **sampling**:
 
 Transform a continuous time-periodic signal $x_p(t)=\sum_{n=-\infty}^\infty x(t-nT_s)$ with period $T_s$:
 
-```math
+$$
 X_p(f)=\sum_{n=-\infty}^\infty C_n\delta(f-nf_s)\quad f_s=\frac{1}{T_s}
-```
+$$
 
 Calculate $C_n$ coefficient as follows from $x_p(t)$:
 
 <!-- Remember $X_p(f)\leftrightarrow x_p(t)$ and **NOT** $\color{red}X_p(f)\leftrightarrow x_p(t-nT_s)$ -->
 
-```math
+$$
 \begin{align*}
     % C_n&=X_p(nf_s)\\
     C_n&=\frac{1}{T_s} \int_{T_s} x_p(t)\exp(-j2\pi f_s t)dt\\
        &=\frac{1}{T_s} X(nf_s)\quad\color{red}\text{(TODO: Check)}\quad\color{white}\text{$x(t-nT_s)$ is contained in the interval $T_s$}
 \end{align*}
-```
+$$
 
 ### $\text{rect}$ function
 
@@ -109,16 +109,16 @@ Calculate $C_n$ coefficient as follows from $x_p(t)$:
 
 ### Bessel function
 
-```math
+$$
 \begin{align*}
     \sum_{n\in\mathbb{Z}}{J_n}^2(\beta)&=1\\
     J_n(\beta)&=(-1)^nJ_{-n}(\beta)
 \end{align*}
-```
+$$
 
 ### White noise
 
-```math
+$$
 \begin{align*}
 R_W(\tau)&=\frac{N_0}{2}\delta(\tau)=\frac{kT}{2}\delta(\tau)=\sigma^2\delta(\tau)\\
 G_w(f)&=\frac{N_0}{2}\\
@@ -126,27 +126,27 @@ N_0&=kT\\
 G_y(f)&=|H(f)|^2G_w(f)\\
 G_y(f)&=G(f)G_w(f)\\
 \end{align*}
-```
+$$
 
 ### WSS
 
-```math
+$$
 \begin{align*}
     \mu_X(t) &= \mu_X\text{ Constant}\\
     R_{XX}(t_1,t_2)&=R_X(t_1-t_2)=R_X(\tau)\\
     E[X(t_1)X(t_2)]&=E[X(t)X(t+\tau)]
 \end{align*}
-```
+$$
 
 ### Ergodicity
 
-```math
+$$
 \begin{align*}
     \braket{X(t)}_T&=\frac{1}{2T}\int_{-T}^{T}x(t)dt\\
     \braket{X(t+\tau)X(t)}_T&=\frac{1}{2T}\int_{-T}^{T}x(t+\tau)x(t)dt\\
     E[\braket{X(t)}_T]&=\frac{1}{2T}\int_{-T}^{T}x(t)dt=\frac{1}{2T}\int_{-T}^{T}m_Xdt=m_X\\
 \end{align*}
-```
+$$
 
 | Type                                | Normal                                                  | Mean square sense                                           |
 | ----------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------- |
@@ -157,17 +157,17 @@ Note: **A WSS random process needs to be both ergodic in mean and autocorrelatio
 
 ### Other identities
 
-```math
+$$
 \begin{align*}
     f*(g*h) &=(f*g)*h\quad\text{Convolution associative}\\
     a(f*g) &= (af)*g \quad\text{Convolution associative}\\
     \sum_{x=-\infty}^\infty(f(x a)\delta(\omega-x b))&=f\left(\frac{\omega a}{b}\right)
 \end{align*}
-```
+$$
 
 ### Other trig
 
-```math
+$$
 \begin{align*}
     \cos2\theta=2 \cos^2 \theta-1&\Leftrightarrow\frac{\cos2\theta+1}{2}=\cos^2\theta\\
     e^{-j\alpha}-e^{j\alpha}&=-2j \sin(\alpha)\\
@@ -180,9 +180,9 @@ Note: **A WSS random process needs to be both ergodic in mean and autocorrelatio
     \cos(A+\pi/2)&=-\sin(A)\\
     \int_{x\in\mathbb{R}}\text{sinc}(A x) &= \frac{1}{|A|}\\
 \end{align*}
-```
+$$
 
-```math
+$$
 \begin{align*}
     \cos(A+B) &= \cos (A) \cos (B)-\sin (A) \sin (B) \\
     \sin(A+B) &= \sin (A) \cos (B)+\cos (A) \sin (B) \\
@@ -190,9 +190,9 @@ Note: **A WSS random process needs to be both ergodic in mean and autocorrelatio
     \cos(A)\sin(B) &= \frac{1}{2} (\sin (A+B)-\sin (A-B)) \\
     \sin(A)\sin(B) &= \frac{1}{2} (\cos (A-B)-\cos (A+B)) \\
 \end{align*}
-```
+$$
 
-```math
+$$
 \begin{align*}
     \cos(A)+\cos(B) &= 2 \cos \left(\frac{A}{2}-\frac{B}{2}\right) \cos \left(\frac{A}{2}+\frac{B}{2}\right) \\
     \cos(A)-\cos(B) &= -2 \sin \left(\frac{A}{2}-\frac{B}{2}\right) \sin \left(\frac{A}{2}+\frac{B}{2}\right) \\
@@ -201,7 +201,7 @@ Note: **A WSS random process needs to be both ergodic in mean and autocorrelatio
     \cos(A)+\sin(B)&= -2 \sin \left(\frac{A}{2}-\frac{B}{2}-\frac{\pi }{4}\right) \sin \left(\frac{A}{2}+\frac{B}{2}+\frac{\pi }{4}\right) \\
     \cos(A)-\sin(B)&= -2 \sin \left(\frac{A}{2}+\frac{B}{2}-\frac{\pi }{4}\right) \sin \left(\frac{A}{2}-\frac{B}{2}+\frac{\pi }{4}\right) \\
 \end{align*}
-```
+$$
 
 ## IQ/Complex envelope
 
@@ -209,7 +209,7 @@ Def. $\tilde{g}(t)=g_I(t)+jg_Q(t)$ as the complex envelope. Best to convert to $
 
 ### Convert complex envelope representation to time-domain representation of signal
 
-```math
+$$
 \begin{align*}
 g(t)&=g_I(t)\cos(2\pi f_c t)-g_Q(t)\sin(2\pi f_c t)\\
 &=\text{Re}[\tilde{g}(t)\exp{(j2\pi f_c t)}]\\
@@ -219,23 +219,23 @@ A(t)&=|g(t)|=\sqrt{g_I^2(t)+g_Q^2(t)}\quad\text{Amplitude}\\
 g_I(t)&=A(t)\cos(\phi(t))\quad\text{In-phase component}\\
 g_Q(t)&=A(t)\sin(\phi(t))\quad\text{Quadrature-phase component}\\
 \end{align*}
-```
+$$
 
 ### For transfer function
 
-```math
+$$
 \begin{align*}
 h(t)&=h_I(t)\cos(2\pi f_c t)-h_Q(t)\sin(2\pi f_c t)\\
 &=2\text{Re}[\tilde{h}(t)\exp{(j2\pi f_c t)}]\\
 \Rightarrow\tilde{h}(t)&=h_I(t)/2+jh_Q(t)/2=A(t)/2\exp{(j\phi(t))}
 \end{align*}
-```
+$$
 
 ## AM
 
 ### CAM
 
-```math
+$$
 \begin{align*}
     m_a &= \frac{\min_t|k_a m(t)|}{A_c} \quad\text{$k_a$ is the amplitude sensitivity ($\text{volt}^{-1}$), $m_a$ is the modulation index.}\\
     m_a &= \frac{A_\text{max}-A_\text{min}}{A_\text{max}+A_\text{min}}\quad\text{ (Symmetrical $m(t)$)}\\
@@ -247,7 +247,7 @@ h(t)&=h_I(t)\cos(2\pi f_c t)-h_Q(t)\sin(2\pi f_c t)\\
     \eta&=\frac{\text{Signal Power}}{\text{Total Power}}=\frac{P_x}{P_x+P_c}\\
     B_T&=2f_m=2B
 \end{align*}
-```
+$$
 
 $B_T$: Signal bandwidth
 $B$: Bandwidth of modulating wave
@@ -256,16 +256,16 @@ Overmodulation (resulting in phase reversals at crossing points): $m_a>1$
 
 ### DSB-SC
 
-```math
+$$
 \begin{align*}
     x_\text{DSB}(t) &= A_c \cos{(2\pi f_c t)} m(t)\\
     B_T&=2f_m=2B
 \end{align*}
-```
+$$
 
 ## FM/PM
 
-```math
+$$
 \begin{align*}
     s(t) &= A_c\cos\left[2\pi f_c t + k_p m(t)\right]\quad\text{Phase modulated (PM)}\\
     s(t) &= A_c\cos\left[2\pi f_c t + 2 \pi k_f \int_0^t m(\tau) d\tau\right]\quad\text{Frequency modulated (FM)}\\
@@ -274,30 +274,30 @@ Overmodulation (resulting in phase reversals at crossing points): $m_a>1$
     \Delta f&=\beta f_m=k_f A_m f_m = \max_t(k_f m(t))- \min_t(k_f m(t))\quad\text{Maximum frequency deviation}\\
     D&=\frac{\Delta f}{W_m}\quad\text{Deviation ratio, where $W_m$ is bandwidth of $m(t)$ (Use FT)}
 \end{align*}
-```
+$$
 
 ### Bessel form and magnitude spectrum (single tone)
 
-```math
+$$
 \begin{align*}
     s(t) &= A_c\cos\left[2\pi f_c t + \beta \sin(2\pi f_m t)\right] \Leftrightarrow s(t)= A_c\sum_{n=-\infty}^{\infty}J_n(\beta)\cos[2\pi(f_c+nf_m)t]
 \end{align*}
-```
+$$
 
 ### FM signal power
 
-```math
+$$
 \begin{align*}
     P_\text{av}&=\frac{ {A_c}^2}{2}\\
     P_\text{band\_index}&=\frac{ {A_c}^2{J_\text{band\_index}}^2(\beta)}{2}\\
     \text{band\_index}&=0\implies f_c+0f_m\\
     \text{band\_index}&=1\implies f_c+1f_m,\dots\\
 \end{align*}
-```
+$$
 
 ### Carson's rule to find $B$ (98% power bandwidth rule)
 
-```math
+$$
 \begin{align*}
 B &= 2Mf_m = 2(\beta + 1)f_m\\
     &= 2(\Delta f+f_m)\\
@@ -308,7 +308,7 @@ B &= \begin{cases}
     2(\Delta\phi + 1)f_m & \text{PM, sinusoidal message}
 \end{cases}\\
 \end{align*}
-```
+$$
 
 #### $\Delta f$ of arbitrary modulating signal
 
@@ -316,7 +316,7 @@ Find instantaneous frequency $f_\text{FM}$.
 
 $M$: Number of **pairs** of significant sidebands
 
-```math
+$$
 \begin{align*}
 s(t)&=A_c\cos(\theta_\text{FM}(t))\\
 f_\text{FM}(t) &= \frac{1}{2\pi}\frac{d\theta_\text{FM}(t)}{dt}\\
@@ -327,17 +327,17 @@ W_m &= \text{max}(\text{frequencies in $\theta_\text{FM}(t)$...}) \\
 D &= \frac{\Delta f}{W_m}\\
 B_T &= 2(D+1)W_m
 \end{align*}
-```
+$$
 
 ### Complex envelope
 
-```math
+$$
 \begin{align*}
     s(t)&=A_c\cos(2\pi f_c t+\beta\sin(2\pi f_m t)) \Leftrightarrow \tilde{s}(t) = A_c\exp(j\beta\sin(2\pi f_m t))\\
     s(t)&=\text{Re}[\tilde{s}(t)\exp{(j2\pi f_c t)}]\\
     \tilde{s}(t) &= A_c\sum_{n=-\infty}^{\infty}J_n(\beta)\exp(j2\pi f_m t)
 \end{align*}
-```
+$$
 
 ### Band
 
@@ -347,7 +347,7 @@ B_T &= 2(D+1)W_m
 
 ## Power, energy and autocorrelation
 
-```math
+$$
 \begin{align*}
     G_\text{WGN}(f)&=\frac{N_0}{2}\\
     G_x(f)&=|H(f)|^2G_w(f)\text{ (PSD)}\\
@@ -360,24 +360,24 @@ B_T &= 2(D+1)W_m
     E&=\int_{-\infty}^{\infty}|x(t)|^2dt=|X(f)|^2\\
     R_x(\tau) &= \mathfrak{F}(G_x(f))\quad\text{PSD to Autocorrelation}
 \end{align*}
-```
+$$
 
 ##
 
 ## Noise performance
 
-```math
+$$
 \begin{align*}
     \text{CNR}_\text{in} &= \frac{P_\text{in}}{P_\text{noise}}\\
     \text{CNR}_\text{in,FM} &= \frac{A^2}{2WN_0}\\
     \text{SNR}_\text{FM} &= \frac{3A^2k_f^2P}{2N_0W^3}\\
     \text{SNR(dB)} &= 10\log_{10}(\text{SNR}) \quad\text{Decibels from ratio}
 \end{align*}
-```
+$$
 
 ## Sampling
 
-```math
+$$
 \begin{align*}
     t&=nT_s\\
     T_s&=\frac{1}{f_s}\\
@@ -385,7 +385,7 @@ B_T &= 2(D+1)W_m
     X_s(f)&=X(f)*\sum_{n\in\mathbb{Z}}\delta\left(f-\frac{n}{T_s}\right)=X(f)*\sum_{n\in\mathbb{Z}}\delta\left(f-n f_s\right)\\
     B&>\frac{1}{2}f_s, 2B>f_s\rightarrow\text{Aliasing}\\
 \end{align*}
-```
+$$
 
 ### Procedure to reconstruct sampled signal
 
@@ -407,21 +407,21 @@ Required for some questions on **sampling**:
 
 Transform a continuous time-periodic signal $x_p(t)=\sum_{n=-\infty}^\infty x(t-nT_s)$ with period $T_s$:
 
-```math
+$$
 X_p(f)=\sum_{n=-\infty}^\infty C_n\delta(f-nf_s)\quad f_s=\frac{1}{T_s}
-```
+$$
 
 Calculate $C_n$ coefficient as follows from $x_p(t)$:
 
 <!-- Remember $X_p(f)\leftrightarrow x_p(t)$ and **NOT** $\color{red}X_p(f)\leftrightarrow x_p(t-nT_s)$ -->
 
-```math
+$$
 \begin{align*}
     % C_n&=X_p(nf_s)\\
     C_n&=\frac{1}{T_s} \int_{T_s} x_p(t)\exp(-j2\pi f_s t)dt\\
        &=\frac{1}{T_s} X(nf_s)\quad\color{red}\text{(TODO: Check)}\quad\color{white}\text{$x(t-nT_s)$ is contained in the interval $T_s$}
 \end{align*}
-```
+$$
 
 <!-- Reconstruct from $\bar{X_s}(f)$ within the range $[-f_s/2,f_s/2]$ -->
 
@@ -440,15 +440,15 @@ Cannot add directly due to copyright!
 
 ## Quantizer
 
-```math
+$$
 \begin{align*}
     \Delta &= \frac{x_\text{Max}-x_\text{Min}}{2^k} \quad\text{for $k$-bit quantizer (V/lsb)}\\
 \end{align*}
-```
+$$
 
 ### Quantization noise
 
-```math
+$$
 \begin{align*}
     e &:= y-x\quad\text{Quantization error}\\
     \mu_E &= E[E] = 0\quad\text{Zero mean}\\
@@ -456,7 +456,7 @@ Cannot add directly due to copyright!
     \text{SQNR}&=\frac{\text{Signal power}}{\text{Quantization noise}}\\
     \text{SQNR(dB)}&=10\log_{10}(\text{SQNR})
 \end{align*}
-```
+$$
 
 ### Insert here figure 8.17 from M F Mesiya - Contemporary Communication Systems (Add image to `assets/img/2024-10-29-Idiots-guide-to-ELEC/quantizer.png`)
 
@@ -468,7 +468,7 @@ Cannot add directly due to copyright!
 
 ![binary_codes](/assets/img/2024-10-29-Idiots-guide-to-ELEC/Line_Codes.drawio.svg)
 
-```math
+$$
 \begin{align*}
     R_b&\rightarrow\text{Bit rate}\\
     D&\rightarrow\text{Symbol rate | }R_d\text{ | }1/T_b\\
@@ -482,7 +482,7 @@ Cannot add directly due to copyright!
     G_\text{unipolarNRZ}(f)&=\frac{A^2}{4R_b}\left(\text{sinc}^2\left(\frac{f}{R_b}\right)+R_b\delta(f)\right)\\
     G_\text{unipolarRZ}(f)&=\frac{A^2}{16} \left(\sum _{l=-\infty }^{\infty } \delta \left(f-\frac{l}{T_b}\right) \left| \text{sinc}(\text{duty} \times l) \right| {}^2+T_b \left| \text{sinc}\left(\text{duty} \times f T_b\right) \right| {}^2\right), \text{NB}_0=2R_b
 \end{align*}
-```
+$$
 
 ## Modulation and basis functions
 
@@ -492,27 +492,27 @@ Cannot add directly due to copyright!
 
 #### Basis functions
 
-```math
+$$
 \begin{align*}
     \varphi_1(t) &= \sqrt{\frac{2}{T_b}}\cos(2\pi f_c t)\quad0\leq t\leq T_b\\
 \end{align*}
-```
+$$
 
 #### Symbol mapping
 
-```math
+$$
 b_n:\{1,0\}\to a_n:\{1,0\}
-```
+$$
 
 #### 2 possible waveforms
 
-```math
+$$
 \begin{align*}
     s_1(t)&=A_c\sqrt{\frac{T_b}{2}}\varphi_1(t)=\sqrt{2E_b}\varphi_1(t)\\
     s_1(t)&=0\\
     &\text{Since $E_b=E_\text{average}=\frac{1}{2}(\frac{ {A_c}^2}{2}\times T_b + 0)=\frac{ {A_c}^2}{4}T_b$}
 \end{align*}
-```
+$$
 
 Distance is $d=\sqrt{2E_b}$
 
@@ -520,27 +520,27 @@ Distance is $d=\sqrt{2E_b}$
 
 #### Basis functions
 
-```math
+$$
 \begin{align*}
     \varphi_1(t) &= \sqrt{\frac{2}{T_b}}\cos(2\pi f_c t)\quad0\leq t\leq T_b\\
 \end{align*}
-```
+$$
 
 #### Symbol mapping
 
-```math
+$$
 b_n:\{1,0\}\to a_n:\{1,\color{green}-1\color{white}\}
-```
+$$
 
 #### 2 possible waveforms
 
-```math
+$$
 \begin{align*}
     s_1(t)&=A_c\sqrt{\frac{T_b}{2}}\varphi_1(t)=\sqrt{E_b}\varphi_1(t)\\
     s_1(t)&=-A_c\sqrt{\frac{T_b}{2}}\varphi_1(t)=-\sqrt{E_b}\varphi_2(t)\\
     &\text{Since $E_b=E_\text{average}=\frac{1}{2}(\frac{ {A_c}^2}{2}\times T_b + \frac{ {A_c}^2}{2}\times T_b)=\frac{ {A_c}^2}{2}T_b$}
 \end{align*}
-```
+$$
 
 Distance is $d=2\sqrt{E_b}$
 
@@ -548,45 +548,45 @@ Distance is $d=2\sqrt{E_b}$
 
 #### Basis functions
 
-```math
+$$
 \begin{align*}
     T &= 2 T_b\quad\text{Time per symbol for two bits $T_b$}\\
     \varphi_1(t) &= \sqrt{\frac{2}{T}}\cos(2\pi f_c t)\quad0\leq t\leq T\\
     \varphi_2(t) &= \sqrt{\frac{2}{T}}\sin(2\pi f_c t)\quad0\leq t\leq T\\
 \end{align*}
-```
+$$
 
 ### 4 possible waveforms
 
-```math
+$$
 \begin{align*}
     s_1(t)&=\sqrt{E_s/2}\left[\varphi_1(t)+\varphi_2(t)\right]\\
     s_2(t)&=\sqrt{E_s/2}\left[\varphi_1(t)-\varphi_2(t)\right]\\
     s_3(t)&=\sqrt{E_s/2}\left[-\varphi_1(t)+\varphi_2(t)\right]\\
     s_4(t)&=\sqrt{E_s/2}\left[-\varphi_1(t)-\varphi_2(t)\right]\\
 \end{align*}
-```
+$$
 
 Note on energy per symbol: Since $|s_i(t)|=A_c$, have to normalize distance as follows:
 
-```math
+$$
 \begin{align*}
     s_i(t)&=A_c\sqrt{T/2}/\sqrt{2}\times\left[\alpha_{1i}\varphi_1(t)+\alpha_{2i}\varphi_2(t)\right]\\
           &=\sqrt{T{A_c}^2/4}\left[\alpha_{1i}\varphi_1(t)+\alpha_{2i}\varphi_2(t)\right]\\
           &=\sqrt{E_s/2}\left[\alpha_{1i}\varphi_1(t)+\alpha_{2i}\varphi_2(t)\right]\\
 \end{align*}
-```
+$$
 
 #### Signal
 
-```math
+$$
 \begin{align*}
     \text{Symbol mapping: }& \left\{1,0\right\}\to\left\{1,-1\right\}\\
     I(t) &= b_{2n}\varphi_1(t)\quad\text{Even bits}\\
     Q(t) &= b_{2n+1}\varphi_2(t)\quad\text{Odd bits}\\
     x(t) &= A_c[I(t)\cos(2\pi f_c t)-Q(t)\sin(2\pi f_c t)]
 \end{align*}
-```
+$$
 
 ### Example of waveform
 
@@ -632,20 +632,20 @@ Remember that $T=2T_b$
 
 Find transfer function $h(t)$ of matched filter and apply to an input:
 
-```math
+$$
 \begin{align*}
     h(t)&=s_1(T-t)-s_2(T-t)\\
     h(t)&=s^*(T-t) \qquad\text{((.)* is the conjugate)}\\
     s_{on}(t)&=h(t)*s_n(t)=\int_\infty^\infty h(\tau)s_n(t-\tau)d\tau\quad\text{Filter output}\\
     n_o(t)&=h(t)*n(t)\quad\text{Noise at filter output}
 \end{align*}
-```
+$$
 
 ### 2. Bit error rate
 
 Bit error rate (BER) from matched filter outputs and filter output noise
 
-```math
+$$
 \begin{align*}
     % H_\text{opt}(f)&=\max_{H(f)}\left(\frac{s_{o1}-s_{o2}}{2\sigma_o}\right)
 
@@ -660,7 +660,7 @@ Bit error rate (BER) from matched filter outputs and filter output noise
     \text{BER}_\text{unipolarNRZ|BASK}&=Q\left(\sqrt{\frac{d^2}{N_0}}\right)=Q\left(\sqrt{\frac{E_b}{N_0}}\right)\\
     \text{BER}_\text{polarNRZ|BPSK}&=Q\left(\sqrt{\frac{2d^2}{N_0}}\right)=Q\left(\sqrt{\frac{2E_b}{N_0}}\right)\\
 \end{align*}
-```
+$$
 
 <div style="page-break-after: always;"></div>
 
@@ -745,7 +745,7 @@ Adapted from table 6.1 M F Mesiya - Contemporary Communication Systems
 
 ### Receiver output shit
 
-```math
+$$
 \begin{align*}
     r_o(t)&=\begin{cases}
         s_{o1}(t)+n_o(t) & \text{code 1}\\
@@ -753,14 +753,14 @@ Adapted from table 6.1 M F Mesiya - Contemporary Communication Systems
     \end{cases}\\
     n&: \text{AWGN with }\sigma_o^2\\
 \end{align*}
-```
+$$
 
 <!--
-```math
+$$
 \begin{align*}
     G_x(f)
 \end{align*}
-``` -->
+$$ -->
 
 ## ISI, channel model
 
@@ -770,22 +770,22 @@ TODO:
 
 ### Nomenclature
 
-```math
+$$
 \begin{align*}
     D&\rightarrow\text{Symbol Rate, Max. Signalling Rate}\\
     T&\rightarrow\text{Symbol Duration}\\
     M&\rightarrow\text{Symbol set size}\\
     W&\rightarrow\text{Bandwidth}\\
 \end{align*}
-```
+$$
 
 ### Raised cosine (RC) pulse
 
 ![Raised cosine pulse](/assets/img/2024-10-29-Idiots-guide-to-ELEC/RC.drawio.svg)
 
-```math
+$$
 0\leq\alpha\leq1
-```
+$$
 
 ⚠ NOTE might not be safe to assume $T'=T$, if you can solve the question without $T$ then use that method.
 
@@ -802,35 +802,35 @@ To solve this type of question:
 
 #### Symbol set size $M$
 
-```math
+$$
 \begin{align*}
     D\text{ symbol/s}&=\frac{2W\text{ Hz}}{1+\alpha}\\
     R_b\text{ bit/s}&=(D\text{ symbol/s})\times(k\text{ bit/symbol})\\
     M\text{ symbol/set}&=2^k\\
     E_b&=PT=P_\text{av}/R_b\quad\text{Energy per bit}\\
 \end{align*}
-```
+$$
 
 ### Nyquist stuff
 
 #### TODO: Condition for 0 ISI
 
-```math
+$$
 P_r(kT)=\begin{cases}
     1 & k=0\\
     0 & k\neq0
 \end{cases}
-```
+$$
 
 #### Other
 
-```math
+$$
 \begin{align*}
     \text{Excess BW}&=B_\text{abs}-B_\text{Nyquist}=\frac{1+\alpha}{2T}-\frac{1}{2T}=\frac{\alpha}{2T}\quad\text{FOR NRZ (Use correct $B_\text{abs}$)}\\
     \alpha&=\frac{\text{Excess BW}}{B_\text{Nyquist}}=\frac{B_\text{abs}-B_\text{Nyquist}}{B_\text{Nyquist}}\\
     T&=1/D
 \end{align*}
-```
+$$
 
 ### Table of bandpass signalling and BER
 
@@ -866,7 +866,7 @@ Adapted from table 11.4 M F Mesiya - Contemporary Communication Systems
 
 ### Entropy for discrete random variables
 
-```math
+$$
 \begin{align*}
     H(x) &\geq 0\\
     H(x) &= -\sum_{x_i\in A_x} p_X(x_i) \log_2(p_X(x_i))\\
@@ -878,7 +878,7 @@ Adapted from table 11.4 M F Mesiya - Contemporary Communication Systems
     H(x|y) &= H(x,y)-H(y)\\
     H(x,y) &= H(x) + H(y|x) = H(y) + H(x|y)\\
 \end{align*}
-```
+$$
 
 Entropy is **maximized** when all have an equal probability.
 
@@ -886,37 +886,37 @@ Entropy is **maximized** when all have an equal probability.
 
 TODO: Cut out if not required
 
-```math
+$$
 \begin{align*}
     h(x) &= -\int_\mathbb{R}f_X(x)\log_2(f_X(x))dx
 \end{align*}
-```
+$$
 
 ### Mutual information
 
 Amount of entropy decrease of $x$ after observation by $y$.
 
-```math
+$$
 \begin{align*}
     I(x;y) &= H(x)-H(x|y)=H(y)-H(y|x)\\
 \end{align*}
-```
+$$
 
 ### Channel model
 
 Vertical, $x$: input\
 Horizontal, $y$: output
 
-```math
+$$
 \mathbf{P}=\left[\begin{matrix}
     p_{11} & p_{12} &\dots & p_{1N}\\
     p_{21} & p_{22} &\dots & p_{2N}\\
     \vdots & \vdots &\ddots & \vdots\\
     p_{M1} & p_{M2} &\dots & p_{MN}\\
 \end{matrix}\right]
-```
+$$
 
-```math
+$$
 \begin{array}{c|cccc}
     P(y_j|x_i)& y_1 & y_2 & \dots & y_N \\\hline
     x_1 & p_{11} & p_{12} & \dots & p_{1N} \\
@@ -924,7 +924,7 @@ Horizontal, $y$: output
     \vdots & \vdots & \vdots & \ddots & \vdots \\
     x_M & p_{M1} & p_{M2} & \dots & p_{MN} \\
 \end{array}
-```
+$$
 
 Input has probability distribution $p_X(a_i)=P(X=a_i)$
 
@@ -932,17 +932,17 @@ Channel maps alphabet $`\{a_1,\dots,a_M\} \to \{b_1,\dots,b_N\}`$
 
 Output has probabiltiy distribution $p_Y(b_j)=P(y=b_j)$
 
-```math
+$$
 \begin{align*}
     p_Y(b_j) &= \sum_{i=1}^{M}P[x=a_i,y=b_j]\quad 1\leq j\leq N \\
         &= \sum_{i=1}^{M}P[X=a_i]P[Y=b_j|X=a_i]\\
        [\begin{matrix}p_Y(b_0)&p_Y(b_1)&\dots&p_Y(b_j)\end{matrix}] &= [\begin{matrix}p_X(a_0)&p_X(a_1)&\dots&p_X(a_i)\end{matrix}]\times\mathbf{P}
 \end{align*}
-```
+$$
 
 #### Fast procedure to calculate $I(y;x)$
 
-```math
+$$
 \begin{align*}
     &\text{1. Find }H(x)\\
     &\text{2. Find }[\begin{matrix}p_Y(b_0)&p_Y(b_1)&\dots&p_Y(b_j)\end{matrix}] = [\begin{matrix}p_X(a_0)&p_X(a_1)&\dots&p_X(a_i)\end{matrix}]\times\mathbf{P}\\
@@ -951,7 +951,7 @@ Output has probabiltiy distribution $p_Y(b_j)=P(y=b_j)$
     &\text{5. Find }H(x|y)=H(x,y)-H(y)\\
     &\text{6. Find }I(y;x)=H(x)-H(x|y)\\
 \end{align*}
-```
+$$
 
 ### Channel types
 
@@ -962,7 +962,7 @@ Output has probabiltiy distribution $p_Y(b_j)=P(y=b_j)$
 
 #### Channel capacity of weakly symmetric channel
 
-```math
+$$
 \begin{align*}
     C &\to\text{Channel capacity (bits/channels used)}\\
     N &\to\text{Output alphabet size}\\
@@ -970,30 +970,30 @@ Output has probabiltiy distribution $p_Y(b_j)=P(y=b_j)$
     C &= \log_2(N)-H(\mathbf{p})\quad\text{Capacity for weakly symmetric and symmetric channels}\\
     R &< C \text{ for error-free transmission}
 \end{align*}
-```
+$$
 
 #### Channel capacity of an AWGN channel
 
-```math
+$$
 y_i=x_i+n_i\quad n_i\thicksim N(0,N_0/2)
-```
+$$
 
-```math
+$$
 C=\frac{1}{2}\log_2\left(1+\frac{P_\text{av}}{N_0/2}\right)
-```
+$$
 
 #### Channel capacity of a bandwidth AWGN channel
 
 Note: Define XOR ($\oplus$) as exclusive OR, or modulo-2 addition.
 
-```math
+$$
 \begin{align*}
     P_s&\to\text{Bandwidth limited average power}\\
     y_i&=\text{bandpass}_W(x_i)+n_i\quad n_i\thicksim N(0,N_0/2)\\
     C&=W\log_2\left(1+\frac{P_s}{N_0 W}\right)\\
     C&=W\log_2(1+\text{SNR})\quad\text{SNR}=P_s/(N_0 W)
 \end{align*}
-```
+$$
 
 ## Channel code
 
@@ -1022,7 +1022,7 @@ For a linear block code, $d_\text{min}=w_\text{min}$
 
 Each generator vector is a binary string of size $n$. There are $k$ generator vectors in $\mathbf{G}$.
 
-```math
+$$
 \begin{align*}
 \mathbf{g}_i&=[\begin{matrix}
     g_{i,0}& \dots & g_{i,n-2} & g_{i,n-1}
@@ -1040,11 +1040,11 @@ Each generator vector is a binary string of size $n$. There are $k$ generator ve
     g_{k-1,0}& \dots & g_{k-1,n-2} & g_{k-1,n-1}\\
 \end{matrix}\right]
 \end{align*}
-```
+$$
 
 A message block $\mathbf{m}$ is coded as $\mathbf{x}$ using the generation codewords in $\mathbf{G}$:
 
-```math
+$$
 \begin{align*}
 \mathbf{m}&=[\begin{matrix}
     m_{0}& \dots & m_{n-2} & m_{k-1}
@@ -1052,13 +1052,13 @@ A message block $\mathbf{m}$ is coded as $\mathbf{x}$ using the generation codew
 \color{darkgray}\mathbf{m}&\color{darkgray}=[101001]\quad\text{Example for $k=6$}\\
 \mathbf{x} &= \mathbf{m}\mathbf{G}=m_0\mathbf{g}_0+m_1\mathbf{g}_1+\dots+m_{k-1}\mathbf{g}_{k-1}
 \end{align*}
-```
+$$
 
 ### Systemic linear block code
 
 Contains $k$ message bits (Copy $\mathbf{m}$ as-is) and $(n-k)$ parity bits after the message bits.
 
-```math
+$$
 \begin{align*}
 \mathbf{G}&=\begin{array}{c|c}[\mathbf{I}_k & \mathbf{P}]\end{array}=\left[
     \begin{array}{c|c}
@@ -1081,13 +1081,13 @@ Contains $k$ message bits (Copy $\mathbf{m}$ as-is) and $(n-k)$ parity bits afte
 \mathbf{x} &= \mathbf{m}\mathbf{G}= \mathbf{m} \begin{array}{c|c}[\mathbf{I}_k & \mathbf{P}]\end{array}=\begin{array}{c|c}[\mathbf{mI}_k & \mathbf{mP}]\end{array}=\begin{array}{c|c}[\mathbf{m} & \mathbf{b}]\end{array}\\
 \mathbf{b} &= \mathbf{m}\mathbf{P}\quad\text{Parity bits of $\mathbf{x}$}
 \end{align*}
-```
+$$
 
 #### Parity check matrix $\mathbf{H}$
 
 Transpose $\mathbf{P}$ for the parity check matrix
 
-```math
+$$
 \begin{align*}
 \mathbf{H}&=\begin{array}{c|c}[\mathbf{P}^\text{T} & \mathbf{I}_{n-k}]\end{array}\\
 &=\left[
@@ -1114,7 +1114,7 @@ Transpose $\mathbf{P}$ for the parity check matrix
 \end{matrix}\end{array}\right]\\
 \mathbf{xH}^\text{T}&=\mathbf{0}\implies\text{Codeword is valid}
 \end{align*}
-```
+$$
 
 #### Procedure to find parity check matrix from list of codewords
 
@@ -1125,7 +1125,7 @@ Transpose $\mathbf{P}$ for the parity check matrix
 
 Example:
 
-```math
+$$
 \begin{array}{cccc}
     x_1 & x_2 & x_3 & x_4 & x_5 \\\hline
     \color{magenta}1&\color{magenta}0&1&1&0\\
@@ -1133,11 +1133,11 @@ Example:
     \color{magenta}0&\color{magenta}0&0&0&0\\
     \color{magenta}1&\color{magenta}1&0&0&1\\
 \end{array}
-```
+$$
 
 Set $x_1,x_2$ as information bits. Express $x_3,x_4,x_5$ in terms of $x_1,x_2$.
 
-```math
+$$
 \begin{align*}
 \begin{aligned}
     x_3 &= x_1\oplus x_2\\
@@ -1165,7 +1165,7 @@ Set $x_1,x_2$ as information bits. Express $x_3,x_4,x_5$ in terms of $x_1,x_2$.
     0 & 0 & 1\\
 \end{matrix}\end{array}\right]
 \end{align*}
-```
+$$
 
 #### Error detection and correction
 
