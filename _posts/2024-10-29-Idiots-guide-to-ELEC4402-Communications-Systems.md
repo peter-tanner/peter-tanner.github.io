@@ -16,7 +16,7 @@ If you have issues or suggestions, [raise them on GitHub](https://github.com/pet
 
 It is recommended to refer to use [the PDF copy](https://raw.githubusercontent.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/refs/heads/master/README.pdf) instead of this webpage for offline viewing/printing.
 
-## License and information
+### License and information
 
 Notes are open-source and licensed under the GNU GPL-3.0. **You must include the [full-text of the license](https://github.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/blob/master/COPYING.txt) and follow its terms when using these notes or any diagrams in derivative works** (but not when printing as notes)
 
@@ -40,6 +40,41 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 </details>
+
+## Other advice for this unit
+
+### Get more exam papers on OneSearch
+
+- You can access up to **6** more papers with this method (You normally only get the previous year's paper on LMS in week 12).
+- Either [search "Communications" and filter by type "Examination Papers"](https://onesearch.library.uwa.edu.au/discovery/search?query=any%2Ccontains%2Ccommunications&tab=Everything&search_scope=MyInst_and_CI&vid=61UWA_INST%3AUWA&facet=rtype%2Cinclude%2Cexampaper&lang=en&offset=0)
+- Or search old unit codes
+  - ELEC4301 Digital Communications and Networking
+  - ENGT4301 Digital Communications and Networking
+  - ELEC3302 Communications Systems
+  - Note that ELEC5501 Advanced Communications is a different unit.
+
+<details>
+<summary>Listing of examination papers on OneSearch</summary>
+<ul>
+<li>Communications Systems ELEC3302 Examination paper [2008 Supplementary]</li>
+<li>Communications Systems ELEC4402 Examination paper [2014 Semester 2]</li>
+<li>Communications Systems ELEC3302 Examination paper [2014 Semester 2]</li>
+<li>Communications Systems ELEC3302 Examination paper [2008 Semester 1]</li>
+<li>Digital Communications and Networking ENGT4301 Examination paper [2005 Supplementary]</li>
+<li>Digital Communications and Networking ELEC4301 Examination paper [2009 Supplementary]</li>
+</ul>
+</details>
+
+### Tests
+
+- A lot of the unit requires you to learn processes and apply them. This is quite time consuming to do during the semester and the marking of the tests will destroy your wam if you do not know the process (especially compared to signal processing and signals and systems), I do not recommend doing this unit during thesis year.
+- This formula sheet will attempt to condense all processes/formulas you may need in this unit.
+- **You do not get given a formula sheet**, so you are entirely dependent on your own notes (except for some exceptions, such as the $\text{erf}(x)$ table). So bring good notes.
+- Doing this unit after signal processing is a good idea.
+
+## Printable notes begins on next page (in PDF)
+
+<div style="page-break-after: always;"></div>
 
 ## Fourier transform identities
 
