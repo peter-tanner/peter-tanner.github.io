@@ -8,7 +8,7 @@ tags: [ELEC4402, communications systems, guide, formula sheet, datasheet, notes]
 math: true
 ---
 
-This unit allows you to bring infinite physical notes (except books borrowed from the UWA library) to all tests and the final exam. You can't rely on what material they provide in the test/exam, it is very _minimal_ to say the least. Hope this helps.
+These notes should provide a summary of all the formulas and procedures required to solve questions in the exam. This unit allows you to bring infinite physical notes (except books borrowed from the UWA library) to all tests and the final exam. You can't rely on what material they provide in the test/exam, it is very _minimal_ to say the least. Hope this helps.
 
 If you have issues or suggestions, [raise them on GitHub](https://github.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/issues/new). I accept [pull requests](https://github.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/pulls) for fixes or suggestions but the content must not be copyrighted under a non-GPL compatible license.
 
@@ -76,9 +76,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 <div style="page-break-after: always;"></div>
 
-## Fourier transform identities
+## Fourier transform identities and properties
 
-| **Time Function**                                                     | **Fourier Transform**                                                                                                                     |
+| Time domain $x(t)$                                                    | Frequency domain $X(f)$                                                                                                                   |
 | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | $\text{rect}\left(\frac{t}{T}\right)\quad\Pi\left(\frac{t}{T}\right)$ | $T \text{sinc}(fT)$                                                                                                                       |
 | $\text{sinc}(2Wt)$                                                    | $\frac{1}{2W}\text{rect}\left(\frac{f}{2W}\right)\quad\frac{1}{2W}\Pi\left(\frac{f}{2W}\right)$                                           |
@@ -89,20 +89,37 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 | $\delta(t)$                                                           | $1$                                                                                                                                       |
 | $1$                                                                   | $\delta(f)$                                                                                                                               |
 | $\delta(t - t_0)$                                                     | $\exp(-j2\pi f t_0)$                                                                                                                      |
-| $g(t-a)$                                                              | $\exp(-j2\pi fa)G(f)\quad\text{shift property}$                                                                                           |
-| $g(bt)$                                                               | $\frac{G(f/b)}{\|b\|}\quad\text{scaling property}$                                                                                        |
-| $g(bt-a)$                                                             | $\frac{1}{\|b\|}\exp(-j2\pi a(f/b))\cdot G(f/b)\quad\text{shift and scale}$                                                               |
-| $\frac{d}{dt}g(t)$                                                    | $j2\pi fG(f)\quad\text{differentiation property}$                                                                                         |
-| $G(t)$                                                                | $g(-f)\quad\text{duality property}$                                                                                                       |
-| $g(t)h(t)$                                                            | $G(f)*H(f)$                                                                                                                               |
-| $g(t)*h(t)$                                                           | $G(f)H(f)$                                                                                                                                |
 | $\exp(j2\pi f_c t)$                                                   | $\delta(f - f_c)$                                                                                                                         |
 | $\cos(2\pi f_c t)$                                                    | $\frac{1}{2}[\delta(f - f_c) + \delta(f + f_c)]$                                                                                          |
+| $\cos(2\pi f_c t+\theta)$                                             | $\frac{1}{2}[\delta(f - f_c)\exp(j\theta) + \delta(f + f_c)\exp(-j\theta)]\quad\text{Use for coherent recv.}$                             |
 | $\sin(2\pi f_c t)$                                                    | $\frac{1}{2j} [\delta(f - f_c) - \delta(f + f_c)]$                                                                                        |
+| $\sin(2\pi f_c t+\theta)$                                             | $\frac{1}{2j} [\delta(f - f_c)\exp(j\theta) - \delta(f + f_c)\exp(-j\theta)]$                                                             |
 | $\text{sgn}(t)$                                                       | $\frac{1}{j\pi f}$                                                                                                                        |
 | $\frac{1}{\pi t}$                                                     | $-j \text{sgn}(f)$                                                                                                                        |
 | $u(t)$                                                                | $\frac{1}{2} \delta(f) + \frac{1}{j2\pi f}$                                                                                               |
 | $\sum_{n=-\infty}^{\infty} \delta(t - nT_0)$                          | $\frac{1}{T_0} \sum_{n=-\infty}^{\infty} \delta\left(f - \frac{n}{T_0}\right)=f_0 \sum_{n=-\infty}^{\infty} \delta\left(f - n f_0\right)$ |
+
+| Time domain $x(t)$                       | Frequency domain $X(f)$                          | Property                      |
+| ---------------------------------------- | ------------------------------------------------ | ----------------------------- |
+| $g(t-a)$                                 | $\exp(-j2\pi fa)G(f)$                            | Time shifting                 |
+| $\exp(-j2\pi f_c t)g(t)$                 | $G(f-f_c)$                                       | Frequency shifting            |
+| $g(bt)$                                  | $\frac{G(f/b)}{\|b\|}$                           | Time scaling                  |
+| $g(bt-a)$                                | $\frac{1}{\|b\|}\exp(-j2\pi a(f/b))\cdot G(f/b)$ | Time scaling and shifting     |
+| $\frac{d}{dt}g(t)$                       | $j2\pi fG(f)\quad$                               | Differentiation wrt time      |
+| $tg(t)$                                  | $\frac{1}{2\pi}\frac{d}{df}G(f)\quad$            | Differentiation wrt frequency |
+| $g^*(t)$                                 | $G^*(-f)$                                        | Conjugate functions           |
+| $G(t)$                                   | $g(-f)$                                          | Duality                       |
+| $\int_{-\infty}^t g(\tau)d\tau$          | $\frac{1}{j2\pi f}G(f)+\frac{G(0)}{2}\delta(f)$  | Integration wrt time          |
+| $g(t)h(t)$                               | $G(f)*H(f)$                                      | Time multiplication           |
+| $g(t)*h(t)$                              | $G(f)H(f)$                                       | Time convolution              |
+| $ag(t)+bh(t)$                            | $aG(f)+bH(f)$                                    | Linearity $a,b$ constants     |
+| $\int_{-\infty}^\infty x(t)y^*(t)dt$     | $\int_{-\infty}^\infty X(f)Y^*(f)df$             | Parseval's theorem            |
+| $E_x=\int_{-\infty}^\infty \|x(t)\|^2dt$ | $E_x=\int_{-\infty}^\infty \|X(f)\|^2df$         | Parseval's theorem            |
+
+| Description                         | Property          |
+| ----------------------------------- | ----------------- |
+| $g(0)=\int_{-\infty}^\infty G(f)df$ | Area under $G(f)$ |
+| $G(0)=\int_{-\infty}^\infty G(t)dt$ | Area under $g(t)$ |
 
 $$
 \begin{align*}
@@ -302,11 +319,13 @@ $$
 $$
 \begin{align*}
     s(t) &= A_c\cos\left[2\pi f_c t + k_p m(t)\right]\quad\text{Phase modulated (PM)}\\
-    s(t) &= A_c\cos\left[2\pi f_c t + 2 \pi k_f \int_0^t m(\tau) d\tau\right]\quad\text{Frequency modulated (FM)}\\
+    s(t) &= A_c\cos(\theta_i(t))=A_c\cos\left[2\pi f_c t + 2 \pi k_f \int_{-\infty}^t m(\tau) d\tau\right]\quad\text{Frequency modulated (FM)}\\
     s(t) &= A_c\cos\left[2\pi f_c t + \beta \sin(2\pi f_m t)\right]\quad\text{FM single tone}\\
-    \beta&=\frac{\Delta f}{f_m}=k_f A_m\quad\text{Modulation index}\\
+    f_i(t) &= \frac{1}{2\pi}\frac{d}{dt}\theta_i(t)\quad\text{Instantaneous frequency from instantaneous phase}\\
     \Delta f&=\beta f_m=k_f A_m f_m = \max_t(k_f m(t))- \min_t(k_f m(t))\quad\text{Maximum frequency deviation}\\
-    D&=\frac{\Delta f}{W_m}\quad\text{Deviation ratio, where $W_m$ is bandwidth of $m(t)$ (Use FT)}
+    \Delta f&=\max_t(f_i(t))- \min_t(f_i(t))\quad\text{Maximum frequency deviation}\\
+    \beta&=\frac{\Delta f}{f_m}=k_f A_m\quad\text{Modulation index}\\
+    D&=\frac{\Delta f}{W_m}\quad\text{Deviation ratio, where $W_m$ is bandwidth of $m(t)$ (Use FT)}\\
 \end{align*}
 $$
 
@@ -344,25 +363,6 @@ B &= \begin{cases}
 \end{align*}
 $$
 
-#### $\Delta f$ of arbitrary modulating signal
-
-Find instantaneous frequency $f_\text{FM}$.
-
-$M$: Number of **pairs** of significant sidebands
-
-$$
-\begin{align*}
-s(t)&=A_c\cos(\theta_\text{FM}(t))\\
-f_\text{FM}(t) &= \frac{1}{2\pi}\frac{d\theta_\text{FM}(t)}{dt}\\
-A_m &= \max_t|m(t)|\\
-\Delta f &= \max_t(f_\text{FM}(t)) - f_c\\
-W_m &= \text{max}(\text{frequencies in $\theta_\text{FM}(t)$...}) \\
-\text{Example: }&\text{sinc}(At+t)+2\cos(2\pi t)=\frac{\sin(2\pi((At+t)/2))}{\pi(At+t)}+2\cos(2\pi t)\to W_m=\max\left(\frac{A+1}{2},1\right)\\
-D &= \frac{\Delta f}{W_m}\\
-B_T &= 2(D+1)W_m
-\end{align*}
-$$
-
 ### Complex envelope
 
 $$
@@ -388,10 +388,10 @@ $$
     G_x(f)&=G(f)G_w(f)\text{ (PSD)}\\
     G_x(f)&=\lim_{T\to\infty}\frac{|X_T(f)|^2}{T}\text{ (PSD)}\\
     G_x(f)&=\mathfrak{F}[R_x(\tau)]\text{ (WSS)}\\
-    P&=\sigma^2=\int_\mathbb{R}G_x(f)df\\
-    P&=\sigma^2=\lim_{t\to\infty}\frac{1}{T}\int_{-T/2}^{T/2}|x(t)|^2dt\\
+    P_x&={\sigma_x}^2=\int_\mathbb{R}G_x(f)df\quad\text{For zero mean}\\
+    P_x&={\sigma_x}^2=\lim_{t\to\infty}\frac{1}{T}\int_{-T/2}^{T/2}|x(t)|^2dt\quad\text{For zero mean}\\
     P[A\cos(2\pi f t+\phi)]&=\frac{A^2}{2}\quad\text{Power of sinusoid }\\
-    E&=\int_{-\infty}^{\infty}|x(t)|^2dt=|X(f)|^2\\
+    E_x&=\int_{-\infty}^{\infty}|x(t)|^2dt=\int_{-\infty}^{\infty}|X(f)|^2df\quad\text{Parseval's theorem}\\
     R_x(\tau) &= \mathfrak{F}(G_x(f))\quad\text{PSD to Autocorrelation}
 \end{align*}
 $$
@@ -399,6 +399,28 @@ $$
 ##
 
 ## Noise performance
+
+Coherent detection system.
+
+$$
+\begin{align*}
+    y(t) &= m(t)\cos(2\pi f_c t+\theta) = m(t)\cos^2(2\pi f_c t+\theta)\text{ After IF mixing.}\\
+         &= m(t)\frac{1}{2}(1+\cos(4 f_c t+2\theta))\\
+         &= \frac{1}{2}m(t)+\frac{1}{2}\cos(4 f_c t+2\theta)\\
+    \implies S_u(f) &= \left(\frac{1}{2}\right)^2S_u(f)\quad\text{After LPF.}
+\end{align*}
+$$
+
+Use formualas from previous section, [Power, energy and autocorrelation](#power-energy-and-autocorrelation).\
+Use these formulas in particular:
+
+$$
+\begin{align*}
+    G_\text{WGN}(f)&=\frac{N_0}{2}\\
+    G_x(f)&=|H(f)|^2G_w(f)&\text{Note the square in $|H(f)|^2$}\\
+    P_x&={\sigma_x}^2=\int_\mathbb{R}G_x(f)df&\text{Often perform graphical integration}\\
+\end{align*}
+$$
 
 $$
 \begin{align*}
@@ -663,7 +685,8 @@ Remember that $T=2T_b$
 
 ### 1. Filter function
 
-Find transfer function $h(t)$ of matched filter and apply to an input:
+Find transfer function $h(t)$ of matched filter and apply to an input:\
+Note that $x(T-t)$ is equivalent to horizontally flipping $x(t)$ around $x=T/2$.
 
 $$
 \begin{align*}
@@ -674,7 +697,7 @@ $$
 \end{align*}
 $$
 
-### 2. Bit error rate
+### 2. Bit error rate of matched filter
 
 Bit error rate (BER) from matched filter outputs and filter output noise
 
@@ -785,18 +808,40 @@ $$
 \end{align*}
 $$
 
+
 <!--
 $$
 \begin{align*}
     G_x(f)
 \end{align*}
-$$ -->
+``` -->
 
 ## ISI, channel model
 
+### Raised cosine (RC) pulse
+
+![Raised cosine pulse](/assets/img/2024-10-29-Idiots-guide-to-ELEC/RC.drawio.svg)
+
+$$
+0\leq\alpha\leq1
+$$
+
+⚠ NOTE might not be safe to assume $T'=T$, if you can solve the question without $T$ then use that method.
+
 ### Nyquist criterion for zero ISI
 
-TODO:
+<!-- P_r(kT)=\begin{cases}
+    1 & k=0\\
+    0 & k\neq0
+\end{cases} -->
+
+$$
+\begin{align*}
+    D &> 2W\quad\text{Use $W$ from table below depending on modulation scheme.}\\
+    B_\text{Nyquist} &= \frac{W}{1+\alpha}\\
+    \alpha&=\frac{\text{Excess BW}}{B_\text{Nyquist}}=\frac{B_\text{abs}-B_\text{Nyquist}}{B_\text{Nyquist}}\\
+\end{align*}
+$$
 
 ### Nomenclature
 
@@ -809,56 +854,27 @@ $$
 \end{align*}
 $$
 
-### Raised cosine (RC) pulse
-
-![Raised cosine pulse](/assets/img/2024-10-29-Idiots-guide-to-ELEC/RC.drawio.svg)
-
-$$
-0\leq\alpha\leq1
-$$
-
-⚠ NOTE might not be safe to assume $T'=T$, if you can solve the question without $T$ then use that method.
+### Bandwidth $W$ and bit error rate of modulation schemes
 
 To solve this type of question:
 
 1. Use the formula for $D$ below
 2. Consult the BER table below to get the BER which relates the noise of the channel $N_0$ to $E_b$ and to $R_b$.
 
-| Linear modulation ($M$-PSK, $M$-QAM)                | NRZ unipolar encoding                              |
+| Linear modulation                                   | Half                                               |
 | --------------------------------------------------- | -------------------------------------------------- |
+| BPSK, QPSK, $M$-PSK, $M$-QAM, ASK, FSK              | $M$-PAM, PAM                                       |
+| RZ unipolar, Manchester                             | NRZ Unipolar, NRZ Polar, Bipolar RZ                |
 | $W=B_\text{\color{green}abs-abs}$                   | $W=B_\text{\color{green}abs}$                      |
 | $W=B_\text{abs-abs}=\frac{1+\alpha}{T}=(1+\alpha)D$ | $W=B_\text{abs}=\frac{1+\alpha}{2T}=(1+\alpha)D/2$ |
 | $D=\frac{W\text{ symbol/s}}{1+\alpha}$              | $D=\frac{2W\text{ symbol/s}}{1+\alpha}$            |
 
-#### Symbol set size $M$
-
 $$
 \begin{align*}
-    D\text{ symbol/s}&=\frac{2W\text{ Hz}}{1+\alpha}\\
     R_b\text{ bit/s}&=(D\text{ symbol/s})\times(k\text{ bit/symbol})\\
     M\text{ symbol/set}&=2^k\\
+    T\text{ s/symbol}&=1/(D\text{ symbol/s})\\
     E_b&=PT=P_\text{av}/R_b\quad\text{Energy per bit}\\
-\end{align*}
-$$
-
-### Nyquist stuff
-
-#### TODO: Condition for 0 ISI
-
-$$
-P_r(kT)=\begin{cases}
-    1 & k=0\\
-    0 & k\neq0
-\end{cases}
-$$
-
-#### Other
-
-$$
-\begin{align*}
-    \text{Excess BW}&=B_\text{abs}-B_\text{Nyquist}=\frac{1+\alpha}{2T}-\frac{1}{2T}=\frac{\alpha}{2T}\quad\text{FOR NRZ (Use correct $B_\text{abs}$)}\\
-    \alpha&=\frac{\text{Excess BW}}{B_\text{Nyquist}}=\frac{B_\text{abs}-B_\text{Nyquist}}{B_\text{Nyquist}}\\
-    T&=1/D
 \end{align*}
 $$
 
@@ -924,6 +940,8 @@ $$
 
 ### Mutual information
 
+![Mutual information](/assets/img/2024-10-29-Idiots-guide-to-ELEC/MutualInformation.drawio.svg)
+
 Amount of entropy decrease of $x$ after observation by $y$.
 
 $$
@@ -958,7 +976,7 @@ $$
 
 Input has probability distribution $p_X(a_i)=P(X=a_i)$
 
-Channel maps alphabet $\{a_1,\dots,a_M\} \to \{b_1,\dots,b_N\}$
+Channel maps alphabet $`\{a_1,\dots,a_M\} \to \{b_1,\dots,b_N\}`$
 
 Output has probabiltiy distribution $p_Y(b_j)=P(y=b_j)$
 
@@ -998,7 +1016,7 @@ $$
     N &\to\text{Output alphabet size}\\
     \mathbf{p} &\to\text{Probability vector, any row of the transition matrix}\\
     C &= \log_2(N)-H(\mathbf{p})\quad\text{Capacity for weakly symmetric and symmetric channels}\\
-    R &< C \text{ for error-free transmission}
+    R_b &< C \text{ for error-free transmission}
 \end{align*}
 $$
 
@@ -1012,20 +1030,34 @@ $$
 C=\frac{1}{2}\log_2\left(1+\frac{P_\text{av}}{N_0/2}\right)
 $$
 
-#### Channel capacity of a bandwidth AWGN channel
-
-Note: Define XOR ($\oplus$) as exclusive OR, or modulo-2 addition.
+#### Channel capacity of a bandwidth limited AWGN channel
 
 $$
 \begin{align*}
     P_s&\to\text{Bandwidth limited average power}\\
     y_i&=\text{bandpass}_W(x_i)+n_i\quad n_i\thicksim N(0,N_0/2)\\
     C&=W\log_2\left(1+\frac{P_s}{N_0 W}\right)\\
-    C&=W\log_2(1+\text{SNR})\quad\text{SNR}=P_s/(N_0 W)
+    C&=W\log_2(1+\text{SNR})\\
+    \text{SNR}&=P_s/(N_0 W)
+\end{align*}
+$$
+
+#### Shannon limit
+
+$$
+\begin{align*}
+    R_b &< C\\
+    \implies R_b &< W\log_2\left(1+\frac{P_s}{N_0 W}\right)\quad\text{For bandwidth limited AWGN channel}\\
+    \frac{E_b}{N_0} &> \frac{2^\eta-1}{\eta}\quad\text{SNR per bit required for error-free transmission}\\
+    \eta &= \frac{R_b}{W}\quad\text{Spectral efficiency (bit/(s-Hz))}\\
+    \eta &\gg 1\quad\text{Bandwidth limited}\\
+    \eta &\ll 1\quad\text{Power limited}
 \end{align*}
 $$
 
 ## Channel code
+
+Note: Define XOR ($\oplus$) as exclusive OR, or modulo-2 addition.
 
 |                  |                                   |                                                                                                                              |
 | ---------------- | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -1045,8 +1077,7 @@ A linear block code must be a subspace and satisfy both:
 
 1. Zero vector must be present at least once
 2. The XOR of any codeword pair in the code must result in a codeword that is already present in the code table.
-
-For a linear block code, $d_\text{min}=w_\text{min}$
+3. $d_\text{min}=w_\text{min}$ (Implied by (1) and (2).)
 
 ### Code generation
 
