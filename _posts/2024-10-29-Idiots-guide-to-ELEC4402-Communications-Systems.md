@@ -2,17 +2,17 @@
 title: Idiot's guide to ELEC4402 Communications Systems
 author: peter
 date: 2024-10-29 16:11:34 +0800
-categories: [Guides, University]    # 0-2 categories. Blogging | Electronics | Programming | Mechanical | SelfHosting
+categories: [University, Guides]    # 0-2 categories. Blogging | Electronics | Programming | Mechanical | SelfHosting
 tags: [ELEC4402, communications systems, guide, formula sheet, datasheet, notes]   # 0-\infty. systems | embedded | rf | microwave | electronics | solidworks | automation | tip
 # image: assets/img/2024-10-29-Idiots-guide-to-ELEC/2024-10-29-Idiots-guide-to-ELEC/preview.png
 math: true
 ---
 
-These notes should provide a summary of all the formulas and procedures required to solve questions in the exam. This unit allows you to bring infinite physical notes (except books borrowed from the UWA library) to all tests and the final exam. You can't rely on what material they provide in the test/exam, it is very _minimal_ to say the least. Hope this helps.
+These notes should provide a printable summary of all the formulas and procedures required to solve questions in the exam and tests. This unit allows you to bring infinite physical notes (except books borrowed from the UWA library) to all tests and the final exam. You can't rely on what material they provide in the test/exam, it is very _minimal_ to say the least. Hope this helps.
 
 If you have issues or suggestions, [raise them on GitHub](https://github.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/issues/new). I accept [pull requests](https://github.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/pulls) for fixes or suggestions but the content must not be copyrighted under a non-GPL compatible license.
 
-## [Download PDF 📄](https://raw.githubusercontent.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/refs/heads/master/README.pdf)
+## [Download the latest PDF revision 📄](https://raw.githubusercontent.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/refs/heads/master/README.pdf)
 
 It is recommended to refer to use [the PDF copy](https://raw.githubusercontent.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/refs/heads/master/README.pdf) instead of this webpage for offline viewing/printing.
 
