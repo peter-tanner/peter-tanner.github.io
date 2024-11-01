@@ -978,7 +978,7 @@ Input has probability distribution $p_X(a_i)=P(X=a_i)$
 
 Channel maps alphabet $`\{a_1,\dots,a_M\} \to \{b_1,\dots,b_N\}`$
 
-Output has probabiltiy distribution $p_Y(b_j)=P(y=b_j)$
+Output has probability distribution $p_Y(b_j)=P(y=b_j)$
 
 $$
 \begin{align*}
