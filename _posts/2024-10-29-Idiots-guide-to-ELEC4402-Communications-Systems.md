@@ -438,8 +438,9 @@ $$
     t&=nT_s\\
     T_s&=\frac{1}{f_s}\\
     x_s(t)&=x(t)\delta_s(t)=x(t)\sum_{n\in\mathbb{Z}}\delta(t-nT_s)=\sum_{n\in\mathbb{Z}}x(nT_s)\delta(t-nT_s)\\
-    X_s(f)&=X(f)*\sum_{n\in\mathbb{Z}}\delta\left(f-\frac{n}{T_s}\right)=X(f)*\sum_{n\in\mathbb{Z}}\delta\left(f-n f_s\right)\\
-    B&>\frac{1}{2}f_s, 2B>f_s\rightarrow\text{Aliasing}\\
+    X_s(f)&=f_s X(f)*\sum_{n\in\mathbb{Z}}\delta\left(f-\frac{n}{T_s}\right)=f_s X(f)*\sum_{n\in\mathbb{Z}}\delta\left(f-n f_s\right)\\
+    \implies X_s(f)&=\sum_{n\in\mathbb{Z}}f_s X\left(f-n f_s\right)\quad\text{Sampling (FT)}\\
+    B&>\frac{1}{2}f_s\implies 2B>f_s\rightarrow\text{Aliasing}\\
 \end{align*}
 $$
 
@@ -483,6 +484,12 @@ $$
 ### Nyquist criterion for zero-ISI
 
 Do not transmit more than $2B$ samples per second over a channel of $B$ bandwidth.
+
+```math
+\text{Nyquist rate} = 2B\quad\text{Nyquist interval}=\frac{1}{2B}
+```
+
+<!-- MATH END -->
 
 ![By Bob K - Own work, CC0, https://commons.wikimedia.org/w/index.php?curid=94674142](/assets/img/2024-10-29-Idiots-guide-to-ELEC/Nyquist_frequency_&_rate.svg)
 
