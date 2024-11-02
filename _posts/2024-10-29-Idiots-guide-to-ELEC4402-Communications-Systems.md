@@ -78,26 +78,26 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 ## Fourier transform identities and properties
 
-| Time domain $x(t)$                                                    | Frequency domain $X(f)$                                                                                                                   |
-| --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| $\text{rect}\left(\frac{t}{T}\right)\quad\Pi\left(\frac{t}{T}\right)$ | $T \text{sinc}(fT)$                                                                                                                       |
-| $\text{sinc}(2Wt)$                                                    | $\frac{1}{2W}\text{rect}\left(\frac{f}{2W}\right)\quad\frac{1}{2W}\Pi\left(\frac{f}{2W}\right)$                                           |
-| $\exp(-at)u(t),\quad a>0$                                             | $\frac{1}{a + j2\pi f}$                                                                                                                   |
-| $\exp(-a\lvert t \rvert),\quad a>0$                                   | $\frac{2a}{a^2 + (2\pi f)^2}$                                                                                                             |
-| $\exp(-\pi t^2)$                                                      | $\exp(-\pi f^2)$                                                                                                                          |
-| $1 - \frac{\lvert t \rvert}{T},\quad\lvert t \rvert < T$              | $T \text{sinc}^2(fT)$                                                                                                                     |
-| $\delta(t)$                                                           | $1$                                                                                                                                       |
-| $1$                                                                   | $\delta(f)$                                                                                                                               |
-| $\delta(t - t_0)$                                                     | $\exp(-j2\pi f t_0)$                                                                                                                      |
-| $\exp(j2\pi f_c t)$                                                   | $\delta(f - f_c)$                                                                                                                         |
-| $\cos(2\pi f_c t)$                                                    | $\frac{1}{2}[\delta(f - f_c) + \delta(f + f_c)]$                                                                                          |
-| $\cos(2\pi f_c t+\theta)$                                             | $\frac{1}{2}[\delta(f - f_c)\exp(j\theta) + \delta(f + f_c)\exp(-j\theta)]\quad\text{Use for coherent recv.}$                             |
-| $\sin(2\pi f_c t)$                                                    | $\frac{1}{2j} [\delta(f - f_c) - \delta(f + f_c)]$                                                                                        |
-| $\sin(2\pi f_c t+\theta)$                                             | $\frac{1}{2j} [\delta(f - f_c)\exp(j\theta) - \delta(f + f_c)\exp(-j\theta)]$                                                             |
-| $\text{sgn}(t)$                                                       | $\frac{1}{j\pi f}$                                                                                                                        |
-| $\frac{1}{\pi t}$                                                     | $-j \text{sgn}(f)$                                                                                                                        |
-| $u(t)$                                                                | $\frac{1}{2} \delta(f) + \frac{1}{j2\pi f}$                                                                                               |
-| $\sum_{n=-\infty}^{\infty} \delta(t - nT_0)$                          | $\frac{1}{T_0} \sum_{n=-\infty}^{\infty} \delta\left(f - \frac{n}{T_0}\right)=f_0 \sum_{n=-\infty}^{\infty} \delta\left(f - n f_0\right)$ |
+| Time domain $x(t)$                                                           | Frequency domain $X(f)$                                                                                                                   |
+| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| $\text{rect}\left(\frac{t}{T}\right)\quad\Pi\left(\frac{t}{T}\right)$        | $T \text{sinc}(fT)$                                                                                                                       |
+| $\text{sinc}(2Wt)$                                                           | $\frac{1}{2W}\text{rect}\left(\frac{f}{2W}\right)\quad\frac{1}{2W}\Pi\left(\frac{f}{2W}\right)$                                           |
+| $\exp(-at)u(t),\quad a>0$                                                    | $\frac{1}{a + j2\pi f}$                                                                                                                   |
+| $\exp(-a\lvert t \rvert),\quad a>0$                                          | $\frac{2a}{a^2 + (2\pi f)^2}$                                                                                                             |
+| $\exp(-\pi t^2)$                                                             | $\exp(-\pi f^2)$                                                                                                                          |
+| $1 - \frac{\lvert t \rvert}{T},\quad\lvert t \rvert < T\quad\text{tri}(t/T)$ | $T \text{sinc}^2(fT)$                                                                                                                     |
+| $\delta(t)$                                                                  | $1$                                                                                                                                       |
+| $1$                                                                          | $\delta(f)$                                                                                                                               |
+| $\delta(t - t_0)$                                                            | $\exp(-j2\pi f t_0)$                                                                                                                      |
+| $\exp(j2\pi f_c t)$                                                          | $\delta(f - f_c)$                                                                                                                         |
+| $\cos(2\pi f_c t)$                                                           | $\frac{1}{2}[\delta(f - f_c) + \delta(f + f_c)]$                                                                                          |
+| $\cos(2\pi f_c t+\theta)$                                                    | $\frac{1}{2}[\delta(f - f_c)\exp(j\theta) + \delta(f + f_c)\exp(-j\theta)]\quad\text{Use for coherent recv.}$                             |
+| $\sin(2\pi f_c t)$                                                           | $\frac{1}{2j} [\delta(f - f_c) - \delta(f + f_c)]$                                                                                        |
+| $\sin(2\pi f_c t+\theta)$                                                    | $\frac{1}{2j} [\delta(f - f_c)\exp(j\theta) - \delta(f + f_c)\exp(-j\theta)]$                                                             |
+| $\text{sgn}(t)$                                                              | $\frac{1}{j\pi f}$                                                                                                                        |
+| $\frac{1}{\pi t}$                                                            | $-j \text{sgn}(f)$                                                                                                                        |
+| $u(t)$                                                                       | $\frac{1}{2} \delta(f) + \frac{1}{j2\pi f}$                                                                                               |
+| $\sum_{n=-\infty}^{\infty} \delta(t - nT_0)$                                 | $\frac{1}{T_0} \sum_{n=-\infty}^{\infty} \delta\left(f - \frac{n}{T_0}\right)=f_0 \sum_{n=-\infty}^{\infty} \delta\left(f - n f_0\right)$ |
 
 | Time domain $x(t)$                       | Frequency domain $X(f)$                          | Property                      |
 | ---------------------------------------- | ------------------------------------------------ | ----------------------------- |
@@ -127,6 +127,7 @@ $$
     \text{sgn}(t) &= \begin{cases} +1, & t > 0 \\ 0, & t = 0 \\ -1, & t < 0 \end{cases}&\text{Signum Function}\\
     \text{sinc}(2Wt) &= \frac{\sin(2\pi W t)}{2\pi W t}&\text{sinc Function}\\
     \text{rect}(t) = \Pi(t) &= \begin{cases} 1, & -0.5 < t < 0.5 \\ 0, & \lvert t \rvert > 0.5 \end{cases}&\text{Rectangular/Gate Function}\\
+    \text{tri}(t/T) &= \begin{cases} 1 - \frac{|t|}{T}, & \lvert t\rvert < T \\ 0, & \lvert t \rvert > T \end{cases}=\Pi(t/T)*\Pi(t/T)&\text{Triangle Function}\\
     g(t)*h(t)=(g*h)(t)&=\int_\infty^\infty g(\tau)h(t-\tau)d\tau&\text{Convolution}\\
 \end{align*}
 $$
@@ -154,9 +155,13 @@ $$
 \end{align*}
 $$
 
-### $\text{rect}$ function
+### Shape functions
 
-![rect](/assets/img/2024-10-29-Idiots-guide-to-ELEC/rect.drawio.svg)
+| $\text{rect}$ function                                               | $\text{tri}$ function |
+| -------------------------------------------------------------------- | --------------------- |
+| ![rect](/assets/img/2024-10-29-Idiots-guide-to-ELEC/rect.drawio.svg) | TODO: Add graphic.    |
+
+Tri placeholder:  For $\text{tri}(t/T)=1-\|t\|/T$, Intersects $x$ axis at $-T$ and $T$ and $y$ axis at $1$.
 
 ### Bessel function
 
@@ -288,11 +293,11 @@ $$
 
 $$
 \begin{align*}
-    m_a &= \frac{\min_t|k_a m(t)|}{A_c} \quad\text{$k_a$ is the amplitude sensitivity ($\text{volt}^{-1}$), $m_a$ is the modulation index.}\\
-    m_a &= \frac{A_\text{max}-A_\text{min}}{A_\text{max}+A_\text{min}}\quad\text{ (Symmetrical $m(t)$)}\\
-    m_a&=k_a A_m \quad\text{ (Symmetrical $m(t)$)}\\
     x(t)&=A_c\cos(2\pi f_c t)\left[1+k_a m(t)\right]=A_c\cos(2\pi f_c t)\left[1+m_a m(t)/A_c\right], \\
     &\text{where $m(t)=A_m\hat m(t)$ and $\hat m(t)$ is the normalized modulating signal}\\
+    m_a &= \frac{|\min_t(k_a m(t))|}{A_c} \quad\text{$k_a$ is the amplitude sensitivity ($\text{volt}^{-1}$), $m_a$ is the modulation index.}\\
+    m_a &= \frac{A_\text{max}-A_\text{min}}{A_\text{max}+A_\text{min}}\quad\text{ (Symmetrical $m(t)$)}\\
+    m_a&=k_a A_m \quad\text{ (Symmetrical $m(t)$)}\\
     P_c &=\frac{ {A_c}^2}{2}\quad\text{Carrier power}\\
     P_x &=\frac{1}{4}{m_a}^2{A_c}^2\\
     \eta&=\frac{\text{Signal Power}}{\text{Total Power}}=\frac{P_x}{P_x+P_c}\\
