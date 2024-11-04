@@ -749,7 +749,7 @@ $$
 
 ### $Q(x)$ function
 
-You should use [$\text{erf}$ function table](#function-1) instead in exams using the identity $Q(x)=\frac{1}{2}-\frac{1}{2}\text{erf}\left(\frac{x}{\sqrt{2}}\right)$. Use this for validation.
+You should use $\text{erf}$ function table instead in exams using the identity $Q(x)=\frac{1}{2}-\frac{1}{2}\text{erf}\left(\frac{x}{\sqrt{2}}\right)$. Use this for validation.
 
 | $x$    | $Q(x)$     | $x$    | $Q(x)$                  | $x$    | $Q(x)$                   | $x$    | $Q(x)$                   |
 | ------ | ---------- | ------ | ----------------------- | ------ | ------------------------ | ------ | ------------------------ |
