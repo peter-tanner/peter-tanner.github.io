@@ -9,7 +9,7 @@ tags: [electrochemical,sensor,electronics,beers,alcohol]   # 0-\infty. systems |
 
 Most alcohol sensor modules use the MQ3 alcohol sensor (or similar), which operate using a metal oxide semiconductor which changes in resistivity when alcohol is exposed to it. These tend to be terrible. The SC03-C2H5OH is the cheapest electrochemical alcohol sensor I could find online, it uses an electrochemical cell which should be better.
 
-I was able to purchase it in quantities of one on [Aliexpress](item/1005005789802562.html) for around $20 AUD. The package arrived with the sensor and a male-male ribbon cable to connect it to a 2.0 mm picoblade connector (see below for specifications).
+I was able to purchase it in quantities of one on [Aliexpress](https://www.aliexpress.com/item/1005005789802562.html) for around $20 AUD. The package arrived with the sensor and a male-male ribbon cable to connect it to a 2.0 mm picoblade connector (see below for specifications).
 
 ## Better datasheet
 
