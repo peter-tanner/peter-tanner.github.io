@@ -52,6 +52,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
   - ENGT4301 Digital Communications and Networking
   - ELEC3302 Communications Systems
   - Note that ELEC5501 Advanced Communications is a different unit.
+- To be honest, you select (relevant) questions from these for class test study as well.
 
 <details>
 <summary>Listing of examination papers on OneSearch</summary>
@@ -71,6 +72,16 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 - This formula sheet will attempt to condense all processes/formulas you may need in this unit.
 - **You do not get given a formula sheet**, so you are entirely dependent on your own notes (except for some exceptions, such as the $\text{erf}(x)$ table). So bring good notes.
 - Doing this unit after signal processing is a good idea.
+- Try to practice questions from the exam papers on OneSearch mentioned above before class test, since you don't get past questions for the tests.
+
+### Final exam 2024
+
+As quoted from the lectures:
+
+- No short questions
+- 10 calculation questions
+- From exam front page: Any printed or written material (e.g. dictionaries, textbooks, statutes, cases, legislation, annotations, lecture notes, tutorials with solutions, notes) except UWA Library books. Photocopied or printed eBook of a textbook is permitted.
+  - So yes you can still bring as many papers as you want to the final, unlike in signals and systems/signal processing where the final only allowed two pages.
 
 ## Printable notes begins on next page (in PDF)
 
