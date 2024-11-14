@@ -9,7 +9,17 @@ tags: [rf, electronics, fpga, ebaz4205, max2769, zynq7010, gps, devlog] # system
 
 ## 🚧🚧 THIS PAGE IS NOT FINISHED 🚧🚧
 
-## Notes:
+## Updates
+
+### 2024-11-15: First PCB design
+
+The openGNSS PCB is done! The tab extending down on the left side of the board is to provide a mounting point for the board to mount to the ebaz4205 board if the top mounting points cannot be used, since IREC regulations do not allow use of connectors as mechanical mounting.
+
+![Top PCB](/assets/img/2024-10-02-Dev-log-GPS-receiver/top.png)
+
+![bottom PCB](/assets/img/2024-10-02-Dev-log-GPS-receiver/bottom.png)
+
+## Notes
 
 https://github.com/iliasam/STM32F4_SDR_GPS?tab=readme-ov-file
 
