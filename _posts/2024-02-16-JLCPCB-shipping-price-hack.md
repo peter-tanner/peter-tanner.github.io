@@ -6,6 +6,16 @@ categories: [Electronics] # Blogging | Electronics | Programming | Mechanical
 tags: [electronics, JLCPCB] # systems | embedded | rf | microwave | electronics | solidworks | automation
 ---
 
+
+## TL;DR
+
+- Parts assembly adds more mass than you would think to an order
+- Mass of a board is calculated by the bounding rectangle dimensions and the PCB thickness, so if you have areas cut out from a board it is still counted. You can see this in the quote screen.
+  - Thickness makes a big impact, but it can't be avoided if you want to use economic PCBA.
+- A steep jump in price occurs at 0.3 kg, if it's above this mass the incremental jumps in price are less and it's generally not worth optimizing small combined orders to save on shipping (See last plot)
+
+## Details
+
 There is a shipping option called "Global Standard Direct Line" which is the cheapest but has a longer shipping time.
 
 This is pretty good though if you are not a business and want to shave off as much cost as possible, it incentives making more revisions and shipping often, compared to bundling orders in one shipment.
@@ -34,13 +44,29 @@ Here's some shipping data from some of my past orders and tests with random PCBs
 
 All prices in AUD.
 
-| Mass [kg] | Global Standard Direct Line | DHL express | S.F Express Standard | FedEx International Packet | UPS Express Saver | Notes                          |
-| --------- | --------------------------- | ----------- | -------------------- | -------------------------- | ----------------- | ------------------------------ |
-| 0.18      | **3.18**                    | Ignored     | Ignored              | Ignored                    | Ignored           | openGNSS, no assembly          |
-| 0.29      | **3.18**                    | **28.40**   | 31.42                | 31.72                      | 49.52             | Simulated mass                 |
-| 0.33      | 14.35                       | **28.40**   | 31.42                | 31.72                      | 49.52             | Simulated mass                 |
-| 0.39      | 14.35                       | Ignored     | Ignored              | Ignored                    | Ignored           | openGNSS, after assembly       |
-| 0.46      | 14.35                       | **28.40**   | 31.42                | 31.72                      | 49.52             | Simulated mass                 |
-| 0.67      | 23.39                       | 40.49       | 37.42                | 45.02                      | 67.74             | Simulated mass                 |
-| 0.8       | 23.61                       | 40.49       | 37.42                | 45.02                      | 67.74             | Neptunium Order after assembly |
-| 1.19      | 31.59                       | 63.01       | 43.06                | 64.40                      | 46.65$A           | Simulated mass                 |
+| Mass [kg] | Global Standard Direct Line | DHL express | S.F Express Standard | FedEx International Packet | UPS Express Saver | Notes                                        |
+| --------- | --------------------------- | ----------- | -------------------- | -------------------------- | ----------------- | -------------------------------------------- |
+| 0.18      | **3.18**                    | Ignored     | Ignored              | Ignored                    | Ignored           | openGNSS (no assembly)                       |
+| 0.29      | **3.18**                    | **28.40**   | 31.42                | 31.72                      | 49.52             | Simulated mass                               |
+| 0.33      | 14.35                       | **28.40**   | 31.42                | 31.72                      | 49.52             | Simulated mass                               |
+| 0.39      | 14.35                       | Ignored     | Ignored              | Ignored                    | Ignored           | openGNSS (assembled)                         |
+| 0.46      | 14.35                       | **28.40**   | 31.42                | 31.72                      | 49.52             | Simulated mass                               |
+| 0.56      | 19.80                       | Ignored     | Ignored              | Ignored                    | Ignored           | Test                                         |
+| 0.59      | 20.68                       | Ignored     | Ignored              | Ignored                    | Ignored           | Test: openGNSS (assembled), patch antenna V3 |
+| 0.60      | 20.68                       | Ignored     | Ignored              | Ignored                    | Ignored           | Test: openGNSS (assembled), patch antenna V2 |
+| 0.61      | 20.68                       | Ignored     | Ignored              | Ignored                    | Ignored           | Test: openGNSS (assembled), patch antenna    |
+| 0.67      | 23.39                       | 40.49       | 37.42                | 45.02                      | 67.74             | Simulated mass                               |
+| 0.8       | 23.61                       | 40.49       | 37.42                | 45.02                      | 67.74             | Neptunium Order after assembly               |
+| 1.19      | 31.59                       | 63.01       | 43.06                | 64.40                      | 46.65$A           | Simulated mass                               |
+
+```mathematica
+prices = {{0.18, 3.18}, {0.29, 3.18}, {0.33, 14.35}, {0.39, 
+   14.35}, {0.46, 14.35}, {0.56, 19.80}, {0.59, 20.68}, {0.60, 
+   20.68}, {0.61, 20.68}, {0.67, 23.39}, {0.8, 23.61}, {1.19, 31.59}}
+
+ListPlot[prices]
+```
+
+Price plot for Global Standard Direct Line
+
+![Price plot for Global Standard Direct Line](/assets/img/2024-02-16-JLCPCB-shipping-pric/price_plot.png)
