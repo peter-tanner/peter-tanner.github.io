@@ -28,6 +28,7 @@ These parameters seem to be the same for all ATGM modules:
 | Cold start sensitivity [dBm] | -148     |                          |
 | Tracking sensitivity [dBm]   | -162     |                          |
 | Protocols                    | NMEA0183 |                          |
+| Assisted GNSS                | ✅        |                          |
 | Battery and RTC              | ✅        |                          |
 | Lockout speed [m/s]          | 515      | Not specified on AT6668? |
 | Lockout altitude [m]         | 18000    | Not specified on AT6668? |
@@ -40,3 +41,40 @@ The main differences compared to the NEO-M9N are:
 - Slightly higher lockout speed of 515 m/s
 - Lower lockout altitude of 18000 m (compared to 80000 m)
 - Lacks USB and lacks UBX or any binary output format
+
+## AGNSS
+
+The GNSS receivers support assisted GNSS. The datasheet refers to another file, "AGNSS solution of ZhongKe micro". I could only find these slides from an [unofficial source](https://espruino.microcosm.app/api/v1/files/b589417f21931e2a2182c6785b846ac64ef64b40.pdf).
+
+The document contains the following code and the password and username of a free trial account which is rate-limited to 1000 requests per hour. The code works and the server is still online and will complain if you don't provide a username/password. I could not confirm that this account worked, either due to bots hitting the 1000 requests per hour rate limit or due to it being deactivated since the document was made.
+
+```py
+addr = "121.41.40.95"  # Server address
+port = 2621  # port
+message = b"user=freetrial;pwd=123456;cmd=full;lat=30;lon=120;"  # Request message
+import socket
+
+socket.setdefaulttimeout(4)
+client = socket.socket()
+client.connect((addr, port))
+client.send(message)
+reply_data = b""
+while True:
+    current_reply = client.recv(1024)
+    if len(current_reply) == 0:
+        break
+    else:
+        reply_data += current_reply
+
+print(reply_data)
+
+import serial
+tty = serial.Serial()
+tty.port = "COM1"
+tty.baudrate = 9600
+tty.open()
+tty.write(reply_data)
+tty.close()
+```
+
+The document seems to indicate the AGNSS service is supported by China Aerospace Science and Industry Corporation.
