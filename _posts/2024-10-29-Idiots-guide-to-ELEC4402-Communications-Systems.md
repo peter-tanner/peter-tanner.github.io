@@ -1,9 +1,9 @@
 ---
-title: Idiot's guide to ELEC4402 Communications Systems
+title: Course notes for ELEC4402 Communications Systems
 author: peter
 date: 2024-10-29 16:11:34 +0800
 categories: [University, Guides]    # 0-2 categories. Blogging | Electronics | Programming | Mechanical | SelfHosting
-tags: [ELEC4402, communications systems, guide, formula sheet, datasheet, notes]   # 0-\infty. systems | embedded | rf | microwave | electronics | solidworks | automation | tip
+tags: [ELEC4402, communications systems, guide, formula sheet, datasheet, notes, UWA]   # 0-\infty. systems | embedded | rf | microwave | electronics | solidworks | automation | tip
 # image: assets/img/2024-10-29-Idiots-guide-to-ELEC/2024-10-29-Idiots-guide-to-ELEC/preview.png
 math: true
 ---
